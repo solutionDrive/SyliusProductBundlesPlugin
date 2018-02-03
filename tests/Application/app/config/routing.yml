@@ -3,5 +3,6 @@ sylius:
 
 # Put your own routes here
 
-solutiondrive_product_bundles_plugin:
+solutiondrive_admin_product_bundle_index:
     resource: "@SolutionDriveSyliusProductBundlesPlugin/Resources/config/app/admin_routing.yml"
+    prefix: /admin
