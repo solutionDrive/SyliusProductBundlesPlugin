@@ -1,0 +1,4 @@
+suites:
+    main:
+        namespace: SolutionDrive\SyliusProductBundlesPlugin
+        psr4_prefix: SolutionDrive\SyliusProductBundlesPlugin
