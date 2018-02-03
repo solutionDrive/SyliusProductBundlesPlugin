@@ -3,5 +3,17 @@
 <container xmlns="http://symfony.com/schema/dic/services" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
     <services>
         <!-- Put your Behat services here -->
+        <service
+            id="solutiondrive.syliusproductbundlesplugin.behat.context.ui.admin.managing_product_bundles"
+            class="Tests\SolutionDrive\SyliusProductBundlesPlugin\Behat\Context\ManagingProductBundlesContext"
+        >
+            <tag name="fob.context_service" />
+        </service>
+        <service
+            id="solutiondrive.syliusproductbundlesplugin.behat.context.setup.product_bundles"
+            class="Tests\SolutionDrive\SyliusProductBundlesPlugin\Behat\Context\ProductBundlesSetupContext"
+        >
+            <tag name="fob.context_service" />
+        </service>
     </services>
 </container>
