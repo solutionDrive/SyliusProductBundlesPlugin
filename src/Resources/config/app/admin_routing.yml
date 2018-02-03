@@ -3,5 +3,5 @@ solutiondrive_product_bundles:
     alias: solutiondrive.product_bundles
     templates: SyliusAdminBundle:Crud
     section: admin
-    grid: solutiondrve_admin_product_bundles
+    grid: solutiondrive_admin_product_bundles
   type: sylius.resource
