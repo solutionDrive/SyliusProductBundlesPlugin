@@ -3,19 +3,19 @@
         <img src="http://demo.sylius.org/assets/shop/img/logo.png" />
     </a>
 </p>
-<h1 align="center">Plugin Skeleton</h1>
+<h1 align="center">Sylius Product Bundles Plugin</h1>
 <p align="center">
-    <a href="https://packagist.org/packages/sylius/plugin-skeleton" title="License">
-        <img src="https://img.shields.io/packagist/l/sylius/plugin-skeleton.svg" />
+    <a href="https://packagist.org/packages/solutiondrive/sylius-product-bundles-plugin" title="License">
+        <img src="https://img.shields.io/packagist/l/solutiondrive/sylius-product-bundles-plugin.svg" />
     </a>
-    <a href="https://packagist.org/packages/sylius/plugin-skeleton" title="Version">
-        <img src="https://img.shields.io/packagist/v/sylius/plugin-skeleton.svg" />
+    <a href="https://packagist.org/packages/solutiondrive/sylius-product-bundles-plugin" title="Version">
+        <img src="https://img.shields.io/packagist/v/solutiondrive/sylius-product-bundles-plugin.svg" />
     </a>
-    <a href="http://travis-ci.org/Sylius/PluginSkeleton" title="Build status">
-        <img src="https://img.shields.io/travis/Sylius/PluginSkeleton/master.svg" />
+    <a href="https://travis-ci.org/solutionDrive/SyliusProductBundlesPlugin" title="Build status">
+        <img src="https://img.shields.io/travis/solutionDrive/SyliusProductBundlesPlugin/master.svg" />
     </a>
-    <a href="https://scrutinizer-ci.com/g/Sylius/PluginSkeleton/" title="Scrutinizer">
-        <img src="https://img.shields.io/scrutinizer/g/Sylius/PluginSkeleton.svg" />
+    <a href="https://scrutinizer-ci.com/g/solutionDrive/SyliusProductBundlesPlugin/" title="Scrutinizer">
+        <img src="https://img.shields.io/scrutinizer/g/solutionDrive/SyliusProductBundlesPlugin.svg" />
     </a>
 </p>
 
