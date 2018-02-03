@@ -1,0 +1,7 @@
+solutiondrive_product_bundles:
+  resource:  |
+    alias: solutiondrive.product_bundles
+    templates: SyliusAdminBundle:Crud
+    section: admin
+    grid: solutiondrive_admin_product_bundles
+  type: sylius.resource

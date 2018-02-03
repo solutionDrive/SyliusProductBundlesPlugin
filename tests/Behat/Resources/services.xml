@@ -25,7 +25,7 @@
                 parent="sylius.behat.page.admin.crud.index"
                 class="Tests\SolutionDrive\SyliusProductBundlesPlugin\Behat\Page\IndexPage"
         >
-            <argument>sylius_product_bundles_index</argument>
+            <argument>solutiondrive_product_bundles_index</argument>
         </service>
     </services>
 </container>

@@ -3,5 +3,5 @@ sylius:
 
 # Put your own routes here
 
-acme_sylius_example_shop:
-    resource: "@SolutionDriveSyliusProductBundlesPlugin/Resources/config/app/shop_routing.yml"
+solutiondrive_product_bundles_plugin:
+    resource: "@SolutionDriveSyliusProductBundlesPlugin/Resources/config/app/admin_routing.yml"
