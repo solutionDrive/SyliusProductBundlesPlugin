@@ -15,7 +15,7 @@ class ProductBundle implements ProductBundleInterface, ResourceInterface, CodeAw
     /** @var int */
     private $id;
 
-    /** @var string */
+    /** @var string|null */
     private $code;
 
     /** @var string */
