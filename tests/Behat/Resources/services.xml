@@ -8,12 +8,24 @@
             class="Tests\SolutionDrive\SyliusProductBundlesPlugin\Behat\Context\ManagingProductBundlesContext"
         >
             <tag name="fob.context_service" />
+            <argument
+                    type="service"
+                    id="solutiondrive.syliusproductbundlesplugin.behat.page.index"
+            >
+            </argument>
         </service>
         <service
             id="solutiondrive.syliusproductbundlesplugin.behat.context.setup.product_bundles"
             class="Tests\SolutionDrive\SyliusProductBundlesPlugin\Behat\Context\ProductBundlesSetupContext"
         >
             <tag name="fob.context_service" />
+        </service>
+        <service
+                id="solutiondrive.syliusproductbundlesplugin.behat.page.index"
+                parent="sylius.behat.page.admin.crud.index"
+                class="Tests\SolutionDrive\SyliusProductBundlesPlugin\Behat\Page\IndexPage"
+        >
+            <argument>sylius_product_bundles_index</argument>
         </service>
     </services>
 </container>

@@ -13,5 +13,5 @@ Feature: Browsing product bundles list
 
   @ui
   Scenario: Seeing a product bundle in the list
-    When I want to see all product bundles in the store
+    When I want to see 1 product bundle in the store
     Then I should see a product bundle "smurf outfit"

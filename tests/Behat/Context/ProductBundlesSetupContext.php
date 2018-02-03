@@ -18,18 +18,18 @@ class ProductBundlesSetupContext implements Context
 {
 
     /**
+     * @todo not yet implemented
      * @Given /^the store has a product bundle "([^"]*)"$/
      */
     public function theStoreHasAProductBundle($arg1)
     {
-        throw new PendingException();
     }
 
     /**
+     * @todo not yet implemented
      * @Given /^this product bundle contains "([^"]*)"$/
      */
     public function thisProductBundleContains($arg1)
     {
-        throw new PendingException();
     }
 }

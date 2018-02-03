@@ -13,23 +13,42 @@ namespace Tests\SolutionDrive\SyliusProductBundlesPlugin\Behat\Context;
 
 use Behat\Behat\Context\Context;
 use Behat\Behat\Tester\Exception\PendingException;
+use Tests\SolutionDrive\SyliusProductBundlesPlugin\Behat\Page\IndexPage;
+use Webmozart\Assert\Assert;
 
 class ManagingProductBundlesContext implements Context
 {
 
+    /** @var IndexPage */
+    private $indexPage;
+
     /**
-     * @When /^I want to see all product bundles in the store$/
+     * ManagingProductBundlesContext constructor.
+     * @param IndexPage $indexPage
      */
-    public function iWantToSeeAllProductBundlesInTheStore()
+    public function __construct(IndexPage $indexPage)
     {
-        throw new PendingException();
+        $this->indexPage = $indexPage;
     }
 
     /**
-     * @Then /^I should see a product bundle "([^"]*)"$/
+     * @When I want to see :number product bundle(s) in the store
      */
-    public function iShouldSeeAProductBundle($arg1)
+    public function iWantToSeeProductBundleInTheStore(int $number)
     {
-        throw new PendingException();
+        $this->indexPage->open();
+        Assert::same($this->indexPage->countItems(), $number);
+    }
+
+    /**
+     * @Then I should see a product bundle :productBundleName
+     */
+    public function iShouldSeeAProductBundle($productBundleName)
+    {
+        Assert::true(
+            $this
+                ->indexPage
+                ->isSingleResourceOnPage(['name' => $productBundleName])
+        );
     }
 }
