@@ -6,7 +6,7 @@ SolutionDrive\SyliusProductBundlesPlugin\Entity\ProductBundle:
             type: integer
             id: true
             generator:
-            strategy: AUTO
+                strategy: AUTO
     fields:
         name:
             type: string

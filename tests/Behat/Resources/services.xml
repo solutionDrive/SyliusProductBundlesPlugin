@@ -20,6 +20,7 @@
         >
             <argument type="service" id="sylius.behat.shared_storage" />
             <argument type="service" id="__symfony__.solutiondrive.factory.product_bundle" />
+            <argument type="service" id="__symfony__.solutiondrive.manager.product_bundle" />
             <tag name="fob.context_service" />
         </service>
         <service

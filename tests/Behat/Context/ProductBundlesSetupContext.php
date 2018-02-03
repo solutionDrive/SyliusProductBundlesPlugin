@@ -13,8 +13,10 @@ namespace Tests\SolutionDrive\SyliusProductBundlesPlugin\Behat\Context;
 
 use Behat\Behat\Context\Context;
 use Behat\Behat\Tester\Exception\PendingException;
+use Doctrine\ORM\EntityManagerInterface;
 use Sylius\Behat\Service\SharedStorage;
 use Sylius\Component\Resource\Factory\FactoryInterface;
+use Sylius\Component\Resource\Repository\RepositoryInterface;
 
 class ProductBundlesSetupContext implements Context
 {
@@ -24,15 +26,20 @@ class ProductBundlesSetupContext implements Context
     /** @var FactoryInterface */
     private $productBundleFactory;
 
+    /** @var EntityManagerInterface */
+    private $productBundleManager;
+
     /**
      * @param SharedStorage $sharedStorage
      */
     public function __construct(
         SharedStorage $sharedStorage,
-        FactoryInterface $productBundleFactory
+        FactoryInterface $productBundleFactory,
+        EntityManagerInterface $productBundleManager
     ) {
         $this->sharedStorage = $sharedStorage;
         $this->productBundleFactory = $productBundleFactory;
+        $this->productBundleManager = $productBundleManager;
     }
 
     /**
@@ -42,8 +49,10 @@ class ProductBundlesSetupContext implements Context
     {
         $productBundle = $this->productBundleFactory->createNew();
         $productBundle->setName($name);
+        $productBundle->setCode($name);
 
-        //@todo persist and flush
+        $this->productBundleManager->persist($productBundle);
+        $this->productBundleManager->flush();
 
         $this->sharedStorage->set('product_bundle', $productBundle);
     }
