@@ -1,0 +1,5 @@
+sylius_resource:
+  resources:
+    solutiondrive.product_bundle:
+      classes:
+        model: SolutionDrive\SyliusProductBundlesPlugin\Entity\ProductBundle

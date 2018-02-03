@@ -1,0 +1,2 @@
+imports:
+    - { resource: "@SolutionDriveSyliusProductBundlesPlugin/Resources/config/resources.yml" }
