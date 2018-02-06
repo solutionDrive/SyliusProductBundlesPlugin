@@ -1,0 +1,3 @@
+imports:
+    - { resource: "@SolutionDriveSyliusProductBundlesPlugin/Resources/config/resources.yml" }
+    - { resource: "@SolutionDriveSyliusProductBundlesPlugin/Resources/config/grids.yml" }

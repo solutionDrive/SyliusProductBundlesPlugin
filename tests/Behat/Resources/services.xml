@@ -18,6 +18,9 @@
             id="solutiondrive.syliusproductbundlesplugin.behat.context.setup.product_bundles"
             class="Tests\SolutionDrive\SyliusProductBundlesPlugin\Behat\Context\ProductBundlesSetupContext"
         >
+            <argument type="service" id="sylius.behat.shared_storage" />
+            <argument type="service" id="__symfony__.solutiondrive.factory.product_bundle" />
+            <argument type="service" id="__symfony__.solutiondrive.manager.product_bundle" />
             <tag name="fob.context_service" />
         </service>
         <service
@@ -25,7 +28,7 @@
                 parent="sylius.behat.page.admin.crud.index"
                 class="Tests\SolutionDrive\SyliusProductBundlesPlugin\Behat\Page\IndexPage"
         >
-            <argument>solutiondrive_product_bundles_index</argument>
+            <argument>solutiondrive_admin_product_bundle_index</argument>
         </service>
     </services>
 </container>

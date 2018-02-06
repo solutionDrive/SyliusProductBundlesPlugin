@@ -1,0 +1,28 @@
+SolutionDrive\SyliusProductBundlesPlugin\Entity\ProductBundle:
+    type: entity
+    table: solutiondrive_product_bundle
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        name:
+            type: string
+            length: 255
+        code:
+            type: string
+            length: 255
+            unique: true
+    manyToMany:
+        products:
+          targetEntity: Sylius\Component\Core\Model\Product
+          joinTable:
+            name: solutiondrive_product_bundle_product
+            joinColumns:
+              product_bundle_id:
+                referencedColumnName: id
+            inverseJoinColumns:
+              product_id:
+                referencedColumnName: id

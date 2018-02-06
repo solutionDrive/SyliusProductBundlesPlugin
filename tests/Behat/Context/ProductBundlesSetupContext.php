@@ -13,16 +13,48 @@ namespace Tests\SolutionDrive\SyliusProductBundlesPlugin\Behat\Context;
 
 use Behat\Behat\Context\Context;
 use Behat\Behat\Tester\Exception\PendingException;
+use Doctrine\ORM\EntityManagerInterface;
+use Sylius\Behat\Service\SharedStorage;
+use Sylius\Component\Resource\Factory\FactoryInterface;
+use Sylius\Component\Resource\Repository\RepositoryInterface;
 
 class ProductBundlesSetupContext implements Context
 {
+    /** @var SharedStorage */
+    private $sharedStorage;
+
+    /** @var FactoryInterface */
+    private $productBundleFactory;
+
+    /** @var EntityManagerInterface */
+    private $productBundleManager;
 
     /**
-     * @todo not yet implemented
-     * @Given /^the store has a product bundle "([^"]*)"$/
+     * @param SharedStorage $sharedStorage
      */
-    public function theStoreHasAProductBundle($arg1)
+    public function __construct(
+        SharedStorage $sharedStorage,
+        FactoryInterface $productBundleFactory,
+        EntityManagerInterface $productBundleManager
+    ) {
+        $this->sharedStorage = $sharedStorage;
+        $this->productBundleFactory = $productBundleFactory;
+        $this->productBundleManager = $productBundleManager;
+    }
+
+    /**
+     * @Given the store has a product bundle :name
+     */
+    public function theStoreHasAProductBundle(string $name): void
     {
+        $productBundle = $this->productBundleFactory->createNew();
+        $productBundle->setName($name);
+        $productBundle->setCode($name);
+
+        $this->productBundleManager->persist($productBundle);
+        $this->productBundleManager->flush();
+
+        $this->sharedStorage->set('product_bundle', $productBundle);
     }
 
     /**

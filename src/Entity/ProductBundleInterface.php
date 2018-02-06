@@ -11,7 +11,28 @@ declare(strict_types=1);
 
 namespace SolutionDrive\SyliusProductBundlesPlugin\Entity;
 
+use Doctrine\Common\Collections\Collection;
+use Sylius\Component\Core\Model\ProductInterface;
+
 interface ProductBundleInterface
 {
+    /**
+     * @return string
+     */
+    public function getName(): ?string;
 
+    /**
+     * @param string $name
+     */
+    public function setName(?string $name): void;
+
+    /**
+     * @param ProductInterface $product
+     */
+    public function addProduct(ProductInterface $product): void;
+
+    /**
+     * @return Collection
+     */
+    public function getProducts(): Collection;
 }
