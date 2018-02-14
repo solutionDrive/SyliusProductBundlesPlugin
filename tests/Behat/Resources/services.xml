@@ -4,6 +4,12 @@
     <services>
         <!-- Put your Behat services here -->
         <service
+            id="solutiondrive.syliusproductbundlesplugin.behat.context.ui.admin.managing_product_bundle_products"
+            class="Tests\SolutionDrive\SyliusProductBundlesPlugin\Behat\Context\ManagingProductBundleProductsContext"
+        >
+            <tag name="fob.context_service" />
+        </service>
+        <service
             id="solutiondrive.syliusproductbundlesplugin.behat.context.ui.admin.managing_product_bundles"
             class="Tests\SolutionDrive\SyliusProductBundlesPlugin\Behat\Context\ManagingProductBundlesContext"
         >

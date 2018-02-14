@@ -13,3 +13,4 @@ Feature: Browsing product bundle products in product list
   Scenario: Seeing a product bundle product in the overview of all products
     When I am browsing products
     Then I should see the product "smurf outfit"
+    And this product should be a product bundle product

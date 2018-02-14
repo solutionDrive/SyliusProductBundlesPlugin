@@ -13,6 +13,7 @@ namespace Tests\SolutionDrive\SyliusProductBundlesPlugin\Behat\Context;
 
 use Behat\Behat\Context\Context;
 use Behat\Behat\Tester\Exception\PendingException;
+use Sylius\Component\Core\Model\ProductInterface;
 use Tests\SolutionDrive\SyliusProductBundlesPlugin\Behat\Page\IndexPage;
 use Webmozart\Assert\Assert;
 
