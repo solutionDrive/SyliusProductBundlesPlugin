@@ -1,6 +1,6 @@
 @managing_product_bundle_products
 Feature: Browsing product bundle products in product list
-  In order to get see the product-representation of a bundle
+  In order to see the product-representation of a product bundle
   As an administrator
   I want to see product bundle products on the overview page of the products
 
