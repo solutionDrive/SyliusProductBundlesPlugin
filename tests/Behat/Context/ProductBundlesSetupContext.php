@@ -15,8 +15,8 @@ use Behat\Behat\Context\Context;
 use Behat\Behat\Tester\Exception\PendingException;
 use Doctrine\ORM\EntityManagerInterface;
 use Sylius\Behat\Service\SharedStorage;
+use Sylius\Component\Core\Model\ProductInterface;
 use Sylius\Component\Resource\Factory\FactoryInterface;
-use Sylius\Component\Resource\Repository\RepositoryInterface;
 
 class ProductBundlesSetupContext implements Context
 {
@@ -63,5 +63,16 @@ class ProductBundlesSetupContext implements Context
      */
     public function thisProductBundleContains($arg1)
     {
+    }
+
+    /**
+     * @Given /^(this product) is a product bundle product$/
+     */
+    public function thisProductIsAProductBundleProduct(ProductInterface $product)
+    {
+        /**
+         * @todo ensure injected product can be identified as product-bundle
+         */
+        throw new PendingException();
     }
 }
