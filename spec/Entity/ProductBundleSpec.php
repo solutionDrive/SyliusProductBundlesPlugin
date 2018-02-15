@@ -44,4 +44,10 @@ class ProductBundleSpec extends ObjectBehavior
         $this->addProduct($product);
         $this->getProducts()->shouldContain($product);
     }
+
+    function it_has_a_product(ProductInterface $product)
+    {
+        $this->setProduct($product);
+        $this->getProduct()->shouldReturn($product);
+    }
 }

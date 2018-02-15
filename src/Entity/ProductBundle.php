@@ -24,6 +24,9 @@ class ProductBundle implements ProductBundleInterface, ResourceInterface, CodeAw
     /** @var Collection */
     private $products;
 
+    /** @var ProductInterface */
+    private $product;
+
     /**
      * ProductBundle constructor.
      */
@@ -86,5 +89,21 @@ class ProductBundle implements ProductBundleInterface, ResourceInterface, CodeAw
     public function getProducts(): Collection
     {
         return $this->products;
+    }
+
+    /**
+     * @return ProductInterface
+     */
+    public function getProduct(): ProductInterface
+    {
+        return $this->product;
+    }
+
+    /**
+     * @param ProductInterface $product
+     */
+    public function setProduct(ProductInterface $product): void
+    {
+        $this->product = $product;
     }
 }
