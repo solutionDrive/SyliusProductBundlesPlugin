@@ -32,7 +32,7 @@
         <service
                 id="solutiondrive.syliusproductbundlesplugin.behat.page.index"
                 parent="sylius.behat.page.admin.crud.index"
-                class="Tests\SolutionDrive\SyliusProductBundlesPlugin\Behat\Page\IndexPage"
+                class="Tests\SolutionDrive\SyliusProductBundlesPlugin\Behat\Page\ProductBundles\IndexPage"
         >
             <argument>solutiondrive_admin_product_bundle_index</argument>
         </service>
