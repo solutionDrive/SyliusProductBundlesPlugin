@@ -23,7 +23,7 @@ class ProductBundleSlot implements ProductBundleSlotInterface, ResourceInterface
     private $name = '';
 
     /** @var int */
-    private $position = '';
+    private $position = 0;
 
     /** @var ProductBundleInterface */
     private $bundle;
