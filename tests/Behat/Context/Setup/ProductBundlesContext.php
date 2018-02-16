@@ -9,7 +9,7 @@
  */
 declare(strict_types=1);
 
-namespace Tests\SolutionDrive\SyliusProductBundlesPlugin\Behat\Context;
+namespace Tests\SolutionDrive\SyliusProductBundlesPlugin\Behat\Context\Setup;
 
 use Behat\Behat\Context\Context;
 use Behat\Behat\Tester\Exception\PendingException;
@@ -20,7 +20,7 @@ use Sylius\Component\Core\Model\ProductInterface;
 use Sylius\Component\Resource\Factory\FactoryInterface;
 use Sylius\Component\Resource\Model\ResourceInterface;
 
-class ProductBundlesSetupContext implements Context
+class ProductBundlesContext implements Context
 {
     /** @var SharedStorage */
     private $sharedStorage;
