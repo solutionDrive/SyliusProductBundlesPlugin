@@ -12,7 +12,7 @@ declare(strict_types=1);
 namespace Tests\SolutionDrive\SyliusProductBundlesPlugin\Behat\Context;
 
 use Behat\Behat\Context\Context;
-use Tests\SolutionDrive\SyliusProductBundlesPlugin\Behat\Page\IndexPage;
+use Tests\SolutionDrive\SyliusProductBundlesPlugin\Behat\Page\ProductBundles\IndexPage;
 use Webmozart\Assert\Assert;
 
 class ManagingProductBundlesContext implements Context
