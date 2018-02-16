@@ -15,14 +15,23 @@ SolutionDrive\SyliusProductBundlesPlugin\Entity\ProductBundle:
             type: string
             length: 255
             unique: true
+    oneToOne:
+        product:
+            targetEntity: Sylius\Component\Core\Model\Product
+            joinColumn:
+                name: product_id
+                referencedColumnName: id
+            nullable: false
+            unique: true
+
     manyToMany:
         products:
-          targetEntity: Sylius\Component\Core\Model\Product
-          joinTable:
-            name: solutiondrive_product_bundle_product
-            joinColumns:
-              product_bundle_id:
-                referencedColumnName: id
-            inverseJoinColumns:
-              product_id:
-                referencedColumnName: id
+            targetEntity: Sylius\Component\Core\Model\Product
+            joinTable:
+                name: solutiondrive_product_bundle_product
+                joinColumns:
+                    product_bundle_id:
+                        referencedColumnName: id
+                inverseJoinColumns:
+                    product_id:
+                        referencedColumnName: id
