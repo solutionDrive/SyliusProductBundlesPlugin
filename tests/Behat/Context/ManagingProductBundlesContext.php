@@ -12,22 +12,33 @@ declare(strict_types=1);
 namespace Tests\SolutionDrive\SyliusProductBundlesPlugin\Behat\Context;
 
 use Behat\Behat\Context\Context;
+use Tests\SolutionDrive\SyliusProductBundlesPlugin\Behat\Page\ProductBundles\CreatePage;
 use Tests\SolutionDrive\SyliusProductBundlesPlugin\Behat\Page\ProductBundles\IndexPage;
+use Tests\SolutionDrive\SyliusProductBundlesPlugin\Behat\Page\ProductBundles\UpdatePage;
 use Webmozart\Assert\Assert;
 
 class ManagingProductBundlesContext implements Context
 {
-
     /** @var IndexPage */
     private $indexPage;
+
+    /** @var CreatePage */
+    private $createPage;
+
+    /** @var UpdatePage */
+    private $updatePage;
 
     /**
      * ManagingProductBundlesContext constructor.
      * @param IndexPage $indexPage
+     * @param CreatePage $createPage
+     * @param UpdatePage $updatePage
      */
-    public function __construct(IndexPage $indexPage)
+    public function __construct(IndexPage $indexPage, CreatePage $createPage, UpdatePage $updatePage)
     {
         $this->indexPage = $indexPage;
+        $this->createPage = $createPage;
+        $this->updatePage = $updatePage;
     }
 
     /**
