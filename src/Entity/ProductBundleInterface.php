@@ -32,7 +32,7 @@ interface ProductBundleInterface
     public function addSlot(ProductBundleSlotInterface $slot): void;
 
     /**
-     * @return Collection<ProductBundleSlotInterface>
+     * @return ProductBundleSlotInterface[]|Collection
      */
     public function getSlots(): Collection;
 
