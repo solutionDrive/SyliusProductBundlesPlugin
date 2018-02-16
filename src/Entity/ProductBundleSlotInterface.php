@@ -24,7 +24,7 @@ interface ProductBundleSlotInterface
 
     public function setPosition(int $position): void;
 
-    public function getBundle(): ProductBundleInterface;
+    public function getBundle(): ?ProductBundleInterface;
 
     public function setBundle(ProductBundleInterface $bundle): void;
 
