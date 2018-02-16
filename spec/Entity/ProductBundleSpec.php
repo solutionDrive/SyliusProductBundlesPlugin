@@ -4,8 +4,8 @@ namespace spec\SolutionDrive\SyliusProductBundlesPlugin\Entity;
 
 use SolutionDrive\SyliusProductBundlesPlugin\Entity\ProductBundle;
 use PhpSpec\ObjectBehavior;
-use Prophecy\Argument;
 use SolutionDrive\SyliusProductBundlesPlugin\Entity\ProductBundleInterface;
+use SolutionDrive\SyliusProductBundlesPlugin\Entity\ProductBundleSlotInterface;
 use Sylius\Component\Core\Model\ProductInterface;
 use Sylius\Component\Resource\Model\CodeAwareInterface;
 use Sylius\Component\Resource\Model\ResourceInterface;
@@ -38,11 +38,11 @@ class ProductBundleSpec extends ObjectBehavior
         $this->getName()->shouldReturn('Gargamel Smurf Domination Stuff');
     }
 
-    function it_can_contain_products(
-        ProductInterface $product
+    function it_can_contain_slots(
+        ProductBundleSlotInterface $slot
     ) {
-        $this->addProduct($product);
-        $this->getProducts()->shouldContain($product);
+        $this->addSlot($slot);
+        $this->getSlots()->shouldContain($slot);
     }
 
     function it_has_a_product(ProductInterface $product)
