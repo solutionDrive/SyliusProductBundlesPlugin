@@ -12,7 +12,6 @@ namespace Tests\SolutionDrive\SyliusProductBundlesPlugin\Behat\Context;
 
 use Behat\Behat\Context\Context;
 
-class ManagingProductBundleSlots implements Context
+class ManagingProductBundleSlotsContext implements Context
 {
-
 }
