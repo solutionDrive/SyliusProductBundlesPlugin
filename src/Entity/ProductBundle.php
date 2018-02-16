@@ -21,7 +21,7 @@ class ProductBundle implements ProductBundleInterface, ResourceInterface, CodeAw
     /** @var string */
     private $name;
 
-    /** @var ProductBundleSlotInterface[]|Collection */
+    /** @var ProductBundleSlotInterface[]|Collection|ArrayCollection */
     private $slots;
 
     /** @var ProductInterface */
@@ -84,7 +84,7 @@ class ProductBundle implements ProductBundleInterface, ResourceInterface, CodeAw
     }
 
     /**
-     * @return ProductBundleSlotInterface[]|Collection
+     * @return ProductBundleSlotInterface[]|Collection|ArrayCollection
      */
     public function getSlots(): Collection
     {

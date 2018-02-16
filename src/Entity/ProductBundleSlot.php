@@ -28,7 +28,7 @@ class ProductBundleSlot implements ProductBundleSlotInterface, ResourceInterface
     /** @var ProductBundleInterface */
     private $bundle;
 
-    /** @var ProductInterface[]|Collection */
+    /** @var ProductInterface[]|Collection|ArrayCollection */
     private $products;
 
     public function __construct()
