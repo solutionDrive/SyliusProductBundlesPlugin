@@ -1,0 +1,42 @@
+SolutionDrive\SyliusProductBundlesPlugin\Entity\ProductBundleSlot:
+    type: entity
+    table: solutiondrive_product_bundle_slot
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    uniqueConstraints:
+        slotNameUnique:
+            columns:
+                - bundle_id
+                - name
+
+    fields:
+        name:
+            type: string
+            length: 255
+        position:
+            type: smallint
+            default: 0
+
+    manyToOne:
+        bundle:
+            targetEntity: SolutionDrive\SyliusProductBundlesPlugin\Entity\ProductBundle
+            joinColumn:
+                name: bundle_id
+                referencedColumnName: id
+                nullable: false
+
+    manyToMany:
+        products:
+            targetEntity: Sylius\Component\Core\Model\Product
+            joinTable:
+                name: solutiondrive_product_bundle_slot_product
+                joinColumns:
+                    product_bundle_slot_id:
+                        referencedColumnName: id
+                inverseJoinColumns:
+                    product_id:
+                        referencedColumnName: id
