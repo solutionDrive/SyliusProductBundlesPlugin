@@ -63,6 +63,7 @@ class ProductBundlesSetupContext implements Context
      */
     public function thisProductBundleContains($arg1)
     {
+        throw new PendingException();
     }
 
     /**
