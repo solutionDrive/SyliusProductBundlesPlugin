@@ -8,10 +8,7 @@ Feature: Browsing product bundles list
     Given the store has a product "smurf hat"
     And the store has a product "smurf house"
     And the store has a product "smurf outfit"
-    # @todo uncomment when step is implemented
-    #And this product is a product bundle product
-    When the store has a product bundle "smurf outfit"
-    And this product bundle contains "smurf hat"
+    And this product is a product bundle product
     And I am logged in as an administrator
 
   @ui

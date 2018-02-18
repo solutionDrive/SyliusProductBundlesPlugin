@@ -21,8 +21,8 @@ class ProductBundle implements ProductBundleInterface, ResourceInterface, CodeAw
     /** @var string */
     private $name;
 
-    /** @var Collection */
-    private $products;
+    /** @var ProductBundleSlotInterface[]|Collection|ArrayCollection */
+    private $slots;
 
     /** @var ProductInterface */
     private $product;
@@ -32,7 +32,7 @@ class ProductBundle implements ProductBundleInterface, ResourceInterface, CodeAw
      */
     public function __construct()
     {
-        $this->products = new ArrayCollection();
+        $this->slots = new ArrayCollection();
     }
 
     /**
@@ -76,19 +76,19 @@ class ProductBundle implements ProductBundleInterface, ResourceInterface, CodeAw
     }
 
     /**
-     * @param ProductInterface $product
+     * @param ProductBundleSlotInterface $slot
      */
-    public function addProduct(ProductInterface $product): void
+    public function addSlot(ProductBundleSlotInterface $slot): void
     {
-        $this->products->add($product);
+        $this->slots->add($slot);
     }
 
     /**
-     * @return Collection
+     * @return ProductBundleSlotInterface[]|Collection|ArrayCollection
      */
-    public function getProducts(): Collection
+    public function getSlots(): Collection
     {
-        return $this->products;
+        return $this->slots;
     }
 
     /**

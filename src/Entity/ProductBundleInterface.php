@@ -27,12 +27,22 @@ interface ProductBundleInterface
     public function setName(?string $name): void;
 
     /**
-     * @param ProductInterface $product
+     * @param ProductBundleSlotInterface $slot
      */
-    public function addProduct(ProductInterface $product): void;
+    public function addSlot(ProductBundleSlotInterface $slot): void;
 
     /**
-     * @return Collection
+     * @return ProductBundleSlotInterface[]|Collection
      */
-    public function getProducts(): Collection;
+    public function getSlots(): Collection;
+
+    /**
+     * @return ProductInterface
+     */
+    public function getProduct(): ProductInterface;
+
+    /**
+     * @param ProductInterface $product
+     */
+    public function setProduct(ProductInterface $product): void;
 }
