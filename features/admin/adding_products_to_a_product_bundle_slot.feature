@@ -14,7 +14,7 @@ Feature: Adding Products to Product Bundle Slots
     And the store has a product "red tight"
     And the store has a product "white hat"
     And the store has a product "red hat"
-    And this product is assigned to the slot "hats"
+    And this product is assigned to the slot "hats" of this product bundle
     And I am logged in as an administrator
 
   @todo
@@ -29,4 +29,4 @@ Feature: Adding Products to Product Bundle Slots
     Given I want to modify the "Hefty smurfs workout dress" product bundle
     When I add the "white hat" product to the "hats" slot of this product bundle
     And I save my changes
-    Then I should see that the "red hat" and the "white hat" product are assigned to the "hats" slot
+    Then I should see that the products "red hat" and "white hat" are assigned to the "hats" slot of this product bundle

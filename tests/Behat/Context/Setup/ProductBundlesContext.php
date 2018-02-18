@@ -57,4 +57,29 @@ class ProductBundlesContext implements Context
         $this->productBundleManager->persist($productBundle);
         $this->productBundleManager->flush();
     }
+
+    /**
+     * @Given /^(this product bundle) has(?:| also) a slot named "([^"]*)"$/
+     */
+    public function thisProductBundleHasASlotNamed(ProductBundleInterface $productBundle, $slot)
+    {
+        /**
+         * @todo add a slot the the injected $projectBundle with the name in $slot
+         */
+        throw new PendingException();
+    }
+
+    /**
+     * @Given /^(this product) is assigned to the slot "([^"]*)" of (this product bundle)$/
+     */
+    public function thisProductIsAssignedToTheSlotOfThisProductBundle(
+        ProductInterface $product,
+        $slot,
+        ProductBundleInterface $productBundle
+    ) {
+        /**
+         * @todo add the injected slot named $slot of the injected product bundle
+         */
+        throw new PendingException();
+    }
 }

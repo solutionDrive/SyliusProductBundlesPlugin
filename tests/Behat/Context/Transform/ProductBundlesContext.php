@@ -31,7 +31,7 @@ class ProductBundlesContext implements Context
      * @Transform /^"([^"]+)" product bundle(?:|s)$/
      * @Transform :product bundle
      */
-    public function getProductByName($productBundleName)
+    public function getProductBundleByName($productBundleName)
     {
         $productBundles = $this->productBundleRepository->findBy(['name' => $productBundleName]);
 
