@@ -19,7 +19,7 @@ class ProductIsNotAProductBundleException extends \RuntimeException
 
     public function __construct(
         ProductInterface $product,
-        string $message = "",
+        string $message = '',
         int $code = 0,
         Throwable $previous = null
     ) {
