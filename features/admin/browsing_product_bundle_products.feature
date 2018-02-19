@@ -5,8 +5,7 @@ Feature: Browsing product bundle products in product list
   I want to see product bundle products on the overview page of the products
 
   Background:
-    Given the store has a product "smurf outfit"
-    And this product is a product bundle product
+    Given the store has a product bundle "smurf outfit"
     And I am logged in as an administrator
 
   @todo

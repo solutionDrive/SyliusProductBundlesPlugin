@@ -2,45 +2,77 @@
 
 <container xmlns="http://symfony.com/schema/dic/services" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
     <services>
-        <!-- Put your Behat services here -->
+<!-- Behat Context Services -->
         <service
             id="solutiondrive.syliusproductbundlesplugin.behat.context.ui.admin.managing_product_bundle_products"
-            class="Tests\SolutionDrive\SyliusProductBundlesPlugin\Behat\Context\ManagingProductBundleProductsContext"
+            class="Tests\SolutionDrive\SyliusProductBundlesPlugin\Behat\Context\Ui\Admin\ManagingProductBundleProductsContext"
         >
             <tag name="fob.context_service" />
         </service>
         <service
             id="solutiondrive.syliusproductbundlesplugin.behat.context.ui.admin.managing_product_bundles"
-            class="Tests\SolutionDrive\SyliusProductBundlesPlugin\Behat\Context\ManagingProductBundlesContext"
+            class="Tests\SolutionDrive\SyliusProductBundlesPlugin\Behat\Context\Ui\Admin\ManagingProductBundlesContext"
         >
             <tag name="fob.context_service" />
             <argument
-                    type="service"
-                    id="solutiondrive.syliusproductbundlesplugin.behat.page.index"
-            >
-            </argument>
+                type="service"
+                id="solutiondrive.syliusproductbundlesplugin.behat.page.index"
+            />
+            <argument
+                type="service"
+                id="solutiondrive.syliusproductbundlesplugin.behat.page.create"
+            />
+            <argument
+                type="service"
+                id="solutiondrive.syliusproductbundlesplugin.behat.page.update"
+            />
         </service>
         <service
             id="solutiondrive.syliusproductbundlesplugin.behat.context.ui.admin.managing_product_bundle_slots"
-            class="Tests\SolutionDrive\SyliusProductBundlesPlugin\Behat\Context\ManagingProductBundleSlotsContext"
+            class="Tests\SolutionDrive\SyliusProductBundlesPlugin\Behat\Context\Ui\Admin\ManagingProductBundleSlotsContext"
         >
             <tag name="fob.context_service" />
         </service>
         <service
             id="solutiondrive.syliusproductbundlesplugin.behat.context.setup.product_bundles"
-            class="Tests\SolutionDrive\SyliusProductBundlesPlugin\Behat\Context\ProductBundlesSetupContext"
+            class="Tests\SolutionDrive\SyliusProductBundlesPlugin\Behat\Context\Setup\ProductBundlesContext"
         >
             <argument type="service" id="sylius.behat.shared_storage" />
             <argument type="service" id="__symfony__.solutiondrive.factory.product_bundle" />
             <argument type="service" id="__symfony__.solutiondrive.manager.product_bundle" />
+            <argument type="service" id="__symfony__.sylius.factory.product" />
+            <argument type="service" id="__symfony__.sylius.manager.product" />
             <tag name="fob.context_service" />
         </service>
+<!-- Transformer Services -->
+        <service
+            id="solutiondrive.syliusproductbundlesplugin.behat.context.transform.product_bundles"
+            class="Tests\SolutionDrive\SyliusExamplePlugin\Behat\Context\Transform\ProductBundlesContext"
+        >
+            <argument type="service" id="__symfony__.solutiondrive.repository.product_bundle" />
+            <tag name="fob.context_service" />
+        </service>
+<!-- Page Object Services -->
         <service
                 id="solutiondrive.syliusproductbundlesplugin.behat.page.index"
                 parent="sylius.behat.page.admin.crud.index"
                 class="Tests\SolutionDrive\SyliusProductBundlesPlugin\Behat\Page\ProductBundles\IndexPage"
         >
             <argument>solutiondrive_admin_product_bundle_index</argument>
+        </service>
+        <service
+                id="solutiondrive.syliusproductbundlesplugin.behat.page.create"
+                parent="sylius.behat.page.admin.crud.create"
+                class="Tests\SolutionDrive\SyliusProductBundlesPlugin\Behat\Page\ProductBundles\CreatePage"
+        >
+            <argument>solutiondrive_admin_product_bundle_create</argument>
+        </service>
+        <service
+                id="solutiondrive.syliusproductbundlesplugin.behat.page.update"
+                parent="sylius.behat.page.admin.crud.update"
+                class="Tests\SolutionDrive\SyliusProductBundlesPlugin\Behat\Page\ProductBundles\UpdatePage"
+        >
+            <argument>solutiondrive_admin_product_bundle_update</argument>
         </service>
     </services>
 </container>

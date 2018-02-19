@@ -7,8 +7,7 @@ Feature: Browsing product bundles list
   Background:
     Given the store has a product "smurf hat"
     And the store has a product "smurf house"
-    And the store has a product "smurf outfit"
-    And this product is a product bundle product
+    And the store has a product bundle "smurf outfit"
     And I am logged in as an administrator
 
   @ui
