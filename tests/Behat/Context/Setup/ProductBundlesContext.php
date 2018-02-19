@@ -77,21 +77,6 @@ class ProductBundlesContext implements Context
     }
 
     /**
-     * @deprecated this code should be moved to theStoreHasAProductBundle()
-     * @Given /^(this product) is a product bundle product$/
-     */
-    public function thisProductIsAProductBundleProduct(ProductInterface $product)
-    {
-        /** @var ProductBundleInterface|ResourceInterface $productBundle */
-        $productBundle = $this->productBundleFactory->createNew();
-        $productBundle->setProduct($product);
-        $productBundle->setName($product->getName() . ' Bundle');
-        $productBundle->setCode($product->getCode() . '_bundle');
-        $this->productBundleManager->persist($productBundle);
-        $this->productBundleManager->flush();
-    }
-
-    /**
      * @Given /^(this product bundle) has(?:| also) a slot named "([^"]*)"$/
      */
     public function thisProductBundleHasASlotNamed(ProductBundleInterface $productBundle, $slot)
