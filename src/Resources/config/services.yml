@@ -1,0 +1,5 @@
+services:
+    solutiondrive.product_bundles.product_bundle_registry:
+        class: SolutionDrive\SyliusProductBundlesPlugin\Service\ProductBundleRegistry
+        arguments:
+            - "@solutiondrive.repository.product_bundle"
