@@ -16,9 +16,11 @@ final class AdminMenuListener
     public function addProductBundlesMenu(MenuBuilderEvent $builderEvent): void
     {
         $catalogSubnemu = $builderEvent->getMenu()->getChild('catalog');
-        $catalogSubnemu
-            ->addChild('product_bundles', ['route' => 'solutiondrive_admin_product_bundle_index'])
-            ->setLabel('Product Bundles')
-            ->setLabelAttribute('icon', 'sitemap');
+        if (!is_null($catalogSubnemu)) {
+            $catalogSubnemu
+                ->addChild('product_bundles', ['route' => 'solutiondrive_admin_product_bundle_index'])
+                ->setLabel('Product Bundles')
+                ->setLabelAttribute('icon', 'sitemap');
+        }
     }
 }
