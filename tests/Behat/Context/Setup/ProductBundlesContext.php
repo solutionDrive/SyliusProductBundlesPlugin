@@ -56,6 +56,7 @@ class ProductBundlesContext implements Context
     }
 
     /**
+     * @deprecated this code should be moved to theStoreHasAProductBundle()
      * @Given /^(this product) is a product bundle product$/
      */
     public function thisProductIsAProductBundleProduct(ProductInterface $product)
@@ -89,7 +90,7 @@ class ProductBundlesContext implements Context
         ProductBundleInterface $productBundle
     ) {
         /**
-         * @todo add the injected slot named $slot of the injected product bundle
+         * @todo add the injected product to the slot named $slot of the injected product bundle
          */
         throw new PendingException();
     }
