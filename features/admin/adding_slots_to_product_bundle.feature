@@ -6,8 +6,6 @@ Feature: Browsing product bundle slots in product bundle
 
   Background:
     Given the store has a product bundle "smurf outfit"
-    And the store has a product "smurf outfit"
-    And this product is a product bundle product
     And I am logged in as an administrator
 
   @todo
