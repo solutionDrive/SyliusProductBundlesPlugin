@@ -45,6 +45,17 @@ class ProductBundlesContext implements Context
     }
 
     /**
+     * @Given /^the store has a product bundle "([^"]*)"$/
+     */
+    public function theStoreHasAProductBundle($productBundle)
+    {
+        /**
+         * @todo Create product Bundle and product as well
+         */
+        throw new PendingException();
+    }
+
+    /**
      * @Given /^(this product) is a product bundle product$/
      */
     public function thisProductIsAProductBundleProduct(ProductInterface $product)

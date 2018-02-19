@@ -8,8 +8,6 @@ Feature: Adding Products to Product Bundle Slots
     Given the store has a product bundle "Hefty smurfs workout dress"
     And this product bundle has a slot named "tights"
     And this product bundle has also a slot named "hats"
-    And the store has a product "Hefty smurfs workout dress"
-    And this product is a product bundle product
     And the store has a product "white tight"
     And the store has a product "red tight"
     And the store has a product "white hat"
@@ -18,7 +16,7 @@ Feature: Adding Products to Product Bundle Slots
     And I am logged in as an administrator
 
   @todo
-  Scenario: Adding one product to an empty slot
+  Scenario: Adding one product to a empty slot
     Given I want to modify the "Hefty smurfs workout dress" product bundle
     When I add the "white tight" product to the "tights" slot of this product bundle
     And I save my changes
