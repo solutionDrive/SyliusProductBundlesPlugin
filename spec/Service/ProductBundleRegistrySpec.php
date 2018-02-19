@@ -60,7 +60,7 @@ class ProductBundleRegistrySpec extends ObjectBehavior
         $this->getProductBundleForProduct($product)->shouldReturn($productBundle);
     }
 
-    function it_can_get_product_bundle_for_product_exception(
+    function it_should_throw_an_exception_if_no_product_bundle_was_found(
         ProductInterface $product,
         RepositoryInterface $productBundleRepository
     ) {
