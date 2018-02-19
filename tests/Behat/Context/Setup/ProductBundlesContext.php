@@ -31,17 +31,27 @@ class ProductBundlesContext implements Context
     /** @var EntityManagerInterface */
     private $productBundleManager;
 
+    /** @var FactoryInterface */
+    private $productFactory;
+
+    /** @var EntityManagerInterface */
+    private $productEntityManager;
+
     /**
      * @param SharedStorage $sharedStorage
      */
     public function __construct(
         SharedStorage $sharedStorage,
         FactoryInterface $productBundleFactory,
-        EntityManagerInterface $productBundleManager
+        EntityManagerInterface $productBundleManager,
+        FactoryInterface $productFactory,
+        EntityManagerInterface $productEntityManager
     ) {
         $this->sharedStorage = $sharedStorage;
         $this->productBundleFactory = $productBundleFactory;
         $this->productBundleManager = $productBundleManager;
+        $this->productFactory = $productFactory;
+        $this->productEntityManager = $productEntityManager;
     }
 
     /**
@@ -49,10 +59,21 @@ class ProductBundlesContext implements Context
      */
     public function theStoreHasAProductBundle($productBundle)
     {
-        /**
-         * @todo Create product Bundle and product as well
-         */
-        throw new PendingException();
+        /** @var ProductInterface $product */
+        $product = $this->productFactory->createNew();
+        $product->setName($productBundle);
+        $product->setCode(strtoupper($productBundle));
+        $product->setSlug(strtolower($productBundle));
+        $this->productEntityManager->persist($product);
+        $this->productEntityManager->flush();
+
+        /** @var ProductBundleInterface|ResourceInterface $productBundle */
+        $productBundle = $this->productBundleFactory->createNew();
+        $productBundle->setProduct($product);
+        $productBundle->setName($product->getName() . ' Bundle');
+        $productBundle->setCode($product->getCode() . '_bundle');
+        $this->productBundleManager->persist($productBundle);
+        $this->productBundleManager->flush();
     }
 
     /**
