@@ -23,7 +23,7 @@ Feature: Adding Products to Product Bundle Slots
     Then I should see that the "white tight" product is added to the "tights" slot
 
   @todo
-  Scenario: Adding a product to an slot with already assigned products
+  Scenario: Adding a product to a slot with already assigned products
     Given I want to modify the "Hefty smurfs workout dress" product bundle
     When I add the "white hat" product to the "hats" slot of this product bundle
     And I save my changes
