@@ -15,4 +15,3 @@ Feature: Creating a product bundle
     Then I should see a product bundle "Smurf2Gold Conversion Machine"
     When I am browsing products
     Then I should see a product with name "Smurf2Gold Conversion Machine"
-    And this product is a product bundle product

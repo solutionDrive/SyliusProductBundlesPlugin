@@ -1,4 +1,10 @@
 services:
+    # Menu-Entry
+    solutiondrive_product_bundles.menu_listener.main:
+        class: SolutionDrive\SyliusProductBundlesPlugin\Menu\AdminMenuListener
+        tags:
+          - { name: kernel.event_listener, event: sylius.menu.admin.main, method: addProductBundlesMenu }
+
     solutiondrive.product_bundles.product_bundle_registry:
         class: SolutionDrive\SyliusProductBundlesPlugin\Service\ProductBundleRegistry
         arguments:
