@@ -16,5 +16,10 @@ interface ProductBundleRegistryInterface
 {
     public function isProductBundle(ProductInterface $product): bool;
 
-    public function getProductBundleForProduct(ProductInterface $product): ProductBundleInterface;
+    /**
+     * @param ProductInterface $product
+     *
+     * @return ProductBundleInterface|object
+     */
+    public function getProductBundleForProduct(ProductInterface $product): object;
 }

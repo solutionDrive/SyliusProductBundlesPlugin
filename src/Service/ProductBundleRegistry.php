@@ -29,7 +29,10 @@ class ProductBundleRegistry implements ProductBundleRegistryInterface
         return (null !== $productBundle);
     }
 
-    public function getProductBundleForProduct(ProductInterface $product): ProductBundleInterface
+    /**
+     * {@inheritdoc}
+     */
+    public function getProductBundleForProduct(ProductInterface $product): object
     {
         $productBundle = $this->productBundleRepository->findOneBy(['product' => $product]);
         if (null === $productBundle) {
