@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 namespace SolutionDrive\SyliusProductBundlesPlugin\Service;
 
+use SolutionDrive\SyliusProductBundlesPlugin\Entity\ProductBundle;
 use SolutionDrive\SyliusProductBundlesPlugin\Entity\ProductBundleInterface;
 use SolutionDrive\SyliusProductBundlesPlugin\Exception\ProductIsNotAProductBundleException;
 use Sylius\Component\Core\Model\ProductInterface;
@@ -32,10 +33,11 @@ class ProductBundleRegistry implements ProductBundleRegistryInterface
     /**
      * {@inheritdoc}
      */
-    public function getProductBundleForProduct(ProductInterface $product): object
+    public function getProductBundleForProduct(ProductInterface $product): ProductBundleInterface
     {
+        /** @var ProductBundleInterface $productBundle */
         $productBundle = $this->productBundleRepository->findOneBy(['product' => $product]);
-        if (null === $productBundle) {
+        if ($productBundle instanceof ProductBundleInterface === false) {
             throw new ProductIsNotAProductBundleException($product);
         }
         return $productBundle;

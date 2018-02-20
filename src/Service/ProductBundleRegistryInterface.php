@@ -19,7 +19,7 @@ interface ProductBundleRegistryInterface
     /**
      * @param ProductInterface $product
      *
-     * @return ProductBundleInterface|object
+     * @return ProductBundleInterface
      */
-    public function getProductBundleForProduct(ProductInterface $product): object;
+    public function getProductBundleForProduct(ProductInterface $product): ProductBundleInterface;
 }
