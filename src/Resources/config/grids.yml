@@ -52,4 +52,3 @@ sylius_grid:
                                     route: solutiondrive_admin_product_bundle_update
                                     parameters:
                                         id: resource.getProductBundleId
-#
