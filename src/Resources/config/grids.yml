@@ -33,7 +33,7 @@ sylius_grid:
                                     icon: list
                                     route: sylius_admin_product_update
                                     parameters:
-                                        id: resource.getProduct.getId
+                                        id: resource.getProductId
 
 
         sylius_admin_product:
