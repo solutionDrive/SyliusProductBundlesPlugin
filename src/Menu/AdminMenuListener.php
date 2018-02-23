@@ -19,7 +19,7 @@ final class AdminMenuListener
         if (!is_null($catalogSubnemu)) {
             $catalogSubnemu
                 ->addChild('product_bundles', ['route' => 'solutiondrive_admin_product_bundle_index'])
-                ->setLabel('Product Bundles')
+                ->setLabel('solutiondrive.ui.product_bundles')
                 ->setLabelAttribute('icon', 'sitemap');
         }
     }
