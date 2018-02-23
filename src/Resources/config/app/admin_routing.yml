@@ -6,7 +6,7 @@ solutiondrive_product_bundle:
     templates: SyliusAdminBundle:Crud
     section: admin
     except: ['show']
-    redirect: update
+    redirect: index
     grid: solutiondrive_admin_product_bundle
   type: sylius.resource
 
