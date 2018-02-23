@@ -1,5 +1,11 @@
 sylius_resource:
-  resources:
-    solutiondrive.product_bundle:
-      classes:
-        model: SolutionDrive\SyliusProductBundlesPlugin\Entity\ProductBundle
+    resources:
+        solutiondrive.product_bundle:
+            classes:
+                model: SolutionDrive\SyliusProductBundlesPlugin\Entity\ProductBundle
+
+sylius_product:
+    resources:
+        product:
+            classes:
+                model: SolutionDrive\SyliusProductBundlesPlugin\Entity\Product
