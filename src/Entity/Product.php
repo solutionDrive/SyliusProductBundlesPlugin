@@ -3,32 +3,28 @@
 namespace SolutionDrive\SyliusProductBundlesPlugin\Entity;
 
 use Sylius\Component\Core\Model\Product as BaseProduct;
+use Sylius\Component\Resource\Model\ResourceInterface;
 
 class Product extends BaseProduct
 {
-    /** @var ProductBundleInterface */
+    /** @var ProductBundleInterface|ResourceInterface */
     private $productBundle;
-
-    /** @var bool */
-    private $createBundle = false;
 
     public function setProductBundle(ProductBundleInterface $productBundle)
     {
         $this->productBundle = $productBundle;
     }
 
-    public function getProductBundle()
+    public function getProductBundle(): ?ProductBundleInterface
     {
         return $this->productBundle;
     }
 
-    public function setCreateBundle(bool $createBundle)
+    public function getProductBundleId(): ?int
     {
-        $this->createBundle = $createBundle;
-    }
-
-    public function getCreateBundle()
-    {
-        return $this->createBundle;
+        if (null === $this->productBundle) {
+            return null;
+        }
+        return $this->productBundle->getId();
     }
 }

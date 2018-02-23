@@ -1,23 +1,55 @@
 sylius_grid:
-  grids:
-    solutiondrive_admin_product_bundle:
-      driver:
-        name: doctrine/orm
-        options:
-          class: SolutionDrive\SyliusProductBundlesPlugin\Entity\ProductBundle
-      fields:
-        name:
-          type: string
-          label: sylius.ui.name
-        code:
-          type: string
-          label: sylius.ui.code
-      actions:
-        main:
-          create:
-            type: create
-        item:
-          update:
-            type: update
-          delete:
-            type: delete
+    grids:
+        solutiondrive_admin_product_bundle:
+            driver:
+                name: doctrine/orm
+                options:
+                    class: SolutionDrive\SyliusProductBundlesPlugin\Entity\ProductBundle
+            fields:
+                name:
+                    type: string
+                    label: sylius.ui.name
+                code:
+                    type: string
+                    label: sylius.ui.code
+            actions:
+                main:
+                    create:
+                        type: create
+                item:
+                    update:
+                        type: update
+                    delete:
+                        type: delete
+                subitem:
+                    product:
+                        type: links
+                        label: solutiondrive.ui.manage_product_bundle_product
+                        options:
+                            icon: cube
+                            links:
+                                update:
+                                    label: sylius.ui.edit_product
+                                    icon: list
+                                    route: sylius_admin_product_update
+                                    parameters:
+                                        id: resource.getProduct.getId
+
+
+        sylius_admin_product:
+            actions:
+                subitem:
+                    bundle:
+                        type: links
+                        label: solutiondrive.ui.create_bundle
+                        options:
+                            icon: sitemap
+                            visible: resource.getProductBundle
+                            links:
+                                index:
+                                    label: solutiondrive.ui.show_bundle
+                                    icon: list
+                                    route: solutiondrive_admin_product_bundle_update
+                                    parameters:
+                                        id: resource.getProductBundleId
+#

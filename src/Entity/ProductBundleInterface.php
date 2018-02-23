@@ -39,7 +39,7 @@ interface ProductBundleInterface
     /**
      * @return ProductInterface
      */
-    public function getProduct(): ProductInterface;
+    public function getProduct(): ?ProductInterface;
 
     /**
      * @param ProductInterface $product

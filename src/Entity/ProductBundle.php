@@ -38,7 +38,7 @@ class ProductBundle implements ProductBundleInterface, ResourceInterface, CodeAw
     /**
      * @return int
      */
-    public function getId(): int
+    public function getId(): ?int
     {
         return $this->id;
     }
@@ -94,7 +94,7 @@ class ProductBundle implements ProductBundleInterface, ResourceInterface, CodeAw
     /**
      * @return ProductInterface
      */
-    public function getProduct(): ProductInterface
+    public function getProduct(): ?ProductInterface
     {
         return $this->product;
     }
