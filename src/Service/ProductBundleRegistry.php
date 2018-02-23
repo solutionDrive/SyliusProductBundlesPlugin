@@ -13,6 +13,7 @@ use Sylius\Component\Resource\Repository\RepositoryInterface;
  * Created by solutionDrive GmbH.
  *
  * @copyright 2018 solutionDrive GmbH
+ * @todo check if this class is still necessary / brings benefit when we extend the product Entity
  */
 class ProductBundleRegistry implements ProductBundleRegistryInterface
 {
