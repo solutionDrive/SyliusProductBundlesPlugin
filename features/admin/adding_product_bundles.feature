@@ -7,11 +7,22 @@ Feature: Creating a product bundle
   Background:
     Given I am logged in as an administrator
 
-  @todo
-  Scenario: creating a new product bundle
+  @ui
+  Scenario: creating a new product bundle from an existing product
+    Given the store has a product "Smurf2Gold Conversion Machine"
     When I create a new product bundle
     And I specify its name as "Smurf2Gold Conversion Machine"
+    And I specify its code as "smurf2gold-conversion-machine"
+    And I associate the product "Smurf2Gold Conversion Machine" with its bundle
     And I add it
     Then I should see a product bundle "Smurf2Gold Conversion Machine"
-    When I am browsing products
-    Then I should see a product with name "Smurf2Gold Conversion Machine"
+
+  @todo
+  Scenario: creating a new product bundle with a not yet existing product
+    When I create a new product bundle
+    And I specify its name as "Smurf2Gold Conversion Machine"
+    And I specify its code as "smurf2gold-conversion-machine"
+    And I add it
+    Then I should see a product bundle "Smurf2Gold Conversion Machine"
+    And I should be notified that a product has been created too.
+
