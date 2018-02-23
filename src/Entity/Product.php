@@ -7,7 +7,7 @@ use Sylius\Component\Resource\Model\ResourceInterface;
 
 class Product extends BaseProduct
 {
-    /** @var ProductBundleInterface|ResourceInterface */
+    /** @var ProductBundleInterface */
     private $productBundle;
 
     public function setProductBundle(ProductBundleInterface $productBundle)

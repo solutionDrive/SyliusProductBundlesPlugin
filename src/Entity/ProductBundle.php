@@ -24,7 +24,7 @@ class ProductBundle implements ProductBundleInterface, ResourceInterface, CodeAw
     /** @var ProductBundleSlotInterface[]|Collection|ArrayCollection */
     private $slots;
 
-    /** @var ProductInterface */
+    /** @var ProductInterface|null */
     private $product;
 
     /**
