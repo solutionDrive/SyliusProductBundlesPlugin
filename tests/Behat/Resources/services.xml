@@ -26,6 +26,10 @@
                 type="service"
                 id="solutiondrive.syliusproductbundlesplugin.behat.page.update"
             />
+            <argument
+                type="service"
+                id="__symfony__.sylius.repository.product"
+            />
         </service>
         <service
             id="solutiondrive.syliusproductbundlesplugin.behat.context.ui.admin.managing_product_bundle_slots"

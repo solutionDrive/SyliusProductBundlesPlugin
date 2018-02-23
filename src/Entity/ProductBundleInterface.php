@@ -17,6 +17,10 @@ use Sylius\Component\Core\Model\ProductInterface;
 interface ProductBundleInterface
 {
     /**
+     * @return int|null
+     */
+    public function getId(): ?int;
+    /**
      * @return string
      */
     public function getName(): ?string;
@@ -39,10 +43,14 @@ interface ProductBundleInterface
     /**
      * @return ProductInterface
      */
-    public function getProduct(): ProductInterface;
+    public function getProduct(): ?ProductInterface;
 
     /**
      * @param ProductInterface $product
      */
     public function setProduct(ProductInterface $product): void;
+    /**
+     * @return int|null
+     */
+    public function getProductId(): ?int;
 }

@@ -24,7 +24,7 @@ class ProductBundle implements ProductBundleInterface, ResourceInterface, CodeAw
     /** @var ProductBundleSlotInterface[]|Collection|ArrayCollection */
     private $slots;
 
-    /** @var ProductInterface */
+    /** @var ProductInterface|null */
     private $product;
 
     /**
@@ -38,7 +38,7 @@ class ProductBundle implements ProductBundleInterface, ResourceInterface, CodeAw
     /**
      * @return int
      */
-    public function getId(): int
+    public function getId(): ?int
     {
         return $this->id;
     }
@@ -94,7 +94,7 @@ class ProductBundle implements ProductBundleInterface, ResourceInterface, CodeAw
     /**
      * @return ProductInterface
      */
-    public function getProduct(): ProductInterface
+    public function getProduct(): ?ProductInterface
     {
         return $this->product;
     }
@@ -105,5 +105,13 @@ class ProductBundle implements ProductBundleInterface, ResourceInterface, CodeAw
     public function setProduct(ProductInterface $product): void
     {
         $this->product = $product;
+    }
+
+    public function getProductId(): ?int
+    {
+        if (is_null($this->product)) {
+            return null;
+        }
+        return $this->product->getId();
     }
 }
