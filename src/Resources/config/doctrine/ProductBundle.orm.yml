@@ -19,7 +19,8 @@ SolutionDrive\SyliusProductBundlesPlugin\Entity\ProductBundle:
 
     oneToOne:
         product:
-            targetEntity: Sylius\Component\Core\Model\Product
+            targetEntity: SolutionDrive\SyliusProductBundlesPlugin\Entity\Product
+            inversedBy: productBundle
             joinColumn:
                 name: product_id
                 referencedColumnName: id
