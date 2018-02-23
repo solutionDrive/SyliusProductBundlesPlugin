@@ -183,4 +183,12 @@ class ManagingProductBundlesContext implements Context
             $this->createPage->specifyProductId($product->getId());
         }
     }
+
+    /**
+     * @When I browse product bundles
+     */
+    public function iBrowseProductBundles()
+    {
+        $this->indexPage->open();
+    }
 }

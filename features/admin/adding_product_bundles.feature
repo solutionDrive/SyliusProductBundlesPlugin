@@ -14,7 +14,8 @@ Feature: Creating a product bundle
     And I specify its name as "Smurf2Gold Conversion Machine Bundle"
     And I specify its code as "smurf2gold-conversion-machine-bundle"
     And I associate the product "Smurf2Gold Conversion Machine" with its bundle
-    And I add it
+    When I add it
+    And I browse product bundles
     Then I should see a product bundle "Smurf2Gold Conversion Machine Bundle"
 
   @todo

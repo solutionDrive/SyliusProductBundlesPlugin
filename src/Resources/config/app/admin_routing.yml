@@ -10,7 +10,7 @@ solutiondrive_product_bundle:
     grid: solutiondrive_admin_product_bundle
   type: sylius.resource
 
-solutiondrive_admin_prduct_bundle_create:
+solutiondrive_admin_product_bundle_create:
     path: /product-bundles/new
     methods: [GET, POST]
     defaults:
