@@ -41,7 +41,7 @@ sylius_grid:
                 subitem:
                     bundle:
                         type: links
-                        label: solutiondrive.ui.create_bundle
+                        label: solutiondrive.ui.edit_product_bundle
                         options:
                             icon: sitemap
                             visible: resource.getProductBundle

@@ -1,0 +1,7 @@
+solutiondrive:
+    ui:
+        edit_product_bundle: Produkt Bundle bearbeiten
+        manage_product_bundles: Produkt Bundles verwalten
+        manage_product_bundle_product: Produkt verwalten
+        new_product_bundle: Neues Produkt Bundle
+        product_bundles: Produkt Bundles

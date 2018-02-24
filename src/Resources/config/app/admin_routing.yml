@@ -21,4 +21,4 @@ solutiondrive_admin_product_bundle_create:
             template: SyliusAdminBundle:Crud:create.html.twig
             redirect: solutiondrive_admin_product_bundle_update
             vars:
-                subheader: sylius.ui.manage_product_bundles
+                subheader: solutiondrive.ui.manage_product_bundles
