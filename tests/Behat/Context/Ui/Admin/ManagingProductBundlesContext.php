@@ -197,7 +197,6 @@ class ManagingProductBundlesContext implements Context
      */
     public function iDeleteThisProductBundle(ProductBundleInterface $productBundle)
     {
-
         $this->indexPage->deleteResourceOnPage(['code' => $productBundle->getCode()]);
     }
 
@@ -212,5 +211,4 @@ class ManagingProductBundlesContext implements Context
                 ->isSingleResourceOnPage(['name' => $productBundle])
         );
     }
-
 }

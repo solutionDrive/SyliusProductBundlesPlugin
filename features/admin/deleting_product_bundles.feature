@@ -15,5 +15,3 @@ I want to create a new product bundle via the ui
     And I delete this product bundle
     Then I should not see a product bundle "Smurf2Gold Conversion Machine Bundle"
     And I should still see a product bundle "Smurf Outfit Bundle"
-
-
