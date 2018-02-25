@@ -10,7 +10,7 @@ I want to create a new product bundle via the ui
 
   @ui
   Scenario: deleting a product bundle from the Product-Bundle backend
-    Given the store has a product bundle "Smurf2Gold Conversion Machine Bundle"
+    Given the store has also a product bundle "Smurf2Gold Conversion Machine Bundle"
     When I browse product bundles
     And I delete this product bundle
     Then I should not see a product bundle "Smurf2Gold Conversion Machine Bundle"
