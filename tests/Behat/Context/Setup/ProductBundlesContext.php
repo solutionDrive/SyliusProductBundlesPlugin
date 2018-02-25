@@ -74,6 +74,7 @@ class ProductBundlesContext implements Context
         $productBundle->setCode($product->getCode() . '_bundle');
         $this->productBundleManager->persist($productBundle);
         $this->productBundleManager->flush();
+        $this->sharedStorage->set('product_bundle', $productBundle);
     }
 
     /**
