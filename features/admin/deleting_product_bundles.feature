@@ -1,8 +1,8 @@
 @managing_product_bundles
-Feature: Creating a product bundle
-In order to create a new product bundle
+Feature: Deleting a product bundle
+In order to delete an existing product bundle
 As an administrator
-I want to create a new product bundle via the ui
+I want to delete an existing product bundle via the ui
 
   Background:
     Given the store has a product bundle "Smurf Outfit Bundle"
