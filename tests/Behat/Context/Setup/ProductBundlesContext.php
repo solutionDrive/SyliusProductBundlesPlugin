@@ -55,7 +55,7 @@ class ProductBundlesContext implements Context
     }
 
     /**
-     * @Given /^the store has a product bundle "([^"]*)"$/
+     * @Given the store has( also) a product bundle :productBundle
      */
     public function theStoreHasAProductBundle($productBundle)
     {
@@ -74,6 +74,7 @@ class ProductBundlesContext implements Context
         $productBundle->setCode($product->getCode() . '_bundle');
         $this->productBundleManager->persist($productBundle);
         $this->productBundleManager->flush();
+        $this->sharedStorage->set('product_bundle', $productBundle);
     }
 
     /**

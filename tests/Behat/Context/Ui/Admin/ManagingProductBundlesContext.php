@@ -64,7 +64,7 @@ class ManagingProductBundlesContext implements Context
     }
 
     /**
-     * @Then I should see a product bundle :productBundleName
+     * @Then I should( still) see a product bundle :productBundleName
      */
     public function iShouldSeeAProductBundle($productBundleName)
     {
@@ -190,5 +190,25 @@ class ManagingProductBundlesContext implements Context
     public function iBrowseProductBundles()
     {
         $this->indexPage->open();
+    }
+
+    /**
+     * @When /^I delete (this product bundle)$/
+     */
+    public function iDeleteThisProductBundle(ProductBundleInterface $productBundle)
+    {
+        $this->indexPage->deleteResourceOnPage(['code' => $productBundle->getCode()]);
+    }
+
+    /**
+     * @Then I should not see a product bundle :productBundle
+     */
+    public function iShouldNotSeeAProductBundle($productBundle)
+    {
+        Assert::false(
+            $this
+                ->indexPage
+                ->isSingleResourceOnPage(['name' => $productBundle])
+        );
     }
 }
