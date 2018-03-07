@@ -180,7 +180,7 @@ class ManagingProductBundlesContext implements Context
         Assert::count($products, 1);
         if (count($products) > 0) {
             $product = array_pop($products);
-            $this->createPage->specifyProductId($product->getId());
+            $this->createPage->specifyProductName($product->getName());
         }
     }
 
