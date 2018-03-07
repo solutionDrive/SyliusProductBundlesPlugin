@@ -3,6 +3,7 @@ sylius_resource:
         solutiondrive.product_bundle:
             classes:
                 model: SolutionDrive\SyliusProductBundlesPlugin\Entity\ProductBundle
+                form: SolutionDrive\SyliusProductBundlesPlugin\Form\Type\ProductBundleType
 
 sylius_product:
     resources:

@@ -23,4 +23,9 @@ final class CreatePage extends CrudCreatePage
     {
         $this->getDocument()->selectFieldOption('Product', $id);
     }
+
+    public function specifyProductName($name)
+    {
+        $this->getDocument()->selectFieldOption('Product', $name);
+    }
 }
