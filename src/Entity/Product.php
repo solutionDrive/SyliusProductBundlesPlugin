@@ -1,9 +1,10 @@
 <?php
 
+declare(strict_types=1);
+
 namespace SolutionDrive\SyliusProductBundlesPlugin\Entity;
 
 use Sylius\Component\Core\Model\Product as BaseProduct;
-use Sylius\Component\Resource\Model\ResourceInterface;
 
 class Product extends BaseProduct
 {
@@ -25,6 +26,7 @@ class Product extends BaseProduct
         if (null === $this->productBundle) {
             return null;
         }
+
         return $this->productBundle->getId();
     }
 }

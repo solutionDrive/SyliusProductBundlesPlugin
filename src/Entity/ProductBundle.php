@@ -24,6 +24,9 @@ class ProductBundle implements ProductBundleInterface, ResourceInterface, CodeAw
     /** @var ProductBundleSlotInterface[]|Collection|ArrayCollection */
     private $slots;
 
+    /** @var ProductBundleSlotInterface|null */
+    private $presentationSlot;
+
     /** @var ProductInterface|null */
     private $product;
 
@@ -109,9 +112,20 @@ class ProductBundle implements ProductBundleInterface, ResourceInterface, CodeAw
 
     public function getProductId(): ?int
     {
-        if (is_null($this->product)) {
+        if (null === $this->product) {
             return null;
         }
+
         return $this->product->getId();
+    }
+
+    public function setPresentationSlot(ProductBundleSlotInterface $slot): void
+    {
+        $this->presentationSlot = $slot;
+    }
+
+    public function getPresentationSlot(): ?ProductBundleSlotInterface
+    {
+        return $this->presentationSlot;
     }
 }

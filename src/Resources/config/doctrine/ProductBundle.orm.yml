@@ -27,6 +27,12 @@ SolutionDrive\SyliusProductBundlesPlugin\Entity\ProductBundle:
                 nullable: false
                 unique: true
 
+        presentationSlot:
+            targetEntity: SolutionDrive\SyliusProductBundlesPlugin\Entity\ProductBundleSlot
+            joinColumn:
+                name: presentation_slot_id
+                referencedColumnName: id
+
     oneToMany:
         slots:
             targetEntity: SolutionDrive\SyliusProductBundlesPlugin\Entity\ProductBundleSlot

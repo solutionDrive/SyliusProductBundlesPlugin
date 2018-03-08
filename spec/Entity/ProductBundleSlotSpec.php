@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace spec\SolutionDrive\SyliusProductBundlesPlugin\Entity;
 
 use PhpSpec\ObjectBehavior;

@@ -1,10 +1,11 @@
 <?php
 
+declare(strict_types=1);
+
 namespace spec\SolutionDrive\SyliusProductBundlesPlugin\Entity;
 
-use SolutionDrive\SyliusProductBundlesPlugin\Entity\Product;
 use PhpSpec\ObjectBehavior;
-use Prophecy\Argument;
+use SolutionDrive\SyliusProductBundlesPlugin\Entity\Product;
 use SolutionDrive\SyliusProductBundlesPlugin\Entity\ProductBundleInterface;
 use Sylius\Component\Core\Model\ProductInterface;
 
@@ -26,11 +27,4 @@ class ProductSpec extends ObjectBehavior
         $this->setProductBundle($productBundle);
         $this->getProductBundle()->shouldReturn($productBundle);
     }
-
-    function it_tells_whether_a_product_bundle_should_be_created()
-    {
-        $this->setCreateBundle(true);
-        $this->getCreateBundle()->shouldReturn(true);
-    }
-
 }

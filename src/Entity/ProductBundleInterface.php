@@ -20,6 +20,7 @@ interface ProductBundleInterface
      * @return int|null
      */
     public function getId(): ?int;
+
     /**
      * @return string
      */
@@ -41,6 +42,16 @@ interface ProductBundleInterface
     public function getSlots(): Collection;
 
     /**
+     * @param ProductBundleSlotInterface $slot
+     */
+    public function setPresentationSlot(ProductBundleSlotInterface $slot): void;
+
+    /**
+     * @return ProductBundleSlotInterface|null
+     */
+    public function getPresentationSlot(): ?ProductBundleSlotInterface;
+
+    /**
      * @return ProductInterface
      */
     public function getProduct(): ?ProductInterface;
@@ -49,6 +60,7 @@ interface ProductBundleInterface
      * @param ProductInterface $product
      */
     public function setProduct(ProductInterface $product): void;
+
     /**
      * @return int|null
      */
