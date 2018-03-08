@@ -1,9 +1,11 @@
 <?php
 
+declare(strict_types=1);
+
 namespace spec\SolutionDrive\SyliusProductBundlesPlugin\Entity;
 
-use SolutionDrive\SyliusProductBundlesPlugin\Entity\ProductBundle;
 use PhpSpec\ObjectBehavior;
+use SolutionDrive\SyliusProductBundlesPlugin\Entity\ProductBundle;
 use SolutionDrive\SyliusProductBundlesPlugin\Entity\ProductBundleInterface;
 use SolutionDrive\SyliusProductBundlesPlugin\Entity\ProductBundleSlotInterface;
 use Sylius\Component\Core\Model\ProductInterface;
@@ -53,8 +55,7 @@ class ProductBundleSpec extends ObjectBehavior
 
     function it_can_have_a_presentation_slot(
         ProductBundleSlotInterface $productBundleSlot
-    )
-    {
+    ) {
         $this->setPresentationSlot($productBundleSlot);
         $this->getPresentationSlot()->shouldReturn($productBundleSlot);
     }

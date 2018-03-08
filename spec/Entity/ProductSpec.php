@@ -1,10 +1,11 @@
 <?php
 
+declare(strict_types=1);
+
 namespace spec\SolutionDrive\SyliusProductBundlesPlugin\Entity;
 
-use SolutionDrive\SyliusProductBundlesPlugin\Entity\Product;
 use PhpSpec\ObjectBehavior;
-use Prophecy\Argument;
+use SolutionDrive\SyliusProductBundlesPlugin\Entity\Product;
 use SolutionDrive\SyliusProductBundlesPlugin\Entity\ProductBundleInterface;
 use Sylius\Component\Core\Model\ProductInterface;
 

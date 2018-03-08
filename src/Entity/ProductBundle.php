@@ -112,9 +112,10 @@ class ProductBundle implements ProductBundleInterface, ResourceInterface, CodeAw
 
     public function getProductId(): ?int
     {
-        if (is_null($this->product)) {
+        if (null === $this->product) {
             return null;
         }
+
         return $this->product->getId();
     }
 
