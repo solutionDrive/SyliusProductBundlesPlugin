@@ -50,4 +50,12 @@ class ProductBundleSpec extends ObjectBehavior
         $this->setProduct($product);
         $this->getProduct()->shouldReturn($product);
     }
+
+    function it_can_have_a_presentation_slot(
+        ProductBundleSlotInterface $productBundleSlot
+    )
+    {
+        $this->setPresentationSlot($productBundleSlot);
+        $this->getPresentationSlot()->shouldReturn($productBundleSlot);
+    }
 }

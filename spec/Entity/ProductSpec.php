@@ -26,11 +26,4 @@ class ProductSpec extends ObjectBehavior
         $this->setProductBundle($productBundle);
         $this->getProductBundle()->shouldReturn($productBundle);
     }
-
-    function it_tells_whether_a_product_bundle_should_be_created()
-    {
-        $this->setCreateBundle(true);
-        $this->getCreateBundle()->shouldReturn(true);
-    }
-
 }
