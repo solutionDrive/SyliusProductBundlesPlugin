@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace SolutionDrive\SyliusProductBundlesPlugin\DependencyInjection;
+namespace solutionDrive\SyliusProductBundlesPlugin\DependencyInjection;
 
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\DependencyInjection\ContainerBuilder;

@@ -9,7 +9,7 @@
  */
 declare(strict_types=1);
 
-namespace SolutionDrive\SyliusProductBundlesPlugin\Entity;
+namespace solutionDrive\SyliusProductBundlesPlugin\Entity;
 
 use Doctrine\Common\Collections\Collection;
 use Sylius\Component\Core\Model\ProductInterface;

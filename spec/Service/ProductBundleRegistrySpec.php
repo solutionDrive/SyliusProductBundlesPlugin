@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace spec\SolutionDrive\SyliusProductBundlesPlugin\Service;
+namespace spec\solutionDrive\SyliusProductBundlesPlugin\Service;
 
 use PhpSpec\ObjectBehavior;
-use SolutionDrive\SyliusProductBundlesPlugin\Entity\ProductBundleInterface;
-use SolutionDrive\SyliusProductBundlesPlugin\Exception\ProductIsNotAProductBundleException;
-use SolutionDrive\SyliusProductBundlesPlugin\Service\ProductBundleRegistry;
-use SolutionDrive\SyliusProductBundlesPlugin\Service\ProductBundleRegistryInterface;
+use solutionDrive\SyliusProductBundlesPlugin\Entity\ProductBundleInterface;
+use solutionDrive\SyliusProductBundlesPlugin\Exception\ProductIsNotAProductBundleException;
+use solutionDrive\SyliusProductBundlesPlugin\Service\ProductBundleRegistry;
+use solutionDrive\SyliusProductBundlesPlugin\Service\ProductBundleRegistryInterface;
 use Sylius\Component\Core\Model\ProductInterface;
 use Sylius\Component\Resource\Repository\RepositoryInterface;
 

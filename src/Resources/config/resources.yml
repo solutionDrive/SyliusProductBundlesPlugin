@@ -2,11 +2,11 @@ sylius_resource:
     resources:
         solutiondrive.product_bundle:
             classes:
-                model: SolutionDrive\SyliusProductBundlesPlugin\Entity\ProductBundle
-                form: SolutionDrive\SyliusProductBundlesPlugin\Form\Type\ProductBundleType
+                model: solutionDrive\SyliusProductBundlesPlugin\Entity\ProductBundle
+                form: solutionDrive\SyliusProductBundlesPlugin\Form\Type\ProductBundleType
 
 sylius_product:
     resources:
         product:
             classes:
-                model: SolutionDrive\SyliusProductBundlesPlugin\Entity\Product
+                model: solutionDrive\SyliusProductBundlesPlugin\Entity\Product

@@ -1,4 +1,4 @@
-SolutionDrive\SyliusProductBundlesPlugin\Entity\ProductBundleSlot:
+solutionDrive\SyliusProductBundlesPlugin\Entity\ProductBundleSlot:
     type: entity
     table: solutiondrive_product_bundle_slot
     id:
@@ -23,7 +23,7 @@ SolutionDrive\SyliusProductBundlesPlugin\Entity\ProductBundleSlot:
 
     manyToOne:
         bundle:
-            targetEntity: SolutionDrive\SyliusProductBundlesPlugin\Entity\ProductBundle
+            targetEntity: solutionDrive\SyliusProductBundlesPlugin\Entity\ProductBundle
             inversedBy: slots
             joinColumn:
                 name: bundle_id

@@ -1,8 +1,8 @@
-SolutionDrive\SyliusProductBundlesPlugin\Entity\Product:
+solutionDrive\SyliusProductBundlesPlugin\Entity\Product:
     type: entity
     table: sylius_product
 
     oneToOne:
         productBundle:
-            targetEntity: SolutionDrive\SyliusProductBundlesPlugin\Entity\ProductBundle
+            targetEntity: solutionDrive\SyliusProductBundlesPlugin\Entity\ProductBundle
             mappedBy: product

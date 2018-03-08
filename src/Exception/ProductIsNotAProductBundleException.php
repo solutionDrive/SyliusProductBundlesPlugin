@@ -8,7 +8,7 @@ declare(strict_types=1);
  * @copyright 2018 solutionDrive GmbH
  */
 
-namespace SolutionDrive\SyliusProductBundlesPlugin\Exception;
+namespace solutionDrive\SyliusProductBundlesPlugin\Exception;
 
 use Sylius\Component\Core\Model\ProductInterface;
 use Throwable;

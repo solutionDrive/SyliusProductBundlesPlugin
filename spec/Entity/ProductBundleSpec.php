@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace spec\SolutionDrive\SyliusProductBundlesPlugin\Entity;
+namespace spec\solutionDrive\SyliusProductBundlesPlugin\Entity;
 
 use PhpSpec\ObjectBehavior;
-use SolutionDrive\SyliusProductBundlesPlugin\Entity\ProductBundle;
-use SolutionDrive\SyliusProductBundlesPlugin\Entity\ProductBundleInterface;
-use SolutionDrive\SyliusProductBundlesPlugin\Entity\ProductBundleSlotInterface;
+use solutionDrive\SyliusProductBundlesPlugin\Entity\ProductBundle;
+use solutionDrive\SyliusProductBundlesPlugin\Entity\ProductBundleInterface;
+use solutionDrive\SyliusProductBundlesPlugin\Entity\ProductBundleSlotInterface;
 use Sylius\Component\Core\Model\ProductInterface;
 use Sylius\Component\Resource\Model\CodeAwareInterface;
 use Sylius\Component\Resource\Model\ResourceInterface;
@@ -58,5 +58,5 @@ class ProductBundleSpec extends ObjectBehavior
     ) {
         $this->setPresentationSlot($productBundleSlot);
         $this->getPresentationSlot()->shouldReturn($productBundleSlot);
-    }
+}
 }

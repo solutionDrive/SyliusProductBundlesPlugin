@@ -9,7 +9,7 @@
  */
 declare(strict_types=1);
 
-namespace Tests\SolutionDrive\SyliusProductBundlesPlugin\Behat\Context\Setup;
+namespace Tests\solutionDrive\SyliusProductBundlesPlugin\Behat\Context\Setup;
 
 use Behat\Behat\Context\Context;
 use Behat\Behat\Tester\Exception\PendingException;

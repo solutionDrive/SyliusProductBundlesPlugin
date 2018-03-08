@@ -8,7 +8,7 @@ declare(strict_types=1);
  * @copyright 2018 solutionDrive GmbH
  */
 
-namespace Tests\SolutionDrive\SyliusProductBundlesPlugin\Behat\Context\Ui\Admin;
+namespace Tests\solutionDrive\SyliusProductBundlesPlugin\Behat\Context\Ui\Admin;
 
 use Behat\Behat\Context\Context;
 
