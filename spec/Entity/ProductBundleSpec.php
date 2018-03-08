@@ -58,5 +58,5 @@ class ProductBundleSpec extends ObjectBehavior
     ) {
         $this->setPresentationSlot($productBundleSlot);
         $this->getPresentationSlot()->shouldReturn($productBundleSlot);
-}
+    }
 }

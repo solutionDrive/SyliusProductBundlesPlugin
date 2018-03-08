@@ -27,5 +27,4 @@ class ProductSpec extends ObjectBehavior
         $this->setProductBundle($productBundle);
         $this->getProductBundle()->shouldReturn($productBundle);
     }
-
 }
