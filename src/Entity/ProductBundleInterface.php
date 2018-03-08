@@ -41,6 +41,16 @@ interface ProductBundleInterface
     public function getSlots(): Collection;
 
     /**
+     * @param ProductBundleSlotInterface $slot
+     */
+    public function setPresentationSlot(ProductBundleSlotInterface $slot): void;
+
+    /**
+     * @return null|ProductBundleSlotInterface
+     */
+    public function getPresentationSlot(): ?ProductBundleSlotInterface;
+
+    /**
      * @return ProductInterface
      */
     public function getProduct(): ?ProductInterface;
