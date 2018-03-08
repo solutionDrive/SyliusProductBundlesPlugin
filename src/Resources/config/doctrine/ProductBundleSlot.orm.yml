@@ -24,6 +24,7 @@ SolutionDrive\SyliusProductBundlesPlugin\Entity\ProductBundleSlot:
     manyToOne:
         bundle:
             targetEntity: SolutionDrive\SyliusProductBundlesPlugin\Entity\ProductBundle
+            inversedBy: slots
             joinColumn:
                 name: bundle_id
                 referencedColumnName: id
