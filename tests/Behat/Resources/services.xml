@@ -5,13 +5,13 @@
 <!-- Behat Context Services -->
         <service
             id="solutiondrive.syliusproductbundlesplugin.behat.context.ui.admin.managing_product_bundle_products"
-            class="Tests\SolutionDrive\SyliusProductBundlesPlugin\Behat\Context\Ui\Admin\ManagingProductBundleProductsContext"
+            class="Tests\solutionDrive\SyliusProductBundlesPlugin\Behat\Context\Ui\Admin\ManagingProductBundleProductsContext"
         >
             <tag name="fob.context_service" />
         </service>
         <service
             id="solutiondrive.syliusproductbundlesplugin.behat.context.ui.admin.managing_product_bundles"
-            class="Tests\SolutionDrive\SyliusProductBundlesPlugin\Behat\Context\Ui\Admin\ManagingProductBundlesContext"
+            class="Tests\solutionDrive\SyliusProductBundlesPlugin\Behat\Context\Ui\Admin\ManagingProductBundlesContext"
         >
             <tag name="fob.context_service" />
             <argument
@@ -33,13 +33,13 @@
         </service>
         <service
             id="solutiondrive.syliusproductbundlesplugin.behat.context.ui.admin.managing_product_bundle_slots"
-            class="Tests\SolutionDrive\SyliusProductBundlesPlugin\Behat\Context\Ui\Admin\ManagingProductBundleSlotsContext"
+            class="Tests\solutionDrive\SyliusProductBundlesPlugin\Behat\Context\Ui\Admin\ManagingProductBundleSlotsContext"
         >
             <tag name="fob.context_service" />
         </service>
         <service
             id="solutiondrive.syliusproductbundlesplugin.behat.context.setup.product_bundles"
-            class="Tests\SolutionDrive\SyliusProductBundlesPlugin\Behat\Context\Setup\ProductBundlesContext"
+            class="Tests\solutionDrive\SyliusProductBundlesPlugin\Behat\Context\Setup\ProductBundlesContext"
         >
             <argument type="service" id="sylius.behat.shared_storage" />
             <argument type="service" id="__symfony__.solutiondrive.factory.product_bundle" />
@@ -51,7 +51,7 @@
 <!-- Transformer Services -->
         <service
             id="solutiondrive.syliusproductbundlesplugin.behat.context.transform.product_bundles"
-            class="Tests\SolutionDrive\SyliusExamplePlugin\Behat\Context\Transform\ProductBundlesContext"
+            class="Tests\solutionDrive\SyliusExamplePlugin\Behat\Context\Transform\ProductBundlesContext"
         >
             <argument type="service" id="__symfony__.solutiondrive.repository.product_bundle" />
             <tag name="fob.context_service" />
@@ -60,21 +60,21 @@
         <service
                 id="solutiondrive.syliusproductbundlesplugin.behat.page.index"
                 parent="sylius.behat.page.admin.crud.index"
-                class="Tests\SolutionDrive\SyliusProductBundlesPlugin\Behat\Page\ProductBundles\IndexPage"
+                class="Tests\solutionDrive\SyliusProductBundlesPlugin\Behat\Page\ProductBundles\IndexPage"
         >
             <argument>solutiondrive_admin_product_bundle_index</argument>
         </service>
         <service
                 id="solutiondrive.syliusproductbundlesplugin.behat.page.create"
                 parent="sylius.behat.page.admin.crud.create"
-                class="Tests\SolutionDrive\SyliusProductBundlesPlugin\Behat\Page\ProductBundles\CreatePage"
+                class="Tests\solutionDrive\SyliusProductBundlesPlugin\Behat\Page\ProductBundles\CreatePage"
         >
             <argument>solutiondrive_admin_product_bundle_create</argument>
         </service>
         <service
                 id="solutiondrive.syliusproductbundlesplugin.behat.page.update"
                 parent="sylius.behat.page.admin.crud.update"
-                class="Tests\SolutionDrive\SyliusProductBundlesPlugin\Behat\Page\ProductBundles\UpdatePage"
+                class="Tests\solutionDrive\SyliusProductBundlesPlugin\Behat\Page\ProductBundles\UpdatePage"
         >
             <argument>solutiondrive_admin_product_bundle_update</argument>
         </service>

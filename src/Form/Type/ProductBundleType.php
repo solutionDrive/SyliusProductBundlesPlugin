@@ -8,7 +8,7 @@ declare(strict_types=1);
  * @copyright 2018 solutionDrive GmbH
  */
 
-namespace SolutionDrive\SyliusProductBundlesPlugin\Form\Type;
+namespace solutionDrive\SyliusProductBundlesPlugin\Form\Type;
 
 use Sylius\Bundle\ProductBundle\Form\Type\ProductChoiceType;
 use Symfony\Component\Form\AbstractType;

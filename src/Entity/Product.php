@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace SolutionDrive\SyliusProductBundlesPlugin\Entity;
+namespace solutionDrive\SyliusProductBundlesPlugin\Entity;
 
 use Sylius\Component\Core\Model\Product as BaseProduct;
 

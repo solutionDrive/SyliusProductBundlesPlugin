@@ -30,12 +30,12 @@
     "prefer-stable": true,
     "autoload": {
         "psr-4": {
-            "SolutionDrive\\SyliusProductBundlesPlugin\\": "src/"
+            "solutionDrive\\SyliusProductBundlesPlugin\\": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Tests\\SolutionDrive\\SyliusProductBundlesPlugin\\": "tests/"
+            "Tests\\solutionDrive\\SyliusProductBundlesPlugin\\": "tests/"
         },
         "classmap": ["tests/Application/app/AppKernel.php"]
     },

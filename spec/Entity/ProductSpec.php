@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace spec\SolutionDrive\SyliusProductBundlesPlugin\Entity;
+namespace spec\solutionDrive\SyliusProductBundlesPlugin\Entity;
 
 use PhpSpec\ObjectBehavior;
-use SolutionDrive\SyliusProductBundlesPlugin\Entity\Product;
-use SolutionDrive\SyliusProductBundlesPlugin\Entity\ProductBundleInterface;
+use solutionDrive\SyliusProductBundlesPlugin\Entity\Product;
+use solutionDrive\SyliusProductBundlesPlugin\Entity\ProductBundleInterface;
 use Sylius\Component\Core\Model\ProductInterface;
 
 class ProductSpec extends ObjectBehavior

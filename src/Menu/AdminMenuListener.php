@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace SolutionDrive\SyliusProductBundlesPlugin\Menu;
+namespace solutionDrive\SyliusProductBundlesPlugin\Menu;
 
 use Sylius\Bundle\UiBundle\Menu\Event\MenuBuilderEvent;
 

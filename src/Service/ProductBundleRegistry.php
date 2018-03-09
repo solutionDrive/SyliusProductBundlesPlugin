@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace SolutionDrive\SyliusProductBundlesPlugin\Service;
+namespace solutionDrive\SyliusProductBundlesPlugin\Service;
 
-use SolutionDrive\SyliusProductBundlesPlugin\Entity\ProductBundleInterface;
-use SolutionDrive\SyliusProductBundlesPlugin\Exception\ProductIsNotAProductBundleException;
+use solutionDrive\SyliusProductBundlesPlugin\Entity\ProductBundleInterface;
+use solutionDrive\SyliusProductBundlesPlugin\Exception\ProductIsNotAProductBundleException;
 use Sylius\Component\Core\Model\ProductInterface;
 use Sylius\Component\Resource\Repository\RepositoryInterface;
 

@@ -8,9 +8,9 @@ declare(strict_types=1);
  * @copyright 2018 solutionDrive GmbH
  */
 
-namespace SolutionDrive\SyliusProductBundlesPlugin\Service;
+namespace solutionDrive\SyliusProductBundlesPlugin\Service;
 
-use SolutionDrive\SyliusProductBundlesPlugin\Entity\ProductBundleInterface;
+use solutionDrive\SyliusProductBundlesPlugin\Entity\ProductBundleInterface;
 use Sylius\Component\Core\Model\ProductInterface;
 
 interface ProductBundleRegistryInterface

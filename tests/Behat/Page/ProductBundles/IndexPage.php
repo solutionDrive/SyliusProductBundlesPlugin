@@ -8,7 +8,7 @@
 
 declare(strict_types=1);
 
-namespace Tests\SolutionDrive\SyliusProductBundlesPlugin\Behat\Page\ProductBundles;
+namespace Tests\solutionDrive\SyliusProductBundlesPlugin\Behat\Page\ProductBundles;
 
 use Sylius\Behat\Page\Admin\Crud\IndexPage as CrudIndexPage;
 

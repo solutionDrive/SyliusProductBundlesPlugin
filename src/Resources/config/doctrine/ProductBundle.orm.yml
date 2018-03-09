@@ -1,4 +1,4 @@
-SolutionDrive\SyliusProductBundlesPlugin\Entity\ProductBundle:
+solutionDrive\SyliusProductBundlesPlugin\Entity\ProductBundle:
     type: entity
     table: solutiondrive_product_bundle
     id:
@@ -19,7 +19,7 @@ SolutionDrive\SyliusProductBundlesPlugin\Entity\ProductBundle:
 
     oneToOne:
         product:
-            targetEntity: SolutionDrive\SyliusProductBundlesPlugin\Entity\Product
+            targetEntity: solutionDrive\SyliusProductBundlesPlugin\Entity\Product
             inversedBy: productBundle
             joinColumn:
                 name: product_id
@@ -28,12 +28,12 @@ SolutionDrive\SyliusProductBundlesPlugin\Entity\ProductBundle:
                 unique: true
 
         presentationSlot:
-            targetEntity: SolutionDrive\SyliusProductBundlesPlugin\Entity\ProductBundleSlot
+            targetEntity: solutionDrive\SyliusProductBundlesPlugin\Entity\ProductBundleSlot
             joinColumn:
                 name: presentation_slot_id
                 referencedColumnName: id
 
     oneToMany:
         slots:
-            targetEntity: SolutionDrive\SyliusProductBundlesPlugin\Entity\ProductBundleSlot
+            targetEntity: solutionDrive\SyliusProductBundlesPlugin\Entity\ProductBundleSlot
             mappedBy: bundle
