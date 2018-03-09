@@ -11,6 +11,12 @@ namespace solutionDrive\SyliusProductBundlesPlugin\Service\Options;
  */
 class ProductBundleSlotOptions implements ProductBundleSlotOptionsInterface
 {
+    /** @var int */
+    private $position;
+
+    /** @var bool */
+    private $isPresentationSlot = false;
+
     public function addOption(string $name, mixed $value): void
     {
         // TODO: Implement addOption() method.
@@ -23,21 +29,21 @@ class ProductBundleSlotOptions implements ProductBundleSlotOptionsInterface
 
     public function setPosition(int $position): void
     {
-        // TODO: Implement setPosition() method.
+        $this->position = $position;
     }
 
     public function getPosition(): int
     {
-        // TODO: Implement getPosition() method.
+        return $this->position;
     }
 
     public function setAsPresentationSlot(): void
     {
-        // TODO: Implement setAsPresentationSlot() method.
+        $this->isPresentationSlot = true;
     }
 
     public function isPresentationSlot(): bool
     {
-        // TODO: Implement isPresentationSlot() method.
+        return $this->isPresentationSlot;
     }
 }

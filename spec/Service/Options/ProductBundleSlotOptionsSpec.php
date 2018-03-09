@@ -30,4 +30,22 @@ class ProductBundleSlotOptionsSpec extends ObjectBehavior
     {
         $this->shouldImplement(ProductBundleSlotOptionsInterface::class);
     }
+
+    function it_can_add_position_to_options()
+    {
+        $position = 1;
+        $this->setPosition($position);
+        $this->getPosition()->shouldReturn($position);
+    }
+
+    function it_can_be_set_as_presentation_slot()
+    {
+        $this->setAsPresentationSlot();
+        $this->isPresentationSlot()->shouldReturn(true);
+    }
+
+    function it_is_initalized_as_non_presentation_slot()
+    {
+        $this->isPresentationSlot()->shouldReturn(false);
+    }
 }
