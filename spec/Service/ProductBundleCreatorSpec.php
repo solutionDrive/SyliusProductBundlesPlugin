@@ -8,6 +8,7 @@ use PhpSpec\ObjectBehavior;
 use solutionDrive\SyliusProductBundlesPlugin\Entity\ProductBundleInterface;
 use solutionDrive\SyliusProductBundlesPlugin\Entity\ProductBundleSlotInterface;
 use solutionDrive\SyliusProductBundlesPlugin\Service\ProductBundleCreator;
+use solutionDrive\SyliusProductBundlesPlugin\Service\ProductBundleCreatorInterface;
 use Sylius\Component\Core\Model\ProductInterface;
 use Sylius\Component\Resource\Factory\FactoryInterface;
 
@@ -25,7 +26,10 @@ class ProductBundleCreatorSpec extends ObjectBehavior
         $this->shouldHaveType(ProductBundleCreator::class);
     }
 
-    // @todo enforce interface (create it when all public methods are speced)
+    function it_implements_the_product_bundle_creator_interface()
+    {
+        $this->shouldImplement(ProductBundleCreatorInterface::class);
+    }
 
     function it_can_create_a_new_product_bundle(
         FactoryInterface $productBundleFactory,
@@ -211,7 +215,7 @@ class ProductBundleCreatorSpec extends ObjectBehavior
         $slotName = 'Top Hats';
         $options = [
             'position' => 1,
-            'isPresentation' => true
+            'isPresentation' => true,
         ];
 
         $productBundleFactory->createNew()->shouldBeCalled()->willReturn($productBundle);

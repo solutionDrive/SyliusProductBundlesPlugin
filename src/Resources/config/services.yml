@@ -9,3 +9,9 @@ services:
         class: solutionDrive\SyliusProductBundlesPlugin\Service\ProductBundleRegistry
         arguments:
             - "@solutiondrive.repository.product_bundle"
+
+    solutiondrive.product_bundles.product_bundle_creator:
+        class: solutionDrive\SyliusProductBundlesPlugin\Service\ProductBundleCreator
+        arguments:
+            - "@solutiondrive.factory.product_bundle"
+            - "@solutiondrive.factory.product_bundle_slot"

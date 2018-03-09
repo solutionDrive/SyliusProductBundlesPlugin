@@ -9,7 +9,7 @@ use solutionDrive\SyliusProductBundlesPlugin\Entity\ProductBundleSlotInterface;
 use Sylius\Component\Core\Model\ProductInterface;
 use Sylius\Component\Resource\Factory\FactoryInterface;
 
-class ProductBundleCreator
+class ProductBundleCreator implements ProductBundleCreatorInterface
 {
     /** @var FactoryInterface */
     private $productBundleFactory;
@@ -87,6 +87,7 @@ class ProductBundleCreator
         $slot = $this->productBundleSlotFactory->createNew();
         $slot->setName($slotName);
         $slot->setBundle($this->productBundle);
+
         return $slot;
     }
 }
