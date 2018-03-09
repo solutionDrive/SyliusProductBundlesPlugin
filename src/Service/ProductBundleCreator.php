@@ -26,9 +26,10 @@ class ProductBundleCreator
         $this->productBundleSlotFactory = $productBundleSlotFactory;
     }
 
-    public function createProductBundle(): ProductBundleCreator
+    public function createProductBundle(string $productBundleName): ProductBundleCreator
     {
         $this->productBundle = $this->productBundleFactory->createNew();
+        $this->productBundle->setName($productBundleName);
         return $this;
     }
 

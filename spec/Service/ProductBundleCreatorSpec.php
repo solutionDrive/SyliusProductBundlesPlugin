@@ -29,13 +29,14 @@ class ProductBundleCreatorSpec extends ObjectBehavior
         FactoryInterface $productBundleFactory,
         ProductBundleInterface $productBundle
     ) {
+        $productBundleName = 'Brainy Smurfs Outfit';
         $productBundleFactory
             ->createNew()
             ->shouldBeCalled()
             ->willReturn($productBundle)
         ;
 
-        $this->createProductBundle();
+        $this->createProductBundle($productBundleName);
         $this
             ->getProductBundle()
             ->shouldReturn($productBundle);
@@ -47,6 +48,7 @@ class ProductBundleCreatorSpec extends ObjectBehavior
         FactoryInterface $productBundleSlotFactory,
         ProductBundleSlotInterface $productBundleSlot
     ) {
+        $productBundleName = 'Hefty Smurfs Outfit';
         $slotName = 'Top Hats';
 
         $productBundleFactory
@@ -69,7 +71,7 @@ class ProductBundleCreatorSpec extends ObjectBehavior
         ;
 
         $this
-            ->createProductBundle()
+            ->createProductBundle($productBundleName)
             ->addSlot($slotName)
         ;
     }
@@ -80,6 +82,7 @@ class ProductBundleCreatorSpec extends ObjectBehavior
         FactoryInterface $productBundleSlotFactory,
         ProductBundleSlotInterface $productBundleSlot
     ) {
+        $productBundleName = 'Clumsy Smurfs Outfit';
         $slotName = 'Top Hats';
         $options = [
             'position' => 1,
@@ -108,7 +111,7 @@ class ProductBundleCreatorSpec extends ObjectBehavior
             ->shouldBeCalled();
 
         $this
-            ->createProductBundle()
+            ->createProductBundle($productBundleName)
             ->addSlot($slotName, $options)
         ;
     }
@@ -122,6 +125,7 @@ class ProductBundleCreatorSpec extends ObjectBehavior
         ProductInterface $melonHat,
         ProductInterface $smurfHat
     ) {
+        $productBundleName = 'Jokey Smurfs Outfit';
         $slotName = 'Top Hats';
         $options = [
             'position' => 1,
@@ -167,7 +171,7 @@ class ProductBundleCreatorSpec extends ObjectBehavior
 
 
         $this
-            ->createProductBundle()
+            ->createProductBundle($productBundleName)
             ->addSlot($slotName, $options, $products)
         ;
     }
