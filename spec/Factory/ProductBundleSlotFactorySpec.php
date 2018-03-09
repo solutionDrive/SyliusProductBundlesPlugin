@@ -1,10 +1,12 @@
 <?php
 
+declare(strict_types=1);
+
 namespace spec\solutionDrive\SyliusProductBundlesPlugin\Factory;
 
+use PhpSpec\ObjectBehavior;
 use solutionDrive\SyliusProductBundlesPlugin\Entity\ProductBundleSlotInterface;
 use solutionDrive\SyliusProductBundlesPlugin\Factory\ProductBundleSlotFactory;
-use PhpSpec\ObjectBehavior;
 use solutionDrive\SyliusProductBundlesPlugin\Factory\ProductBundleSlotFactoryInterface;
 use Sylius\Component\Resource\Factory\FactoryInterface;
 
