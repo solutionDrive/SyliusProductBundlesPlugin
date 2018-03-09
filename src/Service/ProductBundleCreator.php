@@ -65,7 +65,7 @@ class ProductBundleCreator implements ProductBundleCreatorInterface
 
     private function applyOptionsToSlot(?ProductBundleSlotOptionsInterface $options, ProductBundleSlotInterface $slot): void
     {
-        if ($options !== null && $options->getPosition() !== null) {
+        if (null !== $options && null !== $options->getPosition()) {
             $slot->setPosition($options->getPosition());
         }
     }
@@ -84,7 +84,7 @@ class ProductBundleCreator implements ProductBundleCreatorInterface
 
     private function addSlotToBundle(?ProductBundleSlotOptionsInterface $options, $slot): void
     {
-        if ($options !== null && $options->isPresentationSlot()) {
+        if (null !== $options && $options->isPresentationSlot()) {
             $this->productBundle->setPresentationSlot($slot);
         }
         $this->productBundle->addSlot($slot);
