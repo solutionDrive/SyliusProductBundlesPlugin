@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace spec\solutionDrive\SyliusProductBundlesPlugin\Service\Options;
 
+use PhpSpec\ObjectBehavior;
 use solutionDrive\SyliusProductBundlesPlugin\Service\Options\OptionsInterface;
 use solutionDrive\SyliusProductBundlesPlugin\Service\Options\ProductBundleSlotOptions;
-use PhpSpec\ObjectBehavior;
 use solutionDrive\SyliusProductBundlesPlugin\Service\Options\ProductBundleSlotOptionsInterface;
 
 /**

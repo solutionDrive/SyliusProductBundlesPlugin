@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Created by solutionDrive GmbH
  *
@@ -6,7 +8,6 @@
  */
 
 namespace solutionDrive\SyliusProductBundlesPlugin\Service\Options;
-
 
 interface ProductBundleSlotOptionsInterface extends OptionsInterface
 {
