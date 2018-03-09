@@ -47,6 +47,13 @@ class ProductBundleCreator implements ProductBundleCreatorInterface
         return $this->productBundle;
     }
 
+    /**
+     * @param string $slotName
+     * @param array $options
+     * @param ProductInterface[] $products
+     *
+     * @return ProductBundleCreator
+     */
     public function addSlot(string $slotName, array $options = [], array $products = []): self
     {
         /** @var ProductBundleSlotInterface $slot */
