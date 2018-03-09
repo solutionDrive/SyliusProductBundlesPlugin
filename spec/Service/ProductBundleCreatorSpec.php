@@ -120,6 +120,11 @@ class ProductBundleCreatorSpec extends ObjectBehavior
 
         $productBundleSlotFactory->createNew()->shouldBeCalled()->willReturn($productBundleSlot);
 
+        $productBundle->setProduct($smurfOutfit)->shouldBeCalled();
+        $productBundle->addSlot($productBundleSlot)->shouldBeCalled();
+        $productBundle->setPresentationSlot($productBundleSlot)->shouldNotBeCalled();
+        $productBundle->setName($productBundleName)->shouldBeCalled();
+
         $productBundleSlot->setName($slotName)->shouldBeCalled();
         $productBundleSlot->setBundle($productBundle)->shouldBeCalled();
         $productBundleSlot->setPosition($options['position'])->shouldBeCalled();
@@ -168,6 +173,8 @@ class ProductBundleCreatorSpec extends ObjectBehavior
 
         $productBundle->setName($productBundleName)->shouldBeCalled();
         $productBundle->setProduct($smurfOutfit)->shouldBeCalled();
+        $productBundle->addSlot($productBundleSlotTopHats)->shouldBeCalled();
+        $productBundle->addSlot($productBundleSlotShirts)->shouldBeCalled();
 
         $productBundleSlotFactory
             ->createNew()
@@ -186,13 +193,43 @@ class ProductBundleCreatorSpec extends ObjectBehavior
         $productBundleSlotShirts->setBundle($productBundle)->shouldBeCalled();
         $productBundleSlotShirts->addProduct($whiteShirt)->shouldBeCalled();
 
-        $productBundle->addSlot($productBundleSlotTopHats)->shouldBeCalled();
-        $productBundle->addSlot($productBundleSlotShirts)->shouldBeCalled();
-
         $this
             ->createProductBundle($productBundleName, $smurfOutfit)
             ->addSlot($slotNameHats, $optionsHats, $productsHats)
             ->addSlot($slotNameShirts, $optionsShirts, $productsShirts)
+        ;
+    }
+
+    function it_can_add_a_slot_as_presentation_slot(
+        FactoryInterface $productBundleFactory,
+        ProductBundleInterface $productBundle,
+        FactoryInterface $productBundleSlotFactory,
+        ProductBundleSlotInterface $productBundleSlot,
+        ProductInterface $smurfOutfit
+    ) {
+        $productBundleName = 'Woolly Smurfs Outfit';
+        $slotName = 'Top Hats';
+        $options = [
+            'position' => 1,
+            'isPresentation' => true
+        ];
+
+        $productBundleFactory->createNew()->shouldBeCalled()->willReturn($productBundle);
+
+        $productBundleSlotFactory->createNew()->shouldBeCalled()->willReturn($productBundleSlot);
+
+        $productBundle->setProduct($smurfOutfit)->shouldBeCalled();
+        $productBundle->addSlot($productBundleSlot)->shouldBeCalled();
+        $productBundle->setPresentationSlot($productBundleSlot)->shouldBeCalled();
+        $productBundle->setName($productBundleName)->shouldBeCalled();
+
+        $productBundleSlot->setName($slotName)->shouldBeCalled();
+        $productBundleSlot->setBundle($productBundle)->shouldBeCalled();
+        $productBundleSlot->setPosition($options['position'])->shouldBeCalled();
+
+        $this
+            ->createProductBundle($productBundleName, $smurfOutfit)
+            ->addSlot($slotName, $options)
         ;
     }
 }

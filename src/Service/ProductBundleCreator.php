@@ -45,13 +45,11 @@ class ProductBundleCreator
     public function addSlot(string $slotName, array $options = [], array $products = []): self
     {
         /** @var ProductBundleSlotInterface $slot */
-        $slot = $this->productBundleSlotFactory->createNew();
-        $slot->setName($slotName);
-        $slot->setBundle($this->productBundle);
+        $slot = $this->createSlot($slotName);
+
         $this->applyOptionsToSlot($options, $slot);
         $this->addProductsToSlot($products, $slot);
-
-        $this->productBundle->addSlot($slot);
+        $this->addSlotToBundle($options, $slot);
 
         return $this;
     }
@@ -73,5 +71,22 @@ class ProductBundleCreator
     private function addProductToSlot(ProductInterface $product, ProductBundleSlotInterface $slot): void
     {
         $slot->addProduct($product);
+    }
+
+    private function addSlotToBundle(array $options, $slot): void
+    {
+        if (isset($options['isPresentation']) && $options['isPresentation'] === true) {
+            $this->productBundle->setPresentationSlot($slot);
+        }
+        $this->productBundle->addSlot($slot);
+    }
+
+    private function createSlot(string $slotName): ProductBundleSlotInterface
+    {
+        /** @var ProductBundleSlotInterface $slot */
+        $slot = $this->productBundleSlotFactory->createNew();
+        $slot->setName($slotName);
+        $slot->setBundle($this->productBundle);
+        return $slot;
     }
 }
