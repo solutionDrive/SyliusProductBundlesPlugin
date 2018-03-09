@@ -22,6 +22,13 @@ interface ProductBundleCreatorInterface
 
     public function getProductBundle(): ProductBundleInterface;
 
+    /**
+     * @param string $slotName
+     * @param ProductBundleSlotOptionsInterface $options
+     * @param ProductInterface[] $products
+     *
+     * @return ProductBundleCreator
+     */
     public function addSlot(
         string $slotName,
         ProductBundleSlotOptionsInterface $options = null,

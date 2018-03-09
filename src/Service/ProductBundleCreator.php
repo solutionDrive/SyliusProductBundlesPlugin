@@ -49,11 +49,7 @@ class ProductBundleCreator implements ProductBundleCreatorInterface
     }
 
     /**
-     * @param string $slotName
-     * @param ProductBundleSlotOptionsInterface $options
-     * @param ProductInterface[] $products
-     *
-     * @return ProductBundleCreator
+     * {@inheritdoc}
      */
     public function addSlot(string $slotName, ?ProductBundleSlotOptionsInterface $options = null, array $products = []): self
     {
