@@ -28,10 +28,11 @@ class ProductBundleCreator
         $this->productBundleSlotFactory = $productBundleSlotFactory;
     }
 
-    public function createProductBundle(string $productBundleName): self
+    public function createProductBundle(string $productBundleName, ProductInterface $poductBundleProduct): self
     {
         $this->productBundle = $this->productBundleFactory->createNew();
         $this->productBundle->setName($productBundleName);
+        $this->productBundle->setProduct($poductBundleProduct);
 
         return $this;
     }

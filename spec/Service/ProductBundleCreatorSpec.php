@@ -29,7 +29,8 @@ class ProductBundleCreatorSpec extends ObjectBehavior
 
     function it_can_create_a_new_product_bundle(
         FactoryInterface $productBundleFactory,
-        ProductBundleInterface $productBundle
+        ProductBundleInterface $productBundle,
+        ProductInterface $smurfOutfit
     ) {
         $productBundleName = 'Brainy Smurfs Outfit';
         $productBundleFactory
@@ -38,7 +39,7 @@ class ProductBundleCreatorSpec extends ObjectBehavior
             ->willReturn($productBundle)
         ;
 
-        $this->createProductBundle($productBundleName);
+        $this->createProductBundle($productBundleName, $smurfOutfit);
         $this
             ->getProductBundle()
             ->shouldReturn($productBundle);
@@ -48,7 +49,8 @@ class ProductBundleCreatorSpec extends ObjectBehavior
         FactoryInterface $productBundleFactory,
         ProductBundleInterface $productBundle,
         FactoryInterface $productBundleSlotFactory,
-        ProductBundleSlotInterface $productBundleSlot
+        ProductBundleSlotInterface $productBundleSlot,
+        ProductInterface $smurfOutfit
     ) {
         $productBundleName = 'Hefty Smurfs Outfit';
         $slotName = 'Top Hats';
@@ -73,7 +75,7 @@ class ProductBundleCreatorSpec extends ObjectBehavior
         ;
 
         $this
-            ->createProductBundle($productBundleName)
+            ->createProductBundle($productBundleName, $smurfOutfit)
             ->addSlot($slotName)
         ;
     }
@@ -82,7 +84,8 @@ class ProductBundleCreatorSpec extends ObjectBehavior
         FactoryInterface $productBundleFactory,
         ProductBundleInterface $productBundle,
         FactoryInterface $productBundleSlotFactory,
-        ProductBundleSlotInterface $productBundleSlot
+        ProductBundleSlotInterface $productBundleSlot,
+        ProductInterface $smurfOutfit
     ) {
         $productBundleName = 'Clumsy Smurfs Outfit';
         $slotName = 'Top Hats';
@@ -113,7 +116,7 @@ class ProductBundleCreatorSpec extends ObjectBehavior
             ->shouldBeCalled();
 
         $this
-            ->createProductBundle($productBundleName)
+            ->createProductBundle($productBundleName, $smurfOutfit)
             ->addSlot($slotName, $options)
         ;
     }
@@ -123,6 +126,7 @@ class ProductBundleCreatorSpec extends ObjectBehavior
         ProductBundleInterface $productBundle,
         FactoryInterface $productBundleSlotFactory,
         ProductBundleSlotInterface $productBundleSlot,
+        ProductInterface $smurfOutfit,
         ProductInterface $fedoraHat,
         ProductInterface $melonHat,
         ProductInterface $smurfHat
@@ -172,7 +176,7 @@ class ProductBundleCreatorSpec extends ObjectBehavior
             ->shouldBeCalled();
 
         $this
-            ->createProductBundle($productBundleName)
+            ->createProductBundle($productBundleName, $smurfOutfit)
             ->addSlot($slotName, $options, $products)
         ;
     }
