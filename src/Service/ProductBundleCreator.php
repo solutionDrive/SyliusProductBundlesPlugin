@@ -6,6 +6,7 @@ namespace solutionDrive\SyliusProductBundlesPlugin\Service;
 
 use solutionDrive\SyliusProductBundlesPlugin\Entity\ProductBundleInterface;
 use solutionDrive\SyliusProductBundlesPlugin\Entity\ProductBundleSlotInterface;
+use solutionDrive\SyliusProductBundlesPlugin\Service\Options\ProductBundleSlotOptionsInterface;
 use Sylius\Component\Core\Model\ProductInterface;
 use Sylius\Component\Resource\Factory\FactoryInterface;
 
@@ -49,12 +50,12 @@ class ProductBundleCreator implements ProductBundleCreatorInterface
 
     /**
      * @param string $slotName
-     * @param array $options
+     * @param ProductBundleSlotOptionsInterface $options
      * @param ProductInterface[] $products
      *
      * @return ProductBundleCreator
      */
-    public function addSlot(string $slotName, array $options = [], array $products = []): self
+    public function addSlot(string $slotName, ?ProductBundleSlotOptionsInterface $options = null, array $products = []): self
     {
         /** @var ProductBundleSlotInterface $slot */
         $slot = $this->createSlot($slotName);
@@ -66,10 +67,10 @@ class ProductBundleCreator implements ProductBundleCreatorInterface
         return $this;
     }
 
-    private function applyOptionsToSlot(array $options, ProductBundleSlotInterface $slot): void
+    private function applyOptionsToSlot(?ProductBundleSlotOptionsInterface $options, ProductBundleSlotInterface $slot): void
     {
-        if (isset($options['position'])) {
-            $slot->setPosition($options['position']);
+        if ($options !== null && $options->getPosition() !== null) {
+            $slot->setPosition($options->getPosition());
         }
     }
 
@@ -85,9 +86,9 @@ class ProductBundleCreator implements ProductBundleCreatorInterface
         $slot->addProduct($product);
     }
 
-    private function addSlotToBundle(array $options, $slot): void
+    private function addSlotToBundle(?ProductBundleSlotOptionsInterface $options, $slot): void
     {
-        if (isset($options['isPresentation']) && $options['isPresentation'] === true) {
+        if ($options !== null && $options->isPresentationSlot()) {
             $this->productBundle->setPresentationSlot($slot);
         }
         $this->productBundle->addSlot($slot);

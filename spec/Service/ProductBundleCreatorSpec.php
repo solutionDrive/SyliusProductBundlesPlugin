@@ -7,6 +7,7 @@ namespace spec\solutionDrive\SyliusProductBundlesPlugin\Service;
 use PhpSpec\ObjectBehavior;
 use solutionDrive\SyliusProductBundlesPlugin\Entity\ProductBundleInterface;
 use solutionDrive\SyliusProductBundlesPlugin\Entity\ProductBundleSlotInterface;
+use solutionDrive\SyliusProductBundlesPlugin\Service\Options\ProductBundleSlotOptionsInterface;
 use solutionDrive\SyliusProductBundlesPlugin\Service\ProductBundleCreator;
 use solutionDrive\SyliusProductBundlesPlugin\Service\ProductBundleCreatorInterface;
 use Sylius\Component\Core\Model\ProductInterface;
@@ -82,13 +83,14 @@ class ProductBundleCreatorSpec extends ObjectBehavior
         ProductBundleInterface $productBundle,
         FactoryInterface $productBundleSlotFactory,
         ProductBundleSlotInterface $productBundleSlot,
-        ProductInterface $smurfOutfit
+        ProductInterface $smurfOutfit,
+        ProductBundleSlotOptionsInterface $bundleSlotOptions
     ) {
         $productBundleName = 'Clumsy Smurfs Outfit';
         $slotName = 'Top Hats';
-        $options = [
-            'position' => 1,
-        ];
+
+        $bundleSlotOptions->isPresentationSlot()->willReturn(false);
+        $bundleSlotOptions->getPosition()->willReturn(1);
 
         $productBundleFactory->createNew()->shouldBeCalled()->willReturn($productBundle);
 
@@ -96,11 +98,11 @@ class ProductBundleCreatorSpec extends ObjectBehavior
 
         $productBundleSlot->setName($slotName)->shouldBeCalled();
         $productBundleSlot->setBundle($productBundle)->shouldBeCalled();
-        $productBundleSlot->setPosition($options['position'])->shouldBeCalled();
+        $productBundleSlot->setPosition($bundleSlotOptions->getWrappedObject()->getPosition())->shouldBeCalled();
 
         $this
             ->createProductBundle($productBundleName, $smurfOutfit)
-            ->addSlot($slotName, $options)
+            ->addSlot($slotName, $bundleSlotOptions)
         ;
     }
 
@@ -112,13 +114,14 @@ class ProductBundleCreatorSpec extends ObjectBehavior
         ProductInterface $smurfOutfit,
         ProductInterface $fedoraHat,
         ProductInterface $melonHat,
-        ProductInterface $smurfHat
+        ProductInterface $smurfHat,
+        ProductBundleSlotOptionsInterface $bundleSlotOptions
     ) {
         $productBundleName = 'Jokey Smurfs Outfit';
         $slotName = 'Top Hats';
-        $options = [
-            'position' => 1,
-        ];
+
+        $bundleSlotOptions->isPresentationSlot()->willReturn(false);
+        $bundleSlotOptions->getPosition()->willReturn(1);
         $products = [
             $fedoraHat,
             $melonHat,
@@ -136,14 +139,14 @@ class ProductBundleCreatorSpec extends ObjectBehavior
 
         $productBundleSlot->setName($slotName)->shouldBeCalled();
         $productBundleSlot->setBundle($productBundle)->shouldBeCalled();
-        $productBundleSlot->setPosition($options['position'])->shouldBeCalled();
+        $productBundleSlot->setPosition($bundleSlotOptions->getWrappedObject()->getPosition())->shouldBeCalled();
         $productBundleSlot->addProduct($fedoraHat)->shouldBeCalled();
         $productBundleSlot->addProduct($melonHat)->shouldBeCalled();
         $productBundleSlot->addProduct($smurfHat)->shouldBeCalled();
 
         $this
             ->createProductBundle($productBundleName, $smurfOutfit)
-            ->addSlot($slotName, $options, $products)
+            ->addSlot($slotName, $bundleSlotOptions, $products)
         ;
     }
 
@@ -156,23 +159,25 @@ class ProductBundleCreatorSpec extends ObjectBehavior
         ProductInterface $smurfOutfit,
         ProductInterface $fedoraHat,
         ProductInterface $smurfHat,
-        ProductInterface $whiteShirt
+        ProductInterface $whiteShirt,
+        ProductBundleSlotOptionsInterface $bundleSlotOptionsHats,
+        ProductBundleSlotOptionsInterface $bundleSlotOptionsShirts
     ) {
         $productBundleName = 'Lucky Smurfs Outfit';
+
         $slotNameHats = 'Top Hats';
-        $optionsHats = [
-            'position' => 1,
-        ];
+        $bundleSlotOptionsHats->isPresentationSlot()->willReturn(false);
+        $bundleSlotOptionsHats->getPosition()->willReturn(1);
 
         $productsHats = [
             $fedoraHat,
             $smurfHat,
         ];
 
-        $slotNameShirts = 'Smurf Shirts';
-        $optionsShirts = [
-            'position' => 2,
-        ];
+
+        $slotNameShirts = 'Shirts';
+        $bundleSlotOptionsShirts->isPresentationSlot()->willReturn(false);
+        $bundleSlotOptionsShirts->getPosition()->willReturn(2);
 
         $productsShirts = [
             $whiteShirt,
@@ -192,20 +197,20 @@ class ProductBundleCreatorSpec extends ObjectBehavior
         ;
 
         $productBundleSlotTopHats->setName($slotNameHats)->shouldBeCalled();
-        $productBundleSlotTopHats->setPosition($optionsHats['position'])->shouldBeCalled();
+        $productBundleSlotTopHats->setPosition($bundleSlotOptionsHats->getWrappedObject()->getPosition())->shouldBeCalled();
         $productBundleSlotTopHats->setBundle($productBundle)->shouldBeCalled();
         $productBundleSlotTopHats->addProduct($fedoraHat)->shouldBeCalled();
         $productBundleSlotTopHats->addProduct($smurfHat)->shouldBeCalled();
 
         $productBundleSlotShirts->setName($slotNameShirts)->shouldBeCalled();
-        $productBundleSlotShirts->setPosition($optionsShirts['position'])->shouldBeCalled();
+        $productBundleSlotShirts->setPosition($bundleSlotOptionsShirts->getWrappedObject()->getPosition())->shouldBeCalled();
         $productBundleSlotShirts->setBundle($productBundle)->shouldBeCalled();
         $productBundleSlotShirts->addProduct($whiteShirt)->shouldBeCalled();
 
         $this
             ->createProductBundle($productBundleName, $smurfOutfit)
-            ->addSlot($slotNameHats, $optionsHats, $productsHats)
-            ->addSlot($slotNameShirts, $optionsShirts, $productsShirts)
+            ->addSlot($slotNameHats, $bundleSlotOptionsHats, $productsHats)
+            ->addSlot($slotNameShirts, $bundleSlotOptionsShirts, $productsShirts)
         ;
     }
 
@@ -214,14 +219,14 @@ class ProductBundleCreatorSpec extends ObjectBehavior
         ProductBundleInterface $productBundle,
         FactoryInterface $productBundleSlotFactory,
         ProductBundleSlotInterface $productBundleSlot,
-        ProductInterface $smurfOutfit
+        ProductInterface $smurfOutfit,
+        ProductBundleSlotOptionsInterface $bundleSlotOptions
     ) {
         $productBundleName = 'Woolly Smurfs Outfit';
         $slotName = 'Top Hats';
-        $options = [
-            'position' => 1,
-            'isPresentation' => true,
-        ];
+
+        $bundleSlotOptions->getPosition()->willReturn(1);
+        $bundleSlotOptions->isPresentationSlot()->willReturn(true);
 
         $productBundleFactory->createNew()->shouldBeCalled()->willReturn($productBundle);
 
@@ -234,11 +239,11 @@ class ProductBundleCreatorSpec extends ObjectBehavior
 
         $productBundleSlot->setName($slotName)->shouldBeCalled();
         $productBundleSlot->setBundle($productBundle)->shouldBeCalled();
-        $productBundleSlot->setPosition($options['position'])->shouldBeCalled();
+        $productBundleSlot->setPosition($bundleSlotOptions->getWrappedObject()->getPosition())->shouldBeCalled();
 
         $this
             ->createProductBundle($productBundleName, $smurfOutfit)
-            ->addSlot($slotName, $options)
+            ->addSlot($slotName, $bundleSlotOptions)
         ;
     }
 }
