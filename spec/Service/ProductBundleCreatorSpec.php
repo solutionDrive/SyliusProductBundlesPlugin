@@ -1,11 +1,13 @@
 <?php
 
+declare(strict_types=1);
+
 namespace spec\solutionDrive\SyliusProductBundlesPlugin\Service;
 
+use PhpSpec\ObjectBehavior;
 use solutionDrive\SyliusProductBundlesPlugin\Entity\ProductBundleInterface;
 use solutionDrive\SyliusProductBundlesPlugin\Entity\ProductBundleSlotInterface;
 use solutionDrive\SyliusProductBundlesPlugin\Service\ProductBundleCreator;
-use PhpSpec\ObjectBehavior;
 use Sylius\Component\Core\Model\ProductInterface;
 use Sylius\Component\Resource\Factory\FactoryInterface;
 
@@ -133,7 +135,7 @@ class ProductBundleCreatorSpec extends ObjectBehavior
         $products = [
             $fedoraHat,
             $melonHat,
-            $smurfHat
+            $smurfHat,
         ];
 
         $productBundleFactory
@@ -168,7 +170,6 @@ class ProductBundleCreatorSpec extends ObjectBehavior
         $productBundleSlot
             ->addProduct($smurfHat)
             ->shouldBeCalled();
-
 
         $this
             ->createProductBundle($productBundleName)

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace solutionDrive\SyliusProductBundlesPlugin\Service;
 
 use solutionDrive\SyliusProductBundlesPlugin\Entity\ProductBundleInterface;
@@ -9,7 +11,7 @@ use Sylius\Component\Resource\Factory\FactoryInterface;
 
 class ProductBundleCreator
 {
-    /** @var FactoryInterface  */
+    /** @var FactoryInterface */
     private $productBundleFactory;
 
     /** @var FactoryInterface */
@@ -26,10 +28,11 @@ class ProductBundleCreator
         $this->productBundleSlotFactory = $productBundleSlotFactory;
     }
 
-    public function createProductBundle(string $productBundleName): ProductBundleCreator
+    public function createProductBundle(string $productBundleName): self
     {
         $this->productBundle = $this->productBundleFactory->createNew();
         $this->productBundle->setName($productBundleName);
+
         return $this;
     }
 
@@ -38,7 +41,7 @@ class ProductBundleCreator
         return $this->productBundle;
     }
 
-    public function addSlot(string $slotName, array $options = [], array $products = []): ProductBundleCreator
+    public function addSlot(string $slotName, array $options = [], array $products = []): self
     {
         /** @var ProductBundleSlotInterface $slot */
         $slot = $this->productBundleSlotFactory->createNew();
@@ -48,6 +51,7 @@ class ProductBundleCreator
         $this->addProductsToSlot($products, $slot);
 
         $this->productBundle->addSlot($slot);
+
         return $this;
     }
 
