@@ -12,6 +12,11 @@ use solutionDrive\SyliusProductBundlesPlugin\Service\ProductBundleCreatorInterfa
 use Sylius\Component\Core\Model\ProductInterface;
 use Sylius\Component\Resource\Factory\FactoryInterface;
 
+/**
+ * Created by solutionDrive GmbH
+ *
+ * @copyright 2018 solutionDrive GmbH
+ */
 class ProductBundleCreatorSpec extends ObjectBehavior
 {
     function let(

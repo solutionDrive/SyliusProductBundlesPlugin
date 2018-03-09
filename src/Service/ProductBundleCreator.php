@@ -9,6 +9,11 @@ use solutionDrive\SyliusProductBundlesPlugin\Entity\ProductBundleSlotInterface;
 use Sylius\Component\Core\Model\ProductInterface;
 use Sylius\Component\Resource\Factory\FactoryInterface;
 
+/**
+ * Created by solutionDrive GmbH
+ *
+ * @copyright 2018 solutionDrive GmbH
+ */
 class ProductBundleCreator implements ProductBundleCreatorInterface
 {
     /** @var FactoryInterface */
