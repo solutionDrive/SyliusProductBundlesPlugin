@@ -174,7 +174,6 @@ class ProductBundleCreatorSpec extends ObjectBehavior
             $smurfHat,
         ];
 
-
         $slotNameShirts = 'Shirts';
         $bundleSlotOptionsShirts->isPresentationSlot()->willReturn(false);
         $bundleSlotOptionsShirts->getPosition()->willReturn(2);
