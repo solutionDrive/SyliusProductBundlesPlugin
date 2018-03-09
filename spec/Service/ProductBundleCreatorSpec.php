@@ -6,6 +6,7 @@ use solutionDrive\SyliusProductBundlesPlugin\Entity\ProductBundleInterface;
 use solutionDrive\SyliusProductBundlesPlugin\Entity\ProductBundleSlotInterface;
 use solutionDrive\SyliusProductBundlesPlugin\Service\ProductBundleCreator;
 use PhpSpec\ObjectBehavior;
+use Sylius\Component\Core\Model\ProductInterface;
 use Sylius\Component\Resource\Factory\FactoryInterface;
 
 class ProductBundleCreatorSpec extends ObjectBehavior
@@ -46,7 +47,7 @@ class ProductBundleCreatorSpec extends ObjectBehavior
         FactoryInterface $productBundleSlotFactory,
         ProductBundleSlotInterface $productBundleSlot
     ) {
-        $slotName = 'Top Heads';
+        $slotName = 'Top Hats';
 
         $productBundleFactory
             ->createNew()
@@ -67,8 +68,107 @@ class ProductBundleCreatorSpec extends ObjectBehavior
             ->shouldBeCalled()
         ;
 
-        $this->createProductBundle()
+        $this
+            ->createProductBundle()
             ->addSlot($slotName)
+        ;
+    }
+
+    function it_can_add_a_slot_with_additional_parameters_to_the_bundle(
+        FactoryInterface $productBundleFactory,
+        ProductBundleInterface $productBundle,
+        FactoryInterface $productBundleSlotFactory,
+        ProductBundleSlotInterface $productBundleSlot
+    ) {
+        $slotName = 'Top Hats';
+        $options = [
+            'position' => 1,
+        ];
+
+        $productBundleFactory
+            ->createNew()
+            ->shouldBeCalled()
+            ->willReturn($productBundle)
+        ;
+        $productBundleSlotFactory
+            ->createNew()
+            ->shouldBeCalled()
+            ->willReturn($productBundleSlot)
+        ;
+        $productBundleSlot
+            ->setName($slotName)
+            ->shouldBeCalled()
+        ;
+        $productBundleSlot
+            ->setBundle($productBundle)
+            ->shouldBeCalled()
+        ;
+        $productBundleSlot
+            ->setPosition($options['position'])
+            ->shouldBeCalled();
+
+        $this
+            ->createProductBundle()
+            ->addSlot($slotName, $options)
+        ;
+    }
+
+    function it_can_add_a_slot_with_additional_parameters_and_products_to_the_bundle(
+        FactoryInterface $productBundleFactory,
+        ProductBundleInterface $productBundle,
+        FactoryInterface $productBundleSlotFactory,
+        ProductBundleSlotInterface $productBundleSlot,
+        ProductInterface $fedoraHat,
+        ProductInterface $melonHat,
+        ProductInterface $smurfHat
+    ) {
+        $slotName = 'Top Hats';
+        $options = [
+            'position' => 1,
+        ];
+        $products = [
+            $fedoraHat,
+            $melonHat,
+            $smurfHat
+        ];
+
+        $productBundleFactory
+            ->createNew()
+            ->shouldBeCalled()
+            ->willReturn($productBundle)
+        ;
+        $productBundleSlotFactory
+            ->createNew()
+            ->shouldBeCalled()
+            ->willReturn($productBundleSlot)
+        ;
+        $productBundleSlot
+            ->setName($slotName)
+            ->shouldBeCalled()
+        ;
+        $productBundleSlot
+            ->setBundle($productBundle)
+            ->shouldBeCalled()
+        ;
+        $productBundleSlot
+            ->setPosition($options['position'])
+            ->shouldBeCalled();
+        $productBundleSlot
+            ->addProduct($fedoraHat)
+            ->shouldBeCalled()
+        ;
+        $productBundleSlot
+            ->addProduct($melonHat)
+            ->shouldBeCalled()
+        ;
+        $productBundleSlot
+            ->addProduct($smurfHat)
+            ->shouldBeCalled();
+
+
+        $this
+            ->createProductBundle()
+            ->addSlot($slotName, $options, $products)
         ;
     }
 }
