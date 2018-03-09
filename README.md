@@ -34,7 +34,37 @@
     $ (cd tests/Application && bin/console doctrine:schema:create -e test)
     ```
 
+## Definition
+### ProductBundle
+*ProductBundles* are a independent resource and have a OneToOne-relationship with a *Product* that represents the bundle
+throughout the sylius-framework, e.g. for calculating prices and taxes in the checkout.
+The content of a *ProductBundle* is organized in *ProductBundleSlots*. One ProductBundle can have 1 to n ProductBundleSlots.
+
+### ProductBundleSlots
+*ProductBundleSlots* represent a group of products that can be switched through by the customer. E.g. in a Bundle for 
+football-Teams there could be a Slot 'Shirts', in which different kinds of shirts can be referenced. Only one item of
+each *ProductBundleSlot* is part of the finally bought bundle.
+
 ## Usage
+### ProductBundleCreator
+This is a service to create ProductBundles programmatically. It is designed with a fluent interface. It will only create
+Objects necessary for the ProductBundle. It won't create products for you. But if you have the products that should be 
+part of the bundle you want to create, they can be associated with the created bundle and the slots inside the bundle.
+
+#### get the service
+```php
+$bundleCreator = $container->get('solutiondrive.product_bundles.product_bundle_creator');
+```
+
+#### create your bundle
+```php
+$bundleCreator
+    ->createProductBundle('YourAwesomeBundle', $prductRepresentationOfTheBundle)
+    ->addSlot('YourAwsomeHats', ['position' => 1, 'isPresentation' => true], $hatsToAssignToSlot)
+    ->addSlot('YourAwsomeShirts', ['position' => 2, 'isPresentation' => false], $shirtsToAssignToSlot)
+;
+$productBundle = $bundleCreator->getProductBundle();
+```
 
 ### Running plugin tests
 
