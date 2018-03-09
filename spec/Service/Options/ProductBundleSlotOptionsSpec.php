@@ -48,4 +48,13 @@ class ProductBundleSlotOptionsSpec extends ObjectBehavior
     {
         $this->isPresentationSlot()->shouldReturn(false);
     }
+
+    function it_can_handle_custom_options()
+    {
+        $optionName = 'very_special_option';
+        $optionValue = 'very_special_value';
+
+        $this->addOption($optionName, $optionValue);
+        $this->getOption($optionName)->shouldReturn($optionValue);
+    }
 }

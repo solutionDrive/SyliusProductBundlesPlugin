@@ -17,14 +17,17 @@ class ProductBundleSlotOptions implements ProductBundleSlotOptionsInterface
     /** @var bool */
     private $isPresentationSlot = false;
 
-    public function addOption(string $name, mixed $value): void
+    /** @var array */
+    private $additionalOptions = [];
+
+    public function addOption(string $name, $value): void
     {
-        // TODO: Implement addOption() method.
+        $this->additionalOptions[$name] = $value;
     }
 
-    public function getOption(string $name): mixed
+    public function getOption(string $name)
     {
-        // TODO: Implement getOption() method.
+        return $this->additionalOptions[$name];
     }
 
     public function setPosition(int $position): void
