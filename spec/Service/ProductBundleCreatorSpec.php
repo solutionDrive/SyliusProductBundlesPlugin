@@ -40,8 +40,8 @@ class ProductBundleCreatorSpec extends ObjectBehavior
         ;
 
         $this->createProductBundle($productBundleName, $smurfOutfit);
-        $this
-            ->getProductBundle()
+
+        $this->getProductBundle()
             ->shouldReturn($productBundle);
     }
 
@@ -55,24 +55,12 @@ class ProductBundleCreatorSpec extends ObjectBehavior
         $productBundleName = 'Hefty Smurfs Outfit';
         $slotName = 'Top Hats';
 
-        $productBundleFactory
-            ->createNew()
-            ->shouldBeCalled()
-            ->willReturn($productBundle)
-        ;
-        $productBundleSlotFactory
-            ->createNew()
-            ->shouldBeCalled()
-            ->willReturn($productBundleSlot)
-        ;
-        $productBundleSlot
-            ->setName($slotName)
-            ->shouldBeCalled()
-        ;
-        $productBundleSlot
-            ->setBundle($productBundle)
-            ->shouldBeCalled()
-        ;
+        $productBundleFactory->createNew()->shouldBeCalled()->willReturn($productBundle);
+
+        $productBundleSlotFactory->createNew()->shouldBeCalled()->willReturn($productBundleSlot);
+
+        $productBundleSlot->setName($slotName)->shouldBeCalled();
+        $productBundleSlot->setBundle($productBundle)->shouldBeCalled();
 
         $this
             ->createProductBundle($productBundleName, $smurfOutfit)
@@ -93,27 +81,13 @@ class ProductBundleCreatorSpec extends ObjectBehavior
             'position' => 1,
         ];
 
-        $productBundleFactory
-            ->createNew()
-            ->shouldBeCalled()
-            ->willReturn($productBundle)
-        ;
-        $productBundleSlotFactory
-            ->createNew()
-            ->shouldBeCalled()
-            ->willReturn($productBundleSlot)
-        ;
-        $productBundleSlot
-            ->setName($slotName)
-            ->shouldBeCalled()
-        ;
-        $productBundleSlot
-            ->setBundle($productBundle)
-            ->shouldBeCalled()
-        ;
-        $productBundleSlot
-            ->setPosition($options['position'])
-            ->shouldBeCalled();
+        $productBundleFactory->createNew()->shouldBeCalled()->willReturn($productBundle);
+
+        $productBundleSlotFactory->createNew()->shouldBeCalled()->willReturn($productBundleSlot);
+
+        $productBundleSlot->setName($slotName)->shouldBeCalled();
+        $productBundleSlot->setBundle($productBundle)->shouldBeCalled();
+        $productBundleSlot->setPosition($options['position'])->shouldBeCalled();
 
         $this
             ->createProductBundle($productBundleName, $smurfOutfit)
@@ -142,42 +116,83 @@ class ProductBundleCreatorSpec extends ObjectBehavior
             $smurfHat,
         ];
 
-        $productBundleFactory
-            ->createNew()
-            ->shouldBeCalled()
-            ->willReturn($productBundle)
-        ;
-        $productBundleSlotFactory
-            ->createNew()
-            ->shouldBeCalled()
-            ->willReturn($productBundleSlot)
-        ;
-        $productBundleSlot
-            ->setName($slotName)
-            ->shouldBeCalled()
-        ;
-        $productBundleSlot
-            ->setBundle($productBundle)
-            ->shouldBeCalled()
-        ;
-        $productBundleSlot
-            ->setPosition($options['position'])
-            ->shouldBeCalled();
-        $productBundleSlot
-            ->addProduct($fedoraHat)
-            ->shouldBeCalled()
-        ;
-        $productBundleSlot
-            ->addProduct($melonHat)
-            ->shouldBeCalled()
-        ;
-        $productBundleSlot
-            ->addProduct($smurfHat)
-            ->shouldBeCalled();
+        $productBundleFactory->createNew()->shouldBeCalled()->willReturn($productBundle);
+
+        $productBundleSlotFactory->createNew()->shouldBeCalled()->willReturn($productBundleSlot);
+
+        $productBundleSlot->setName($slotName)->shouldBeCalled();
+        $productBundleSlot->setBundle($productBundle)->shouldBeCalled();
+        $productBundleSlot->setPosition($options['position'])->shouldBeCalled();
+        $productBundleSlot->addProduct($fedoraHat)->shouldBeCalled();
+        $productBundleSlot->addProduct($melonHat)->shouldBeCalled();
+        $productBundleSlot->addProduct($smurfHat)->shouldBeCalled();
 
         $this
             ->createProductBundle($productBundleName, $smurfOutfit)
             ->addSlot($slotName, $options, $products)
+        ;
+    }
+
+    function it_can_add_multiple_slots_to_a_bundle(
+        FactoryInterface $productBundleFactory,
+        ProductBundleInterface $productBundle,
+        FactoryInterface $productBundleSlotFactory,
+        ProductBundleSlotInterface $productBundleSlotTopHats,
+        ProductBundleSlotInterface $productBundleSlotShirts,
+        ProductInterface $smurfOutfit,
+        ProductInterface $fedoraHat,
+        ProductInterface $smurfHat,
+        ProductInterface $whiteShirt
+    ) {
+        $productBundleName = 'Lucky Smurfs Outfit';
+        $slotNameHats = 'Top Hats';
+        $optionsHats = [
+            'position' => 1,
+        ];
+
+        $productsHats = [
+            $fedoraHat,
+            $smurfHat,
+        ];
+
+        $slotNameShirts = 'Smurf Shirts';
+        $optionsShirts = [
+            'position' => 2,
+        ];
+
+        $productsShirts = [
+            $whiteShirt,
+        ];
+
+        $productBundleFactory->createNew()->shouldBeCalled()->willReturn($productBundle);
+
+        $productBundle->setName($productBundleName)->shouldBeCalled();
+        $productBundle->setProduct($smurfOutfit)->shouldBeCalled();
+
+        $productBundleSlotFactory
+            ->createNew()
+            ->shouldBeCalledTimes(2)
+            ->willReturn($productBundleSlotTopHats, $productBundleSlotShirts)
+        ;
+
+        $productBundleSlotTopHats->setName($slotNameHats)->shouldBeCalled();
+        $productBundleSlotTopHats->setPosition($optionsHats['position'])->shouldBeCalled();
+        $productBundleSlotTopHats->setBundle($productBundle)->shouldBeCalled();
+        $productBundleSlotTopHats->addProduct($fedoraHat)->shouldBeCalled();
+        $productBundleSlotTopHats->addProduct($smurfHat)->shouldBeCalled();
+
+        $productBundleSlotShirts->setName($slotNameShirts)->shouldBeCalled();
+        $productBundleSlotShirts->setPosition($optionsShirts['position'])->shouldBeCalled();
+        $productBundleSlotShirts->setBundle($productBundle)->shouldBeCalled();
+        $productBundleSlotShirts->addProduct($whiteShirt)->shouldBeCalled();
+
+        $productBundle->addSlot($productBundleSlotTopHats)->shouldBeCalled();
+        $productBundle->addSlot($productBundleSlotShirts)->shouldBeCalled();
+
+        $this
+            ->createProductBundle($productBundleName, $smurfOutfit)
+            ->addSlot($slotNameHats, $optionsHats, $productsHats)
+            ->addSlot($slotNameShirts, $optionsShirts, $productsShirts)
         ;
     }
 }
