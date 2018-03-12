@@ -1,0 +1,40 @@
+sylius_fixtures:
+    suites:
+        default:
+            listeners:
+                logger: ~
+            fixtures:
+                taxon:
+                    options:
+                        custom:
+                            tree:
+                                name: 'Category'
+                                code: 'category'
+                                children:
+                                    bundles:
+                                        name: 'Bundles'
+                                        code: 'Bundles'
+                                        slug: 'bundles'
+
+                product:
+                    options:
+                        custom:
+                            football_bundle:
+                                name: 'Football Bundle'
+                                code: 'footballbundle'
+                                enabled: true
+                                main_taxon: 'Bundles'
+                                channels: ['US_WEB']
+                                taxons: ['Bundles']
+                            football_bundle_shorts:
+                                name: 'Football Bundle Shorts'
+                                code: 'footballbundle_shorts'
+                                channels: ['US_WEB']
+                                enabled: true
+                                main_taxon: 'null'
+                            football_bundle_shorts:
+                                name: 'Football Bundle Shirts'
+                                code: 'footballbundle_shirts'
+                                channels: ['US_WEB']
+                                enabled: true
+                                main_taxon: 'null'

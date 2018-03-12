@@ -11,6 +11,7 @@ imports:
     - { resource: "@SolutionDriveSyliusProductBundlesPlugin/Resources/config/config.yml" }
 
     - { resource: "../../../../vendor/sylius/sylius/app/config/security.yml" }
+    - { resource: "fixtures.yml" }
 
 framework:
     translator: { fallbacks: ["%locale%", "en"] }
