@@ -1,14 +1,14 @@
 <?php
 
 declare(strict_types=1);
+
+namespace solutionDrive\SyliusProductBundlesPlugin\Service\Options;
+
 /**
  * Created by solutionDrive GmbH
  *
  * @copyright 2018 solutionDrive GmbH
  */
-
-namespace solutionDrive\SyliusProductBundlesPlugin\Service\Options;
-
 interface ProductBundleSlotOptionsInterface extends OptionsInterface
 {
     public function setPosition(int $position): void;

@@ -59,11 +59,13 @@ $bundleCreator = $container->get('solutiondrive.product_bundles.product_bundle_c
 #### create your bundle
 ```php
 
-$hatSlotOptions = new solutionDrive\SyliusProductBundlesPlugin\Service\Options\ProductBundleSlotOptions();
+$slotOptionsFactory = new solutionDrive\SyliusProductBundlesPlugin\Factory\ProductBundleSlotOptionsFactory();
+
+$hatSlotOptions = $slotOptionsFactory->createNew();
 $hatSlotOptions->setPosition(1);
 $hatSlotOptions->setName('TopHats');
 
-$shirtSlotOptions = new solutionDrive\SyliusProductBundlesPlugin\Service\Options\ProductBundleSlotOptions();
+$shirtSlotOptions = $slotOptionsFactory->createNew();
 $shirtSlotOptions->setPosition(2);
 $shirtSlotOptions->setName('Shirts');
 
