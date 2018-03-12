@@ -30,7 +30,7 @@ class ProductBundleSlotOptionsFactory implements ProductBundleSlotOptionsFactory
         $productBundleSlotOptions->setPosition($position);
 
         if ($isPresentationSlot) {
-            $productBundleSlotOptions->isPresentationSlot();
+            $productBundleSlotOptions->setAsPresentationSlot();
         }
 
         foreach ($additionalOptions as $name => $value) {
