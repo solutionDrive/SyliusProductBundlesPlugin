@@ -51,8 +51,11 @@ class ProductBundleCreator implements ProductBundleCreatorInterface
     /**
      * {@inheritdoc}
      */
-    public function addSlot(string $slotName, ?ProductBundleSlotOptionsInterface $options = null, array $products = []): self
-    {
+    public function addSlot(
+        string $slotName,
+        ?ProductBundleSlotOptionsInterface $options = null,
+        array $products = []
+    ): self {
         /** @var ProductBundleSlotInterface $slot */
         $slot = $this->createSlot($slotName);
 
@@ -63,8 +66,10 @@ class ProductBundleCreator implements ProductBundleCreatorInterface
         return $this;
     }
 
-    private function applyOptionsToSlot(?ProductBundleSlotOptionsInterface $options, ProductBundleSlotInterface $slot): void
-    {
+    private function applyOptionsToSlot(
+        ?ProductBundleSlotOptionsInterface $options,
+        ProductBundleSlotInterface $slot
+    ): void {
         if (null !== $options && null !== $options->getPosition()) {
             $slot->setPosition($options->getPosition());
         }

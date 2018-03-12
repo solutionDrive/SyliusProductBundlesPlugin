@@ -196,13 +196,17 @@ class ProductBundleCreatorSpec extends ObjectBehavior
         ;
 
         $productBundleSlotTopHats->setName($slotNameHats)->shouldBeCalled();
-        $productBundleSlotTopHats->setPosition($bundleSlotOptionsHats->getWrappedObject()->getPosition())->shouldBeCalled();
+        $productBundleSlotTopHats
+            ->setPosition($bundleSlotOptionsHats->getWrappedObject()->getPosition())
+            ->shouldBeCalled();
         $productBundleSlotTopHats->setBundle($productBundle)->shouldBeCalled();
         $productBundleSlotTopHats->addProduct($fedoraHat)->shouldBeCalled();
         $productBundleSlotTopHats->addProduct($smurfHat)->shouldBeCalled();
 
         $productBundleSlotShirts->setName($slotNameShirts)->shouldBeCalled();
-        $productBundleSlotShirts->setPosition($bundleSlotOptionsShirts->getWrappedObject()->getPosition())->shouldBeCalled();
+        $productBundleSlotShirts
+            ->setPosition($bundleSlotOptionsShirts->getWrappedObject()->getPosition())
+            ->shouldBeCalled();
         $productBundleSlotShirts->setBundle($productBundle)->shouldBeCalled();
         $productBundleSlotShirts->addProduct($whiteShirt)->shouldBeCalled();
 
