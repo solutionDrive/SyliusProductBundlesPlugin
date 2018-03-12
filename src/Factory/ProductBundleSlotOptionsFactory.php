@@ -13,4 +13,17 @@ class ProductBundleSlotOptionsFactory implements ProductBundleSlotOptionsFactory
     {
         return new ProductBundleSlotOptions();
     }
+
+    public function createNewWithValues(
+        int $position,
+        bool $isPresentationSlot = false
+    ): ProductBundleSlotOptionsInterface
+    {
+        $productBundleSlotOptions = $this->createNew();
+        $productBundleSlotOptions->setPosition($position);
+        if($isPresentationSlot) {
+            $productBundleSlotOptions->isPresentationSlot();
+        }
+        return $productBundleSlotOptions;
+    }
 }

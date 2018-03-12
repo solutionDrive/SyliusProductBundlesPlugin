@@ -8,6 +8,7 @@ use PhpSpec\ObjectBehavior;
 use solutionDrive\SyliusProductBundlesPlugin\Factory\ProductBundleSlotOptionsFactory;
 use solutionDrive\SyliusProductBundlesPlugin\Factory\ProductBundleSlotOptionsFactoryInterface;
 use solutionDrive\SyliusProductBundlesPlugin\Service\Options\ProductBundleSlotOptions;
+use solutionDrive\SyliusProductBundlesPlugin\Service\Options\ProductBundleSlotOptionsInterface;
 use Sylius\Component\Resource\Factory\FactoryInterface;
 
 class ProductBundleSlotOptionsFactorySpec extends ObjectBehavior
@@ -29,6 +30,14 @@ class ProductBundleSlotOptionsFactorySpec extends ObjectBehavior
 
     function it_creates_a_new_empty_slot_options_object()
     {
-        $this->createNew()->shouldReturnAnInstanceOf(ProductBundleSlotOptions::class);
+        $this->createNew()->shouldReturnAnInstanceOf(ProductBundleSlotOptionsInterface::class);
+    }
+
+    function it_creates_a_new_slot_options_object_with_given_options()
+    {
+        $position = 1;
+        $isPresentationSlot = false;
+
+        $this->createNewWithValues($position, $isPresentationSlot)->shouldReturnAnInstanceOf(ProductBundleSlotOptionsInterface::class);
     }
 }
