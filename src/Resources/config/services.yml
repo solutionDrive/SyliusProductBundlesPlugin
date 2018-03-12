@@ -3,9 +3,19 @@ services:
     solutiondrive.product_bundles.menu_listener.main:
         class: solutionDrive\SyliusProductBundlesPlugin\Menu\AdminMenuListener
         tags:
-          - { name: kernel.event_listener, event: sylius.menu.admin.main, method: addProductBundlesMenu }
+            - { name: kernel.event_listener, event: sylius.menu.admin.main, method: addProductBundlesMenu }
+    # Factories
+    solutiondrive.factory.product_bundle_slot:
+        class: solutionDrive\SyliusProductBundlesPlugin\Factory\ProductBundleSlotFactory
 
+    # ProductBundle - Services
     solutiondrive.product_bundles.product_bundle_registry:
         class: solutionDrive\SyliusProductBundlesPlugin\Service\ProductBundleRegistry
         arguments:
             - "@solutiondrive.repository.product_bundle"
+
+    solutiondrive.product_bundles.product_bundle_creator:
+        class: solutionDrive\SyliusProductBundlesPlugin\Service\ProductBundleCreator
+        arguments:
+            - "@solutiondrive.factory.product_bundle"
+            - "@solutiondrive.factory.product_bundle_slot"
