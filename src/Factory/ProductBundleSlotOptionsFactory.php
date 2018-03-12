@@ -14,16 +14,29 @@ class ProductBundleSlotOptionsFactory implements ProductBundleSlotOptionsFactory
         return new ProductBundleSlotOptions();
     }
 
+    /**
+     * @param int $position
+     * @param bool $isPresentationSlot
+     * @param array $additionalOptions ['optionKey' => 'optionValue']
+     *
+     * @return ProductBundleSlotOptionsInterface
+     */
     public function createNewWithValues(
         int $position,
-        bool $isPresentationSlot = false
-    ): ProductBundleSlotOptionsInterface
-    {
+        bool $isPresentationSlot = false,
+        array $additionalOptions = []
+    ): ProductBundleSlotOptionsInterface {
         $productBundleSlotOptions = $this->createNew();
         $productBundleSlotOptions->setPosition($position);
-        if($isPresentationSlot) {
+
+        if ($isPresentationSlot) {
             $productBundleSlotOptions->isPresentationSlot();
         }
+
+        foreach ($additionalOptions as $name => $value) {
+            $productBundleSlotOptions->addOption($name, $value);
+        }
+
         return $productBundleSlotOptions;
     }
 }

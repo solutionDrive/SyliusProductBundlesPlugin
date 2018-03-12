@@ -61,14 +61,9 @@ $bundleCreator = $container->get('solutiondrive.product_bundles.product_bundle_c
 
 $slotOptionsFactory = new solutionDrive\SyliusProductBundlesPlugin\Factory\ProductBundleSlotOptionsFactory();
 
-$hatSlotOptions = $slotOptionsFactory->createNew();
-$hatSlotOptions->setPosition(1);
-$hatSlotOptions->setName('TopHats');
+$hatSlotOptions = $slotOptionsFactory->createNewWithValues(1, 'TopHats');
 
-$shirtSlotOptions = $slotOptionsFactory->createNew();
-$shirtSlotOptions->setPosition(2);
-$shirtSlotOptions->setName('Shirts');
-
+$shirtSlotOptions = $slotOptionsFactory->createNewWithValues(2, 'Shirts', ['someAdditionalOption' => 'AndItsValue']);
 
 $bundleCreator
     ->createProductBundle('YourAwesomeBundle', $prductRepresentationOfTheBundle)
