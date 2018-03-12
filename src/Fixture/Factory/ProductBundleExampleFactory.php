@@ -23,6 +23,7 @@ class ProductBundleExampleFactory extends AbstractExampleFactory
      * @var FactoryInterface
      */
     private $productBundleFactory;
+
     /**
      * @var ProductBundleSlotFactoryInterface
      */
@@ -32,6 +33,7 @@ class ProductBundleExampleFactory extends AbstractExampleFactory
      * @var OptionsResolver
      */
     private $optionsResolver;
+
     /**
      * @var ProductRepositoryInterface
      */
