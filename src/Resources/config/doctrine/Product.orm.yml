@@ -4,5 +4,5 @@ solutionDrive\SyliusProductBundlesPlugin\Entity\Product:
 
     oneToOne:
         productBundle:
-            targetEntity: solutionDrive\SyliusProductBundlesPlugin\Entity\ProductBundle
+            targetEntity: solutionDrive\SyliusProductBundlesPlugin\Entity\ProductBundleInterface
             mappedBy: product
