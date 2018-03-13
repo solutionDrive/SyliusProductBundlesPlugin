@@ -6,10 +6,10 @@ sylius_grid:
                 options:
                     class: solutionDrive\SyliusProductBundlesPlugin\Entity\ProductBundle
             fields:
-                name:
+                product.name:
                     type: string
                     label: sylius.ui.name
-                code:
+                product.code:
                     type: string
                     label: sylius.ui.code
             actions:
