@@ -9,45 +9,36 @@ declare(strict_types=1);
 
 namespace solutionDrive\SyliusProductBundlesPlugin\Fixture\Factory;
 
-use solutionDrive\SyliusProductBundlesPlugin\Entity\ProductBundle;
-use solutionDrive\SyliusProductBundlesPlugin\Factory\ProductBundleSlotFactoryInterface;
+use solutionDrive\SyliusProductBundlesPlugin\Entity\ProductBundleInterface;
+use solutionDrive\SyliusProductBundlesPlugin\Service\ProductBundleCreatorInterface;
 use Sylius\Bundle\CoreBundle\Fixture\Factory\AbstractExampleFactory;
-use Sylius\Bundle\CoreBundle\Fixture\Factory\ExampleFactoryInterface;
 use Sylius\Component\Core\Model\ProductInterface;
 use Sylius\Component\Core\Repository\ProductRepositoryInterface;
-use Sylius\Component\Resource\Factory\FactoryInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class ProductBundleExampleFactory extends AbstractExampleFactory implements ExampleFactoryInterface
+class ProductBundleExampleFactory extends AbstractExampleFactory
 {
     /**
-     * @var FactoryInterface
+     * @var ProductBundleCreatorInterface
      */
-    private $productBundleFactory;
-
-    /**
-     * @var ProductBundleSlotFactoryInterface
-     */
-    private $productBundleSlotFactory;
-
-    /**
-     * @var OptionsResolver
-     */
-    private $optionsResolver;
+    private $productBundleCreator;
 
     /**
      * @var ProductRepositoryInterface
      */
     private $productRepository;
 
+    /**
+     * @var OptionsResolver
+     */
+    private $optionsResolver;
+
     public function __construct(
-        FactoryInterface $productBundleFactory,
-        ProductRepositoryInterface $productRepository,
-        ProductBundleSlotFactoryInterface $productBundleSlotFactory
+        ProductBundleCreatorInterface $productBundleCreator,
+        ProductRepositoryInterface $productRepository
     ) {
-        $this->productBundleFactory = $productBundleFactory;
+        $this->productBundleCreator = $productBundleCreator;
         $this->productRepository = $productRepository;
-        $this->productBundleSlotFactory = $productBundleSlotFactory;
         $this->optionsResolver = new OptionsResolver();
         $this->configureOptions($this->optionsResolver);
     }
@@ -67,18 +58,18 @@ class ProductBundleExampleFactory extends AbstractExampleFactory implements Exam
     /**
      * {@inheritdoc}
      */
-    public function create(array $options = [])
+    public function create(array $options = []): ProductBundleInterface
     {
         $options = $this->optionsResolver->resolve($options);
 
         /** @var ProductInterface $product */
         $product = $this->productRepository->findOneByCode($options['productCode']);
 
-        /** @var ProductBundle $productBundle */
-        $productBundle = $this->productBundleFactory->createNew();
-        $productBundle->setProduct($product);
-        $productBundle->setName($product->getName());
+        $productBundleCreator = $this->productBundleCreator->createProductBundle($product->getName(), $product);
+        /** @var ProductBundleInterface $productBundle */
+        $productBundle = $productBundleCreator->getProductBundle();
         $productBundle->setCode($product->getCode());
+
 
         return $productBundle;
     }
