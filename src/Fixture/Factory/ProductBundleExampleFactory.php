@@ -10,11 +10,14 @@ declare(strict_types=1);
 namespace solutionDrive\SyliusProductBundlesPlugin\Fixture\Factory;
 
 use solutionDrive\SyliusProductBundlesPlugin\Entity\ProductBundleInterface;
+use solutionDrive\SyliusProductBundlesPlugin\Service\Options\ProductBundleSlotOptions;
+use solutionDrive\SyliusProductBundlesPlugin\Service\Options\ProductBundleSlotOptionsInterface;
 use solutionDrive\SyliusProductBundlesPlugin\Service\ProductBundleCreatorInterface;
 use Sylius\Bundle\CoreBundle\Fixture\Factory\AbstractExampleFactory;
 use Sylius\Component\Core\Model\ProductInterface;
 use Sylius\Component\Core\Repository\ProductRepositoryInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Webmozart\Assert\Assert;
 
 class ProductBundleExampleFactory extends AbstractExampleFactory
 {
@@ -65,11 +68,18 @@ class ProductBundleExampleFactory extends AbstractExampleFactory
         /** @var ProductInterface $product */
         $product = $this->productRepository->findOneByCode($options['productCode']);
 
+        Assert::notNull($product, sprintf('Bundle product %s could not be found', $options['productCode']));
         $productBundleCreator = $this->productBundleCreator->createProductBundle($product->getName(), $product);
 
         foreach ($options['slots'] as $slot) {
-            $product = $this->productRepository->findOneByCode($options['productCode']);
-            $productBundleCreator->addSlot($slot['name'], null, [$product]);
+            $slotProducts = [];
+            foreach ($slot['productCodes'] as $productCode) {
+                $slotProduct =  $this->productRepository->findOneByCode($productCode);
+                Assert::notNull($slotProduct, sprintf('Slot product %s could not be found', $productCode));
+                $slotProducts[] = $slotProduct;
+            }
+            $slotOptions = $this->createSlotOptions($slot['options']);
+            $productBundleCreator->addSlot($slot['name'], $slotOptions, $slotProducts);
         }
 
         /** @var ProductBundleInterface $productBundle */
@@ -77,5 +87,23 @@ class ProductBundleExampleFactory extends AbstractExampleFactory
         $productBundle->setCode($product->getCode());
 
         return $productBundle;
+    }
+
+    /**
+     * @param string[] $slotOptions
+     */
+    private function createSlotOptions(array $rawSlotOptions= []): ProductBundleSlotOptionsInterface
+    {
+        $slotOptions = new ProductBundleSlotOptions();
+        foreach ($rawSlotOptions as $optionName => $optionValue) {
+            $setter = 'set'.ucfirst($optionName);
+
+            Assert::methodExists($slotOptions, $setter, sprintf('Setter %s for ProductBundleSlotOptions is not defined', $setter));
+
+            if (method_exists($slotOptions, $setter = 'set'.ucfirst($optionName))) {
+                $slotOptions->$setter($optionValue);
+            }
+        }
+        return $slotOptions;
     }
 }

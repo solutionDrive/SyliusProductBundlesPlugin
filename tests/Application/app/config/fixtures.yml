@@ -7,45 +7,40 @@ sylius_fixtures:
                 taxon:
                     options:
                         custom:
-                            tree:
-                                name: 'Category'
-                                code: 'category'
-                                children:
-                                    bundles:
-                                        name: 'Bundles'
-                                        code: 'Bundles'
-                                        slug: 'bundles'
+                            - name: 'Category'
+                              code: 'category'
+                              children:
+                                  - name: 'Bundles'
+                                    code: 'Bundles'
+                                    slug: 'bundles'
 
                 product:
                     options:
                         custom:
-                            football_bundle:
-                                name: 'Football Bundle'
-                                code: 'footballbundle'
-                                enabled: true
-                                main_taxon: 'Bundles'
-                                channels: ['US_WEB']
-                                taxons: ['Bundles']
-                            football_bundle_shorts:
-                                name: 'Football Bundle Shorts'
-                                code: 'footballbundle_shorts'
-                                channels: ['US_WEB']
-                                enabled: true
-                                main_taxon: 'null'
-                            football_bundle_shorts:
-                                name: 'Football Bundle Shirts'
-                                code: 'footballbundle_shirts'
-                                channels: ['US_WEB']
-                                enabled: true
-                                main_taxon: 'null'
+                            - name: 'Football Bundle'
+                              code: 'footballbundle'
+                              enabled: true
+                              main_taxon: 'Bundles'
+                              channels: ['US_WEB']
+                              taxons: ['Bundles']
+                            - name: 'Football Bundle Shorts'
+                              code: 'footballbundle_shorts'
+                              channels: ['US_WEB']
+                              enabled: true
+                              main_taxon: 'null'
+                            - name: 'Football Bundle Shirts'
+                              code: 'footballbundle_shirts'
+                              channels: ['US_WEB']
+                              enabled: true
+                              main_taxon: 'null'
                 product_bundle:
                     options:
                         custom:
                             - productCode: 'footballbundle'
                               slots:
                                   - name: 'Shorts'
-                                    productCodes: ['football_bundle_shorts']
+                                    productCodes: ['footballbundle_shorts']
                                     options: {position: 0}
                                   - name: 'Shirts'
                                     productCodes: ['footballbundle_shirts']
-                                    options: {isPresentationSlot: true, position: 0}
+                                    options: {asPresentationSlot: true, position: 0}
