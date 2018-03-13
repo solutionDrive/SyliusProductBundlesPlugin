@@ -38,3 +38,10 @@ sylius_fixtures:
                                 channels: ['US_WEB']
                                 enabled: true
                                 main_taxon: 'null'
+                product_bundle:
+                    options:
+                        custom:
+                            - productCode: 'footballbundle'
+                              slots:
+                                  Shorts: 'football_bundle_shorts'
+                                  Shirts: 'footballbundle_shirts'

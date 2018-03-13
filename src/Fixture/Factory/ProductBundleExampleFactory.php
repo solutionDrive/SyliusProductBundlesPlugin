@@ -12,12 +12,13 @@ namespace solutionDrive\SyliusProductBundlesPlugin\Fixture\Factory;
 use solutionDrive\SyliusProductBundlesPlugin\Entity\ProductBundle;
 use solutionDrive\SyliusProductBundlesPlugin\Factory\ProductBundleSlotFactoryInterface;
 use Sylius\Bundle\CoreBundle\Fixture\Factory\AbstractExampleFactory;
+use Sylius\Bundle\CoreBundle\Fixture\Factory\ExampleFactoryInterface;
 use Sylius\Component\Core\Model\ProductInterface;
 use Sylius\Component\Core\Repository\ProductRepositoryInterface;
 use Sylius\Component\Resource\Factory\FactoryInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class ProductBundleExampleFactory extends AbstractExampleFactory
+class ProductBundleExampleFactory extends AbstractExampleFactory implements ExampleFactoryInterface
 {
     /**
      * @var FactoryInterface
@@ -56,7 +57,11 @@ class ProductBundleExampleFactory extends AbstractExampleFactory
      */
     protected function configureOptions(OptionsResolver $resolver): void
     {
-        // empty function
+        $resolver
+            ->setDefined('productCode')
+            ->setAllowedTypes('productCode', 'string')
+            ->setDefined('slots')
+            ->setAllowedTypes('slots', 'array');
     }
 
     /**
@@ -67,7 +72,7 @@ class ProductBundleExampleFactory extends AbstractExampleFactory
         $options = $this->optionsResolver->resolve($options);
 
         /** @var ProductInterface $product */
-        $product = $this->productRepository->findOneByCode($options['code']);
+        $product = $this->productRepository->findOneByCode($options['productCode']);
 
         /** @var ProductBundle $productBundle */
         $productBundle = $this->productBundleFactory->createNew();
