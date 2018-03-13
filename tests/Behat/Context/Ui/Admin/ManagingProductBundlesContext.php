@@ -71,7 +71,7 @@ class ManagingProductBundlesContext implements Context
         Assert::true(
             $this
                 ->indexPage
-                ->isSingleResourceOnPage(['name' => $productBundleName])
+                ->isSingleResourceOnPage(['product.name' => $productBundleName])
         );
     }
 
@@ -180,7 +180,7 @@ class ManagingProductBundlesContext implements Context
      */
     public function iDeleteThisProductBundle(ProductBundleInterface $productBundle)
     {
-        $this->indexPage->deleteResourceOnPage(['code' => $productBundle->getProduct()->getCode()]);
+        $this->indexPage->deleteResourceOnPage(['product.code' => $productBundle->getProduct()->getCode()]);
     }
 
     /**
@@ -191,7 +191,7 @@ class ManagingProductBundlesContext implements Context
         Assert::false(
             $this
                 ->indexPage
-                ->isSingleResourceOnPage(['name' => $productBundle])
+                ->isSingleResourceOnPage(['product.name' => $productBundle])
         );
     }
 }
