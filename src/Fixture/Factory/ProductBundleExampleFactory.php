@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 /*
@@ -74,7 +75,7 @@ class ProductBundleExampleFactory extends AbstractExampleFactory
         foreach ($options['slots'] as $slot) {
             $slotProducts = [];
             foreach ($slot['productCodes'] as $productCode) {
-                $slotProduct =  $this->productRepository->findOneByCode($productCode);
+                $slotProduct = $this->productRepository->findOneByCode($productCode);
                 Assert::notNull($slotProduct, sprintf('Slot product %s could not be found', $productCode));
                 $slotProducts[] = $slotProduct;
             }
@@ -92,7 +93,7 @@ class ProductBundleExampleFactory extends AbstractExampleFactory
     /**
      * @param string[] $rawSlotOptions
      */
-    private function createSlotOptions(array $rawSlotOptions= []): ProductBundleSlotOptionsInterface
+    private function createSlotOptions(array $rawSlotOptions = []): ProductBundleSlotOptionsInterface
     {
         $slotOptions = new ProductBundleSlotOptions();
         foreach ($rawSlotOptions as $optionName => $optionValue) {
@@ -104,6 +105,7 @@ class ProductBundleExampleFactory extends AbstractExampleFactory
                 $slotOptions->$setter($optionValue);
             }
         }
+
         return $slotOptions;
     }
 }
