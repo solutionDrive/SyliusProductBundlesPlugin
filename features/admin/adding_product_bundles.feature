@@ -9,11 +9,9 @@ Feature: Creating a product bundle
 
   @ui
   Scenario: creating a new product bundle from an existing product
-    Given the store has a product "Smurf2Gold Conversion Machine"
+    Given the store has a product "Smurf2Gold Conversion Machine Bundle"
     When I create a new product bundle
-    And I specify its name as "Smurf2Gold Conversion Machine Bundle"
-    And I specify its code as "smurf2gold-conversion-machine-bundle"
-    And I associate the product "Smurf2Gold Conversion Machine" with its bundle
+    And I associate the product "Smurf2Gold Conversion Machine Bundle" with its bundle
     When I add it
     And I browse product bundles
     Then I should see a product bundle "Smurf2Gold Conversion Machine Bundle"
