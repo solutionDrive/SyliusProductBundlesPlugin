@@ -8,18 +8,9 @@ solutionDrive\SyliusProductBundlesPlugin\Entity\ProductBundle:
             generator:
                 strategy: AUTO
 
-    fields:
-        name:
-            type: string
-            length: 255
-        code:
-            type: string
-            length: 255
-            unique: true
-
     oneToOne:
         product:
-            targetEntity: solutionDrive\SyliusProductBundlesPlugin\Entity\Product
+            targetEntity: Sylius\Component\Product\Model\ProductInterface
             inversedBy: productBundle
             joinColumn:
                 name: product_id
@@ -28,12 +19,12 @@ solutionDrive\SyliusProductBundlesPlugin\Entity\ProductBundle:
                 unique: true
 
         presentationSlot:
-            targetEntity: solutionDrive\SyliusProductBundlesPlugin\Entity\ProductBundleSlot
+            targetEntity: solutionDrive\SyliusProductBundlesPlugin\Entity\ProductBundleSlotInterface
             joinColumn:
                 name: presentation_slot_id
                 referencedColumnName: id
 
     oneToMany:
         slots:
-            targetEntity: solutionDrive\SyliusProductBundlesPlugin\Entity\ProductBundleSlot
+            targetEntity: solutionDrive\SyliusProductBundlesPlugin\Entity\ProductBundleSlotInterface
             mappedBy: bundle

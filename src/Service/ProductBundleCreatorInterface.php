@@ -15,10 +15,7 @@ use Sylius\Component\Core\Model\ProductInterface;
  */
 interface ProductBundleCreatorInterface
 {
-    public function createProductBundle(
-        string $productBundleName,
-        ProductInterface $productBundleProduct
-    ): ProductBundleCreator;
+    public function createProductBundle(ProductInterface $productBundleProduct): ProductBundleCreator;
 
     public function getProductBundle(): ProductBundleInterface;
 

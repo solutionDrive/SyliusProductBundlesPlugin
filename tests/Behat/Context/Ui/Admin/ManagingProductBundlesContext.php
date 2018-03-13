@@ -71,7 +71,7 @@ class ManagingProductBundlesContext implements Context
         Assert::true(
             $this
                 ->indexPage
-                ->isSingleResourceOnPage(['name' => $productBundleName])
+                ->isSingleResourceOnPage(['product.name' => $productBundleName])
         );
     }
 
@@ -129,14 +129,6 @@ class ManagingProductBundlesContext implements Context
         $this->createPage->open();
     }
 
-    /**
-     * @When I specify its name as :name
-     * @When I remove its name
-     */
-    public function iSpecifyItsNameAs($name = null)
-    {
-        $this->createPage->nameIt($name);
-    }
 
     /**
      * @When I add it
@@ -161,15 +153,6 @@ class ManagingProductBundlesContext implements Context
     {
         throw new PendingException();
     }
-
-    /**
-     * @When I specify its code as :code
-     */
-    public function iSpecifyItsCodeAs($code)
-    {
-        $this->createPage->specifyCode($code);
-    }
-
 
     /**
      * @When I associate the product :productName with its bundle
@@ -197,7 +180,7 @@ class ManagingProductBundlesContext implements Context
      */
     public function iDeleteThisProductBundle(ProductBundleInterface $productBundle)
     {
-        $this->indexPage->deleteResourceOnPage(['code' => $productBundle->getCode()]);
+        $this->indexPage->deleteResourceOnPage(['product.code' => $productBundle->getProduct()->getCode()]);
     }
 
     /**
@@ -208,7 +191,7 @@ class ManagingProductBundlesContext implements Context
         Assert::false(
             $this
                 ->indexPage
-                ->isSingleResourceOnPage(['name' => $productBundle])
+                ->isSingleResourceOnPage(['product.name' => $productBundle])
         );
     }
 }

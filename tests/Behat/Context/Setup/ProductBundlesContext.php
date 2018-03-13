@@ -70,8 +70,6 @@ class ProductBundlesContext implements Context
         /** @var ProductBundleInterface|ResourceInterface $productBundle */
         $productBundle = $this->productBundleFactory->createNew();
         $productBundle->setProduct($product);
-        $productBundle->setName($product->getName() . ' Bundle');
-        $productBundle->setCode($product->getCode() . '_bundle');
         $this->productBundleManager->persist($productBundle);
         $this->productBundleManager->flush();
         $this->sharedStorage->set('product_bundle', $productBundle);

@@ -23,7 +23,7 @@ solutionDrive\SyliusProductBundlesPlugin\Entity\ProductBundleSlot:
 
     manyToOne:
         bundle:
-            targetEntity: solutionDrive\SyliusProductBundlesPlugin\Entity\ProductBundle
+            targetEntity: solutionDrive\SyliusProductBundlesPlugin\Entity\ProductBundleInterface
             inversedBy: slots
             joinColumn:
                 name: bundle_id
@@ -32,7 +32,7 @@ solutionDrive\SyliusProductBundlesPlugin\Entity\ProductBundleSlot:
 
     manyToMany:
         products:
-            targetEntity: Sylius\Component\Core\Model\Product
+            targetEntity: Sylius\Component\Product\Model\ProductInterface
             joinTable:
                 name: solutiondrive_product_bundle_slot_product
                 joinColumns:

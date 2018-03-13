@@ -34,10 +34,9 @@ class ProductBundleCreator implements ProductBundleCreatorInterface
         $this->productBundleSlotFactory = $productBundleSlotFactory;
     }
 
-    public function createProductBundle(string $productBundleName, ProductInterface $productBundleProduct): self
+    public function createProductBundle(ProductInterface $productBundleProduct): self
     {
         $this->productBundle = $this->productBundleFactory->createNew();
-        $this->productBundle->setName($productBundleName);
         $this->productBundle->setProduct($productBundleProduct);
 
         return $this;

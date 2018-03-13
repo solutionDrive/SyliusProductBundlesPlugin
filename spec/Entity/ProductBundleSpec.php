@@ -9,7 +9,6 @@ use solutionDrive\SyliusProductBundlesPlugin\Entity\ProductBundle;
 use solutionDrive\SyliusProductBundlesPlugin\Entity\ProductBundleInterface;
 use solutionDrive\SyliusProductBundlesPlugin\Entity\ProductBundleSlotInterface;
 use Sylius\Component\Core\Model\ProductInterface;
-use Sylius\Component\Resource\Model\CodeAwareInterface;
 use Sylius\Component\Resource\Model\ResourceInterface;
 
 class ProductBundleSpec extends ObjectBehavior
@@ -27,17 +26,6 @@ class ProductBundleSpec extends ObjectBehavior
     function it_implements_resource_interface()
     {
         $this->shouldImplement(ResourceInterface::class);
-    }
-
-    function it_implements_code_aware_interface()
-    {
-        $this->shouldImplement(CodeAwareInterface::class);
-    }
-
-    function it_has_a_name()
-    {
-        $this->setName('Gargamel Smurf Domination Stuff');
-        $this->getName()->shouldReturn('Gargamel Smurf Domination Stuff');
     }
 
     function it_can_contain_slots(

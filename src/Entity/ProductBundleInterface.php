@@ -13,23 +13,14 @@ namespace solutionDrive\SyliusProductBundlesPlugin\Entity;
 
 use Doctrine\Common\Collections\Collection;
 use Sylius\Component\Core\Model\ProductInterface;
+use Sylius\Component\Resource\Model\ResourceInterface;
 
-interface ProductBundleInterface
+interface ProductBundleInterface extends ResourceInterface
 {
     /**
      * @return int|null
      */
     public function getId(): ?int;
-
-    /**
-     * @return string
-     */
-    public function getName(): ?string;
-
-    /**
-     * @param string $name
-     */
-    public function setName(?string $name): void;
 
     /**
      * @param ProductBundleSlotInterface $slot
