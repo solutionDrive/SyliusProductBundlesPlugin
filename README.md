@@ -73,6 +73,13 @@ $bundleCreator
 $productBundle = $bundleCreator->getProductBundle();
 ```
 
+
+#### Fixtures
+
+Sometimes you'll need to set up your environment quickly and add some default bundles. 
+You can take a look at `tests/Application/app/config/fixtures.yml` file to see how you can configure fixtures.
+
+
 ### Running plugin tests
 
   - PHPUnit
