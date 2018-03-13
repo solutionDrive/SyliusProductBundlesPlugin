@@ -8,15 +8,6 @@ solutionDrive\SyliusProductBundlesPlugin\Entity\ProductBundle:
             generator:
                 strategy: AUTO
 
-    fields:
-        name:
-            type: string
-            length: 255
-        code:
-            type: string
-            length: 255
-            unique: true
-
     oneToOne:
         product:
             targetEntity: Sylius\Component\Product\Model\ProductInterface
