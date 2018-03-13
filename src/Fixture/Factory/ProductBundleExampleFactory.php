@@ -90,17 +90,17 @@ class ProductBundleExampleFactory extends AbstractExampleFactory
     }
 
     /**
-     * @param string[] $slotOptions
+     * @param string[] $rawSlotOptions
      */
     private function createSlotOptions(array $rawSlotOptions= []): ProductBundleSlotOptionsInterface
     {
         $slotOptions = new ProductBundleSlotOptions();
         foreach ($rawSlotOptions as $optionName => $optionValue) {
-            $setter = 'set'.ucfirst($optionName);
+            $setter = 'set' . ucfirst($optionName);
 
             Assert::methodExists($slotOptions, $setter, sprintf('Setter %s for ProductBundleSlotOptions is not defined', $setter));
 
-            if (method_exists($slotOptions, $setter = 'set'.ucfirst($optionName))) {
+            if (method_exists($slotOptions, $setter = 'set' . ucfirst($optionName))) {
                 $slotOptions->$setter($optionValue);
             }
         }
