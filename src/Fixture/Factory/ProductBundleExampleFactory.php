@@ -67,9 +67,9 @@ class ProductBundleExampleFactory extends AbstractExampleFactory
 
         $productBundleCreator = $this->productBundleCreator->createProductBundle($product->getName(), $product);
 
-        foreach ($options['slots'] as $slotName => $productCode) {
+        foreach ($options['slots'] as $slot) {
             $product = $this->productRepository->findOneByCode($options['productCode']);
-            $productBundleCreator->addSlot($slotName, null, [$product]);
+            $productBundleCreator->addSlot($slot['name'], null, [$product]);
         }
 
         /** @var ProductBundleInterface $productBundle */

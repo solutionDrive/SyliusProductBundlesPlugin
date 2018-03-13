@@ -43,5 +43,9 @@ sylius_fixtures:
                         custom:
                             - productCode: 'footballbundle'
                               slots:
-                                  Shorts: 'football_bundle_shorts'
-                                  Shirts: 'footballbundle_shirts'
+                                  - name: 'Shorts'
+                                    productCodes: ['football_bundle_shorts']
+                                    options: {position: 0}
+                                  - name: 'Shirts'
+                                    productCodes: ['footballbundle_shirts']
+                                    options: {isPresentationSlot: true, position: 0}

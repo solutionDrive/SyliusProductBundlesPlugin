@@ -24,6 +24,14 @@ class ProductBundleFixture extends AbstractResourceFixture
         $resourceNode
             ->children()
                 ->scalarNode('productCode')->cannotBeEmpty()->end()
-                ->arrayNode('slots')->prototype('scalar')->end()->end();
+                ->arrayNode('slots')
+                    ->prototype('array')
+                        ->children()
+                            ->scalarNode('name')->cannotBeEmpty()->end()
+                            ->arrayNode('productCodes')->prototype('scalar')->end()->end()
+                            ->arrayNode('options')->prototype('scalar')->end()->end()
+                        ->end()
+                    ->end()
+                ->end();
     }
 }
