@@ -105,7 +105,6 @@ class ManagingProductBundlesContext implements Context
 
     /**
      * @When I browse product bundles
-     * @When I want to browse product bundles
      */
     public function iBrowseProductBundles()
     {

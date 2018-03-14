@@ -12,6 +12,6 @@ Feature: Browsing product bundles list
 
   @ui
   Scenario: Browsing defined product bundles
-    When I want to browse product bundles
+    When I browse product bundles
     Then I should see 1 product bundle in the list
     And I should see a product bundle "smurf outfit"
