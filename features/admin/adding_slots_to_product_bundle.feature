@@ -10,8 +10,7 @@ Feature: Browsing product bundle slots in product bundle
 
   @ui
   Scenario: Adding a slot to a product bundle
-    When I am browsing product bundles
-    And I choose product bundle "smurf outfit"
-    And I edit this product bundle
-    And I add 1 slot
-    Then I should see the product bundle has 1 slot
+    When I want to modify the "smurf outfit" product bundle
+    And I add the slot "headgear"
+    And I save my changes
+    Then I should see the product bundle has the slot "headgear"
