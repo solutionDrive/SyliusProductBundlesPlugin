@@ -29,6 +29,7 @@ solutionDrive\SyliusProductBundlesPlugin\Entity\ProductBundleSlot:
                 name: bundle_id
                 referencedColumnName: id
                 nullable: false
+                onDelete: 'CASCADE'
 
     manyToMany:
         products:
@@ -38,6 +39,7 @@ solutionDrive\SyliusProductBundlesPlugin\Entity\ProductBundleSlot:
                 joinColumns:
                     product_bundle_slot_id:
                         referencedColumnName: id
+                        onDelete: 'CASCADE'
                 inverseJoinColumns:
                     product_id:
                         referencedColumnName: id

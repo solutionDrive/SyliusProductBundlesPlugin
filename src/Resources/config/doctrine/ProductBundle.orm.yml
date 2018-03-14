@@ -23,6 +23,7 @@ solutionDrive\SyliusProductBundlesPlugin\Entity\ProductBundle:
             joinColumn:
                 name: presentation_slot_id
                 referencedColumnName: id
+                onDelete: 'CASCADE'
 
     oneToMany:
         slots:
