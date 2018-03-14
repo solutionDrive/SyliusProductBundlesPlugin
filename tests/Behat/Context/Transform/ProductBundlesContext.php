@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Tests\solutionDrive\SyliusExamplePlugin\Behat\Context\Transform;
+namespace Tests\solutionDrive\SyliusProductBundlesPlugin\Behat\Context\Transform;
 
 use Behat\Behat\Context\Context;
 use Sylius\Component\Resource\Repository\RepositoryInterface;

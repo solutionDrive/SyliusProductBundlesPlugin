@@ -39,7 +39,7 @@
 <!-- Transformer Services -->
         <service
             id="solutiondrive.syliusproductbundlesplugin.behat.context.transform.product_bundles"
-            class="Tests\solutionDrive\SyliusExamplePlugin\Behat\Context\Transform\ProductBundlesContext"
+            class="Tests\solutionDrive\SyliusProductBundlesPlugin\Behat\Context\Transform\ProductBundlesContext"
         >
             <argument type="service" id="__symfony__.solutiondrive.repository.product_bundle" />
             <tag name="fob.context_service" />

@@ -45,6 +45,7 @@ default:
                 - sylius.behat.context.setup.admin_security
                 - sylius.behat.context.setup.product
 
+                - solutiondrive.syliusproductbundlesplugin.behat.context.transform.product_bundles
                 - solutiondrive.syliusproductbundlesplugin.behat.context.setup.product_bundles
                 - solutiondrive.syliusproductbundlesplugin.behat.context.ui.admin.managing_product_bundles
             filters:
