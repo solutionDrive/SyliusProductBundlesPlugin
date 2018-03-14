@@ -70,7 +70,7 @@ class ProductBundleExampleFactory extends AbstractExampleFactory
         $product = $this->productRepository->findOneByCode($options['productCode']);
 
         Assert::notNull($product, sprintf('Bundle product %s could not be found', $options['productCode']));
-        $productBundleCreator = $this->productBundleCreator->createProductBundle($product->getName(), $product);
+        $productBundleCreator = $this->productBundleCreator->createProductBundle($product);
 
         foreach ($options['slots'] as $slot) {
             $slotProducts = [];
@@ -83,11 +83,7 @@ class ProductBundleExampleFactory extends AbstractExampleFactory
             $productBundleCreator->addSlot($slot['name'], $slotOptions, $slotProducts);
         }
 
-        /** @var ProductBundleInterface $productBundle */
-        $productBundle = $productBundleCreator->getProductBundle();
-        $productBundle->setCode($product->getCode());
-
-        return $productBundle;
+        return $productBundleCreator->getProductBundle();
     }
 
     /**
