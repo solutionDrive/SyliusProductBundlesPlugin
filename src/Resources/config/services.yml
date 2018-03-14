@@ -16,3 +16,17 @@ services:
         arguments:
             - "@solutiondrive.factory.product_bundle"
             - "@solutiondrive.factory.product_bundle_slot"
+
+    solutiondrive.product_bundles.fixture.example_factory.product_bundle:
+        class: solutionDrive\SyliusProductBundlesPlugin\Fixture\Factory\ProductBundleExampleFactory
+        arguments:
+            - "@solutiondrive.product_bundles.product_bundle_creator"
+            - "@sylius.repository.product"
+
+    solutiondrive.product_bundles.fixture.product_bundle:
+        class: solutionDrive\SyliusProductBundlesPlugin\Fixture\ProductBundleFixture
+        arguments:
+            - "@solutiondrive.manager.product_bundle"
+            - "@solutiondrive.product_bundles.fixture.example_factory.product_bundle"
+        tags:
+            - {name: sylius_fixtures.fixture}
