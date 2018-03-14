@@ -55,7 +55,7 @@ class ManagingProductBundlesContext implements Context
     }
 
     /**
-     * @When I want to see :number product bundle(s) in the store
+     * @Then I should see :number product bundle(s) in the list
      */
     public function iWantToSeeProductBundleInTheStore(int $number)
     {
@@ -138,21 +138,6 @@ class ManagingProductBundlesContext implements Context
         $this->createPage->create();
     }
 
-    /**
-     * @When I am browsing products
-     */
-    public function iAmBrowsingProducts()
-    {
-        throw new PendingException();
-    }
-
-    /**
-     * @Then I should see a product with name :arg1
-     */
-    public function iShouldSeeAProductWithName($arg1)
-    {
-        throw new PendingException();
-    }
 
     /**
      * @When I associate the product :productName with its bundle
@@ -169,6 +154,7 @@ class ManagingProductBundlesContext implements Context
 
     /**
      * @When I browse product bundles
+     * @When I want to browse product bundles
      */
     public function iBrowseProductBundles()
     {
@@ -194,4 +180,5 @@ class ManagingProductBundlesContext implements Context
                 ->isSingleResourceOnPage(['product.name' => $productBundle])
         );
     }
+
 }
