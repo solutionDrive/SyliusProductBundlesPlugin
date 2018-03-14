@@ -4,12 +4,6 @@
     <services>
 <!-- Behat Context Services -->
         <service
-            id="solutiondrive.syliusproductbundlesplugin.behat.context.ui.admin.managing_product_bundle_products"
-            class="Tests\solutionDrive\SyliusProductBundlesPlugin\Behat\Context\Ui\Admin\ManagingProductBundleProductsContext"
-        >
-            <tag name="fob.context_service" />
-        </service>
-        <service
             id="solutiondrive.syliusproductbundlesplugin.behat.context.ui.admin.managing_product_bundles"
             class="Tests\solutionDrive\SyliusProductBundlesPlugin\Behat\Context\Ui\Admin\ManagingProductBundlesContext"
         >
@@ -30,12 +24,6 @@
                 type="service"
                 id="__symfony__.sylius.repository.product"
             />
-        </service>
-        <service
-            id="solutiondrive.syliusproductbundlesplugin.behat.context.ui.admin.managing_product_bundle_slots"
-            class="Tests\solutionDrive\SyliusProductBundlesPlugin\Behat\Context\Ui\Admin\ManagingProductBundleSlotsContext"
-        >
-            <tag name="fob.context_service" />
         </service>
         <service
             id="solutiondrive.syliusproductbundlesplugin.behat.context.setup.product_bundles"

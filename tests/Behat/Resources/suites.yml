@@ -33,7 +33,6 @@ default:
                 - sylius.behat.context.ui.admin.managing_products
 
                 - solutiondrive.syliusproductbundlesplugin.behat.context.setup.product_bundles
-                - solutiondrive.syliusproductbundlesplugin.behat.context.ui.admin.managing_product_bundle_products
             filters:
                 tags: "@managing_product_bundle_products && @ui"
         ui_managing_product_bundle_slots:
@@ -48,7 +47,5 @@ default:
 
                 - solutiondrive.syliusproductbundlesplugin.behat.context.setup.product_bundles
                 - solutiondrive.syliusproductbundlesplugin.behat.context.ui.admin.managing_product_bundles
-                - solutiondrive.syliusproductbundlesplugin.behat.context.ui.admin.managing_product_bundle_products
-                - solutiondrive.syliusproductbundlesplugin.behat.context.ui.admin.managing_product_bundle_slots
             filters:
                 tags: "@managing_product_bundle_slots && @ui"
