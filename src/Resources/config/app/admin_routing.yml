@@ -8,4 +8,10 @@ solutiondrive_product_bundle:
     except: ['show']
     redirect: index
     grid: solutiondrive_admin_product_bundle
+    permission: true
+    vars:
+      all:
+        subheader: solutiondrive.ui.manage_product_bundles
+      index:
+        icon: sitemap
   type: sylius.resource
