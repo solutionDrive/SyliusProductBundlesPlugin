@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 /*
@@ -23,8 +24,8 @@ class ProductBundleSlotType extends AbstractType
         $builder
             ->add('name', TextType::class, ['label' => 'sylius.ui.name'])
             ->add('products', ProductChoiceType::class, [
-                'label'        => 'sylius.ui.products',
-                'multiple'     => true,
+                'label' => 'sylius.ui.products',
+                'multiple' => true,
             ])
         ;
     }
@@ -33,13 +34,14 @@ class ProductBundleSlotType extends AbstractType
     {
         return 'product_bundle_slot';
     }
+
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      */
     public function configureOptions(OptionsResolver $resolver)
     {
-        $resolver->setDefaults(array(
-            'data_class' => ProductBundleSlot::class
-        ));
+        $resolver->setDefaults([
+            'data_class' => ProductBundleSlot::class,
+        ]);
     }
 }
