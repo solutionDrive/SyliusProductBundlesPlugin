@@ -1,11 +1,65 @@
 <div class="ui segment">
     <h4 class="ui dividing header">{{ 'solutiondrive.ui.product_bundle'|trans }}</h4>
     {{ form_errors(form) }}
-    <div class="two fields">
+    <div class="field">
         {{ form_row(form.product) }}
     </div>
 </div>
-<div class="ui segment">
-    <h4 class="ui dividing header">{{ 'solutiondrive.ui.slots'|trans }}</h4>
-    {{ form_row(form.slots) }}
-</div>
+<h4 class="ui dividing header">{{ 'solutiondrive.ui.slots'|trans }}</h4>
+
+{% block collection_widget -%}
+    {% from 'SyliusResourceBundle:Macros:notification.html.twig' import error %}
+    {% import _self as collectionItemMacro %}
+
+    {% spaceless %}
+        <div data-form-type="collection" class="items"
+                {% if prototype is defined and allow_add %}
+                    data-prototype='{{ collectionItemMacro.collection_item(form.slots.vars.prototype, form.slots.vars.allow_delete, form.slots.vars.button_delete_label, '__name__')|e }}'
+                {%- endif -%}
+        >
+            {{ error(form.vars.errors) }}
+
+            {% if prototypes|default is iterable %}
+                {% for key, subPrototype in prototypes %}
+                    <input type="hidden" data-form-prototype="{{ key }}" value="{{ collectionItemMacro.collection_item(subPrototype, allow_delete, button_delete_label, '__name__')|e }}" />
+                {% endfor %}
+            {% endif %}
+
+            <div data-form-collection="list">
+                {% for child in form.slots %}
+                    {{ collectionItemMacro.collection_item(child, form.slots.vars.allow_delete, form.slots.vars.button_delete_label, loop.index0) }}
+                {% else %}
+                    {{ collectionItemMacro.collection_item(form.slots.vars.prototype, form.slots.vars.allow_delete, form.slots.vars.button_delete_label, 0)}}
+                {% endfor %}
+            </div>
+
+            {% if form.slots.vars.prototype is defined and form.slots.vars.allow_add %}
+                <a href="#" class="ui labeled icon button" data-form-collection="add">
+                    <i class="plus square outline icon"></i>
+                    {{ form.slots.vars.button_add_label|trans }}
+                </a>
+            {% endif %}
+        </div>
+
+    {% endspaceless %}
+{%- endblock collection_widget %}
+
+{% macro collection_item(form, allow_delete, button_delete_label, index) %}
+    {% spaceless %}
+        <div class="ui segment" data-form-collection="item" data-form-collection-index="{{ index }}">
+            <div class="two fields">
+                <div class="field">{{ form_row(form.name) }}</div>
+                <div class="field">{{ form_row(form.products) }}</div>
+                {% if allow_delete %}
+                    <div class="one wide field">
+                        <label>&nbsp;</label>
+                        <a href="#" data-form-collection="delete" class="ui red icon button" style="margin-bottom: 1em;">
+                            <i class="trash icon"></i>
+                        </a>
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+    {% endspaceless %}
+{% endmacro %}
+

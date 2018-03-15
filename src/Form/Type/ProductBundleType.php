@@ -25,6 +25,7 @@ class ProductBundleType extends AbstractType
                 'entry_type' => ProductBundleSlotType::class,
                 'allow_add' => true,
                 'allow_delete' => true,
+                'prototype' => true,
                 'label' => false,
                 'button_add_label' => 'solutiondrive.ui.add_slot',
             ]);
