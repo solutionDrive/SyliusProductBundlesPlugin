@@ -9,16 +9,3 @@ solutiondrive_product_bundle:
     redirect: index
     grid: solutiondrive_admin_product_bundle
   type: sylius.resource
-
-solutiondrive_admin_product_bundle_create:
-    path: /product-bundles/new
-    methods: [GET, POST]
-    defaults:
-        _controller: solutiondrive.controller.product_bundle:createAction
-        _sylius:
-            section: admin
-            permission: true
-            template: SyliusAdminBundle:Crud:create.html.twig
-            redirect: solutiondrive_admin_product_bundle_update
-            vars:
-                subheader: solutiondrive.ui.manage_product_bundles
