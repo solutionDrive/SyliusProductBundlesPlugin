@@ -5,3 +5,6 @@ solutiondrive:
         manage_product_bundle_product: Produkt verwalten
         new_product_bundle: Neues Produkt Bundle
         product_bundles: Produkt Bundles
+        product_bundle: Produkt Bundle
+        slots: Slots
+        add_slot: Slot hinzufügen

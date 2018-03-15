@@ -24,8 +24,9 @@ class ProductBundleType extends AbstractType
             ->add('slots', CollectionType::class, [
                 'entry_type' => ProductBundleSlotType::class,
                 'allow_add' => true,
+                'allow_delete' => true,
                 'label' => false,
-                'button_add_label' => 'sylius.form.option_value.add_value',
+                'button_add_label' => 'solutiondrive.ui.add_slot',
             ]);
     }
 

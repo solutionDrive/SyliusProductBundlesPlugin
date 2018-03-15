@@ -12,6 +12,8 @@ solutiondrive_product_bundle:
     vars:
       all:
         subheader: solutiondrive.ui.manage_product_bundles
+        templates:
+          form: "@SolutionDriveSyliusProductBundlesPlugin/Admin/ProductBundle/_form.html.twig"
       index:
         icon: sitemap
   type: sylius.resource
