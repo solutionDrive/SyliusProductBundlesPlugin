@@ -35,7 +35,6 @@ class ManagingProductBundlesContext implements Context
     private $productRepository;
 
     /**
-     * ManagingProductBundlesContext constructor.
      * @param IndexPage $indexPage
      * @param CreatePage $createPage
      * @param UpdatePage $updatePage
@@ -81,7 +80,6 @@ class ManagingProductBundlesContext implements Context
     {
         $this->createPage->open();
     }
-
 
     /**
      * @When I add it
