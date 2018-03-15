@@ -24,7 +24,6 @@ class ProductBundleType extends AbstractType
             ->add('slots', CollectionType::class, [
                 'entry_type' => ProductBundleSlotType::class,
                 'allow_add' => true,
-                'by_reference' => false,
                 'label' => false,
                 'button_add_label' => 'sylius.form.option_value.add_value',
             ]);
