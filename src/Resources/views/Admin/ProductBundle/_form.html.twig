@@ -13,7 +13,7 @@
 
     {% spaceless %}
         <div data-form-type="collection" class="items"
-                {% if prototype is defined and allow_add %}
+                {% if form.slots.vars.prototype is defined and form.slots.vars.allow_add %}
                     data-prototype='{{ collectionItemMacro.collection_item(form.slots.vars.prototype, form.slots.vars.allow_delete, form.slots.vars.button_delete_label, '__name__')|e }}'
                 {%- endif -%}
         >
@@ -28,8 +28,6 @@
             <div data-form-collection="list">
                 {% for child in form.slots %}
                     {{ collectionItemMacro.collection_item(child, form.slots.vars.allow_delete, form.slots.vars.button_delete_label, loop.index0) }}
-                {% else %}
-                    {{ collectionItemMacro.collection_item(form.slots.vars.prototype, form.slots.vars.allow_delete, form.slots.vars.button_delete_label, 0)}}
                 {% endfor %}
             </div>
 
