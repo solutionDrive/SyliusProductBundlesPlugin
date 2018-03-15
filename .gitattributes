@@ -10,4 +10,5 @@
 /behat.yml.dist export-ignore
 /easy-coding-standard.neon export-ignore
 /phpspec.yml.dist export-ignore
+/phpstan.neon export-ignore
 /phpunit.xml.dist export-ignore
