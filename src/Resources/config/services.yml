@@ -17,6 +17,9 @@ services:
             - "@solutiondrive.factory.product_bundle"
             - "@solutiondrive.factory.product_bundle_slot"
 
+    solutiondrive.product_bundles.slot_finder:
+        class: solutionDrive\SyliusProductBundlesPlugin\Service\SlotFinder
+
     solutiondrive.product_bundles.fixture.example_factory.product_bundle:
         class: solutionDrive\SyliusProductBundlesPlugin\Fixture\Factory\ProductBundleExampleFactory
         arguments:
