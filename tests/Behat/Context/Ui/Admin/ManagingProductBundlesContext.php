@@ -152,7 +152,7 @@ class ManagingProductBundlesContext implements Context
      */
     public function iSaveMyChanges(): void
     {
-        throw new PendingException();
+        $this->updatePage->saveChanges();
     }
 
     /**

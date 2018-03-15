@@ -10,10 +10,13 @@ declare(strict_types=1);
 
 namespace solutionDrive\SyliusProductBundlesPlugin\Form\Type;
 
+use solutionDrive\SyliusProductBundlesPlugin\Entity\ProductBundleInterface;
 use Sylius\Bundle\ProductBundle\Form\Type\ProductChoiceType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Component\Form\FormEvent;
+use Symfony\Component\Form\FormEvents;
 
 class ProductBundleType extends AbstractType
 {
@@ -29,6 +32,14 @@ class ProductBundleType extends AbstractType
                 'label' => false,
                 'button_add_label' => 'solutiondrive.ui.add_slot',
             ]);
+
+        $builder->addEventListener(FormEvents::SUBMIT, function (FormEvent $event) {
+            /** @var ProductBundleInterface $productBundle */
+            $productBundle = $event->getForm()->getData();
+            foreach ($productBundle->getSlots() as $slot) {
+                $slot->setBundle($productBundle);
+            }
+        });
     }
 
     public function getBlockPrefix(): string
