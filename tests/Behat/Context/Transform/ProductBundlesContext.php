@@ -5,7 +5,8 @@ declare(strict_types=1);
 namespace Tests\solutionDrive\SyliusProductBundlesPlugin\Behat\Context\Transform;
 
 use Behat\Behat\Context\Context;
-use Sylius\Component\Resource\Repository\RepositoryInterface;
+use solutionDrive\SyliusProductBundlesPlugin\Entity\ProductBundleInterface;
+use solutionDrive\SyliusProductBundlesPlugin\Repository\ProductBundleRepositoryInterface;
 use Webmozart\Assert\Assert;
 
 /**
@@ -15,13 +16,13 @@ use Webmozart\Assert\Assert;
  */
 class ProductBundlesContext implements Context
 {
-    /** @var RepositoryInterface */
+    /** @var ProductBundleRepositoryInterface */
     private $productBundleRepository;
 
     /**
-     * @param $productBundleRepository
+     * @param ProductBundleRepositoryInterface $productBundleRepository
      */
-    public function __construct(RepositoryInterface $productBundleRepository)
+    public function __construct(ProductBundleRepositoryInterface $productBundleRepository)
     {
         $this->productBundleRepository = $productBundleRepository;
     }
@@ -31,16 +32,17 @@ class ProductBundlesContext implements Context
      * @Transform /^"([^"]+)" product bundle(?:|s)$/
      * @Transform :product bundle
      */
-    public function getProductBundleByName($productBundleName)
+    public function getProductBundleByName(string $productBundleName)
     {
-        $productBundles = $this->productBundleRepository->findBy(['name' => $productBundleName]);
+        /** @var ProductBundleInterface[] $productsBundles */
+        $productsBundles = $this->productBundleRepository->findByName($productBundleName, 'en_US');
 
         Assert::eq(
-            count($productBundles),
+            count($productsBundles),
             1,
-            sprintf('%d product bundles have been found with name "%s".', count($productBundles), $productBundleName)
+            sprintf('%d products has been found with name "%s".', count($productsBundles), $productBundleName)
         );
 
-        return $productBundles[0];
+        return $productsBundles[0];
     }
 }
