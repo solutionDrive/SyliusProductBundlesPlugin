@@ -10,6 +10,8 @@ sylius_resource:
             classes:
                 model: solutionDrive\SyliusProductBundlesPlugin\Entity\ProductBundleSlot
                 interface: solutionDrive\SyliusProductBundlesPlugin\Entity\ProductBundleSlotInterface
+                form: solutionDrive\SyliusProductBundlesPlugin\Form\Type\ProductBundleSlotType
+
 
 sylius_product:
     resources:
