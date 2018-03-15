@@ -80,4 +80,12 @@ class ProductBundleSlot implements ProductBundleSlotInterface, ResourceInterface
     {
         $this->products->add($product);
     }
+
+    /**
+     * {inheritdoc}
+     */
+    public function setProducts($products): void
+    {
+        $this->products = $products;
+    }
 }
