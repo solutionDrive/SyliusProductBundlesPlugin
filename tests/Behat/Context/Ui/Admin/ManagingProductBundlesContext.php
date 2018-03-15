@@ -136,9 +136,9 @@ class ManagingProductBundlesContext implements Context
      * @When /^I want to modify the ("[^"]+" product bundle)$/
      * @When /^I want to modify (this product)$/
      */
-    public function iWantToModifyTheProductBundle(ProductBundleInterface $productBundle)
+    public function iWantToModifyTheProductBundle(ProductBundleInterface $productBundle): void
     {
-        throw new PendingException();
+        $this->updatePage->open(['id' => $productBundle->getId()]);
     }
 
     /**
