@@ -13,4 +13,10 @@ use Sylius\Behat\Page\Admin\Crud\UpdatePage as CrudUpdatePage;
  */
 class UpdatePage extends CrudUpdatePage
 {
+
+    public function addSlot(string $slotName): void
+    {
+        $this->getDocument()->clickLink('Add slot');
+        $this->getDocument()->fillField('Name', $slotName);
+    }
 }

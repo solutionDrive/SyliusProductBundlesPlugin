@@ -8,7 +8,7 @@ Feature: Browsing product bundle slots in product bundle
     Given the store has a product bundle "smurf outfit"
     And I am logged in as an administrator
 
-  @ui
+  @ui @javascript
   Scenario: Adding a slot to a product bundle
     When I want to modify the "smurf outfit" product bundle
     And I add the slot "headgear"

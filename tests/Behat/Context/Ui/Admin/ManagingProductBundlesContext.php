@@ -144,7 +144,7 @@ class ManagingProductBundlesContext implements Context
      */
     public function iAddTheSlot(string $slotName): void
     {
-        throw new PendingException();
+        $this->updatePage->addSlot($slotName);
     }
 
     /**

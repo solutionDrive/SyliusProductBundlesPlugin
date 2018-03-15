@@ -32,9 +32,8 @@
             </div>
 
             {% if form.slots.vars.prototype is defined and form.slots.vars.allow_add %}
-                <a href="#" class="ui labeled icon button" data-form-collection="add">
-                    <i class="plus square outline icon"></i>
-                    {{ form.slots.vars.button_add_label|trans }}
+                <a href="#" class="ui labeled green icon button" data-form-collection="add">
+                    <i class="plus square outline icon"></i>{{ form.slots.vars.button_add_label|trans }}
                 </a>
             {% endif %}
         </div>
