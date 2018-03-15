@@ -5,6 +5,7 @@ sylius_resource:
                 model: solutionDrive\SyliusProductBundlesPlugin\Entity\ProductBundle
                 interface: solutionDrive\SyliusProductBundlesPlugin\Entity\ProductBundleInterface
                 form: solutionDrive\SyliusProductBundlesPlugin\Form\Type\ProductBundleType
+                repository: solutionDrive\SyliusProductBundlesPlugin\Repository\ProductBundleRepository
         solutiondrive.product_bundle_slot:
             classes:
                 model: solutionDrive\SyliusProductBundlesPlugin\Entity\ProductBundleSlot
