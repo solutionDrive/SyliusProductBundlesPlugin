@@ -56,7 +56,7 @@ class ManagingProductBundlesContext implements Context
     /**
      * @Then I should see :number product bundle(s) in the list
      */
-    public function iWantToSeeProductBundleInTheStore(int $number)
+    public function iWantToSeeProductBundleInTheStore(int $number): void
     {
         $this->indexPage->open();
         Assert::same($this->indexPage->countItems(), $number);
@@ -65,7 +65,7 @@ class ManagingProductBundlesContext implements Context
     /**
      * @Then I should( still) see a product bundle :productBundleName
      */
-    public function iShouldSeeAProductBundle($productBundleName)
+    public function iShouldSeeAProductBundle($productBundleName): void
     {
         Assert::true(
             $this
@@ -77,7 +77,7 @@ class ManagingProductBundlesContext implements Context
     /**
      * @When I create a new product bundle
      */
-    public function iCreateANewProductBundle()
+    public function iCreateANewProductBundle(): void
     {
         $this->createPage->open();
     }
@@ -86,7 +86,7 @@ class ManagingProductBundlesContext implements Context
     /**
      * @When I add it
      */
-    public function iAddIt()
+    public function iAddIt(): void
     {
         $this->createPage->create();
     }
@@ -94,7 +94,7 @@ class ManagingProductBundlesContext implements Context
     /**
      * @When I associate the product :productName with its bundle
      */
-    public function iAssociateTheProductWithItsBundle($productName)
+    public function iAssociateTheProductWithItsBundle($productName): void
     {
         $products = $this->productRepository->findByName($productName, 'en_US');
         Assert::count($products, 1);
@@ -107,7 +107,7 @@ class ManagingProductBundlesContext implements Context
     /**
      * @When I browse product bundles
      */
-    public function iBrowseProductBundles()
+    public function iBrowseProductBundles(): void
     {
         $this->indexPage->open();
     }
@@ -115,7 +115,7 @@ class ManagingProductBundlesContext implements Context
     /**
      * @When /^I delete (this product bundle)$/
      */
-    public function iDeleteThisProductBundle(ProductBundleInterface $productBundle)
+    public function iDeleteThisProductBundle(ProductBundleInterface $productBundle): void
     {
         $this->indexPage->deleteResourceOnPage(['product.code' => $productBundle->getProduct()->getCode()]);
     }
@@ -123,7 +123,7 @@ class ManagingProductBundlesContext implements Context
     /**
      * @Then I should not see a product bundle :productBundle
      */
-    public function iShouldNotSeeAProductBundle($productBundle)
+    public function iShouldNotSeeAProductBundle($productBundle): void
     {
         Assert::false(
             $this
@@ -144,7 +144,7 @@ class ManagingProductBundlesContext implements Context
     /**
      * @When I add the slot :slotName
      */
-    public function iAddTheSlot(string $slotName)
+    public function iAddTheSlot(string $slotName): void
     {
         throw new PendingException();
     }
@@ -152,7 +152,7 @@ class ManagingProductBundlesContext implements Context
     /**
      * @When I save my changes
      */
-    public function iSaveMyChanges()
+    public function iSaveMyChanges(): void
     {
         throw new PendingException();
     }
@@ -160,7 +160,7 @@ class ManagingProductBundlesContext implements Context
     /**
      * @Then I should see the product bundle has a slot named :slotName
      */
-    public function iShouldSeeTheProductBundleHasTheSlot(string $slotName)
+    public function iShouldSeeTheProductBundleHasTheSlot(string $slotName): void
     {
         throw new PendingException();
     }

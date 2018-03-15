@@ -57,7 +57,7 @@ class ProductBundlesContext implements Context
     /**
      * @Given the store has( also) a product bundle :productBundle
      */
-    public function theStoreHasAProductBundle($productBundle)
+    public function theStoreHasAProductBundle($productBundle): void
     {
         /** @var ProductInterface $product */
         $product = $this->productFactory->createNew();
@@ -78,7 +78,7 @@ class ProductBundlesContext implements Context
     /**
      * @Given /^(this product bundle) has(?:| also) a slot named "([^"]*)"$/
      */
-    public function thisProductBundleHasASlotNamed(ProductBundleInterface $productBundle, $slot)
+    public function thisProductBundleHasASlotNamed(ProductBundleInterface $productBundle, $slot): void
     {
         /**
          * @todo add a slot the the injected $projectBundle with the name in $slot
@@ -93,7 +93,7 @@ class ProductBundlesContext implements Context
         ProductInterface $product,
         $slot,
         ProductBundleInterface $productBundle
-    ) {
+    ): void {
         /**
          * @todo add the injected product to the slot named $slot of the injected product bundle
          */
