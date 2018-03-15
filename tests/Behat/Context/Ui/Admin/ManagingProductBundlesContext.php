@@ -131,7 +131,7 @@ class ManagingProductBundlesContext implements Context
     }
 
     /**
-     * @When /^I want to modify the ("[^"]+" product bundle)$/
+     * @When /^I want to modify the ("[^"]+" product bundle)( again)?$/
      * @When /^I want to modify (this product)$/
      */
     public function iWantToModifyTheProductBundle(ProductBundleInterface $productBundle): void
