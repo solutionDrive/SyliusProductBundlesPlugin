@@ -12,6 +12,7 @@ declare(strict_types=1);
 namespace Tests\solutionDrive\SyliusProductBundlesPlugin\Behat\Context\Ui\Admin;
 
 use Behat\Behat\Context\Context;
+use Behat\Behat\Tester\Exception\PendingException;
 use SolutionDrive\SyliusProductBundlesPlugin\Entity\ProductBundleInterface;
 use Sylius\Component\Core\Repository\ProductRepositoryInterface;
 use Tests\solutionDrive\SyliusProductBundlesPlugin\Behat\Page\ProductBundles\CreatePage;
@@ -131,4 +132,36 @@ class ManagingProductBundlesContext implements Context
         );
     }
 
+    /**
+     * @When /^I want to modify the ("[^"]+" product bundle)$/
+     * @When /^I want to modify (this product)$/
+     */
+    public function iWantToModifyTheProductBundle(ProductBundleInterface $productBundle)
+    {
+        throw new PendingException();
+    }
+
+    /**
+     * @When I add the slot :slotName
+     */
+    public function iAddTheSlot(string $slotName)
+    {
+        throw new PendingException();
+    }
+
+    /**
+     * @When I save my changes
+     */
+    public function iSaveMyChanges()
+    {
+        throw new PendingException();
+    }
+
+    /**
+     * @Then I should see the product bundle has a slot named :slotName
+     */
+    public function iShouldSeeTheProductBundleHasTheSlot(string $slotName)
+    {
+        throw new PendingException();
+    }
 }
