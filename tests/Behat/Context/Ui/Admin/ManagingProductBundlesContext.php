@@ -12,7 +12,6 @@ declare(strict_types=1);
 namespace Tests\solutionDrive\SyliusProductBundlesPlugin\Behat\Context\Ui\Admin;
 
 use Behat\Behat\Context\Context;
-use Behat\Behat\Tester\Exception\PendingException;
 use SolutionDrive\SyliusProductBundlesPlugin\Entity\ProductBundleInterface;
 use Sylius\Component\Core\Model\ProductInterface;
 use Tests\solutionDrive\SyliusProductBundlesPlugin\Behat\Page\ProductBundles\CreatePage;
@@ -149,10 +148,10 @@ class ManagingProductBundlesContext implements Context
     }
 
     /**
-     * @When /^I add the (product "[^"]+") to the slot ("[^"]+")$/
+     * @When /^I add the (product "[^"]+") to the slot "([^"]+)"$/
      */
     public function iAddTheProductToTheSlot(ProductInterface $product, string $slotName)
     {
-        throw new PendingException();
+        $this->updatePage->associateSlotWithProducts($slotName, [$product->getCode()]);
     }
 }
