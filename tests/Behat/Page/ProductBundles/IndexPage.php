@@ -5,7 +5,6 @@
  * Date: 03.02.18
  * Time: 15:16
  */
-
 declare(strict_types=1);
 
 namespace Tests\solutionDrive\SyliusProductBundlesPlugin\Behat\Page\ProductBundles;

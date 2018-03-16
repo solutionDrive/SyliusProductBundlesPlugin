@@ -12,7 +12,6 @@ declare(strict_types=1);
 namespace Tests\solutionDrive\SyliusProductBundlesPlugin\Behat\Context\Ui\Admin;
 
 use Behat\Behat\Context\Context;
-use Behat\Behat\Tester\Exception\PendingException;
 use SolutionDrive\SyliusProductBundlesPlugin\Entity\ProductBundleInterface;
 use Sylius\Component\Core\Repository\ProductRepositoryInterface;
 use Tests\solutionDrive\SyliusProductBundlesPlugin\Behat\Page\ProductBundles\CreatePage;
@@ -160,6 +159,6 @@ class ManagingProductBundlesContext implements Context
      */
     public function iShouldSeeTheProductBundleHasTheSlot(string $slotName): void
     {
-        throw new PendingException();
+        Assert::same($this->updatePage->getFirstSlotName(), $slotName);
     }
 }
