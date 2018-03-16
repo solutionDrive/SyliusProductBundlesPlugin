@@ -24,4 +24,4 @@ Feature: Browsing product bundle slots in product bundle
     And I add the product "smurf outfit" to the slot "headgear"
     And I save my changes
     And I want to modify the "smurf outfit" product bundle again
-    Then I should see the product bundle has a slot named "headgear"
+    Then I should see the product bundle has a slot named "headgear" with the "smurf outfit" product

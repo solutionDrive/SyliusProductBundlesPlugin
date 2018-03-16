@@ -144,14 +144,22 @@ class ManagingProductBundlesContext implements Context
      */
     public function iShouldSeeTheProductBundleHasTheSlot(string $slotName): void
     {
-        Assert::same($this->updatePage->getFirstSlotName(), $slotName);
+        Assert::keyExists($this->updatePage->getSlotSubForms(), $slotName);
     }
 
     /**
      * @When /^I add the (product "[^"]+") to the slot "([^"]+)"$/
      */
-    public function iAddTheProductToTheSlot(ProductInterface $product, string $slotName)
+    public function iAddTheProductToTheSlot(ProductInterface $product, string $slotName): void
     {
         $this->updatePage->associateSlotWithProducts($slotName, [$product->getCode()]);
+    }
+
+    /**
+     * @Then /^I should see the product bundle has a slot named "([^"]+)" with the ("[^"]+" product)$/
+     */
+    public function iShouldSeeTheProductBundleHasASlotNamedWithTheProduct(string $slotName, ProductInterface $product): void
+    {
+       $this->updatePage->hasSlotWithProduct($slotName, $product->getCode());
     }
 }

@@ -60,4 +60,18 @@ class UpdatePage extends CrudUpdatePage
         }
         return $slotSubForms;
     }
+
+    public function hasSlotWithProduct(string $slotName, string $productCode)
+    {
+        $slotSubForms = $this->getSlotSubForms();
+        Assert::keyExists($slotSubForms, $slotName);
+
+        $slotSubForm = $slotSubForms[$slotName];
+
+        $inputElement = $slotSubForm->find('css', 'input.autocomplete');
+
+        $currentProductCodes = explode(',', $inputElement->getValue());
+
+        Assert::oneOf($productCode, $currentProductCodes);
+    }
 }
