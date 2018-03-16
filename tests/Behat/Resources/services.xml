@@ -29,6 +29,7 @@
             <argument type="service" id="__symfony__.solutiondrive.factory.product_bundle" />
             <argument type="service" id="__symfony__.solutiondrive.manager.product_bundle" />
             <argument type="service" id="__symfony__.sylius.factory.product" />
+            <argument type="service" id="__symfony__.solutiondrive.factory.product_bundle_slot" />
             <argument type="service" id="__symfony__.sylius.manager.product" />
             <tag name="fob.context_service" />
         </service>

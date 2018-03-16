@@ -15,6 +15,7 @@ use Behat\Behat\Context\Context;
 use Behat\Behat\Tester\Exception\PendingException;
 use Doctrine\ORM\EntityManagerInterface;
 use SolutionDrive\SyliusProductBundlesPlugin\Entity\ProductBundleInterface;
+use solutionDrive\SyliusProductBundlesPlugin\Entity\ProductBundleSlot;
 use Sylius\Behat\Service\SharedStorage;
 use Sylius\Component\Core\Model\ProductInterface;
 use Sylius\Component\Resource\Factory\FactoryInterface;
@@ -34,23 +35,25 @@ class ProductBundlesContext implements Context
     /** @var FactoryInterface */
     private $productFactory;
 
+    /** @var FactoryInterface */
+    private $productBundleSlotFactory;
+
     /** @var EntityManagerInterface */
     private $productEntityManager;
 
-    /**
-     * @param SharedStorage $sharedStorage
-     */
     public function __construct(
         SharedStorage $sharedStorage,
         FactoryInterface $productBundleFactory,
         EntityManagerInterface $productBundleManager,
         FactoryInterface $productFactory,
+        FactoryInterface $productBundleSlotFactory,
         EntityManagerInterface $productEntityManager
     ) {
         $this->sharedStorage = $sharedStorage;
         $this->productBundleFactory = $productBundleFactory;
         $this->productBundleManager = $productBundleManager;
         $this->productFactory = $productFactory;
+        $this->productBundleSlotFactory = $productBundleSlotFactory;
         $this->productEntityManager = $productEntityManager;
     }
 
@@ -84,7 +87,14 @@ class ProductBundlesContext implements Context
         string $slotName,
         ?ProductInterface $product
     ) {
-        throw new PendingException();
+        /** @var ProductBundleSlot $slot */
+        $slot = $this->productBundleSlotFactory->createNew();
+        $slot->setBundle($productBundle);
+        $slot->setName($slotName);
+        $slot->addProduct($product);
+        $productBundle->getSlots()->add($slot);
+
+        $this->productBundleManager->flush();
     }
 
     /**
