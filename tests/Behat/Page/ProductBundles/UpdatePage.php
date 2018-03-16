@@ -33,15 +33,15 @@ class UpdatePage extends CrudUpdatePage
         $slotSubForms = $this->getSlotSubForms();
         Assert::keyExists($slotSubForms, $slotName);
         $slotSubForm = $slotSubForms[$slotName];
-        $dropdown = $slotSubForm->find('css','.sylius-autocomplete');
+        $dropdown = $slotSubForm->find('css', '.sylius-autocomplete');
         Assert::notNull($dropdown);
         $dropdown->click();
         foreach ($productCodes as $productCode) {
             $dropdown->waitFor(5, function () use ($productCode, $dropdown) {
-                return $dropdown->has('css', '.item[data-value="'.$productCode.'"]');
+                return $dropdown->has('css', '.item[data-value="' . $productCode . '"]');
             });
 
-            $item = $dropdown->find('css', '.item[data-value="'.$productCode.'"]');
+            $item = $dropdown->find('css', '.item[data-value="' . $productCode . '"]');
             $item->click();
         }
     }
@@ -58,6 +58,7 @@ class UpdatePage extends CrudUpdatePage
         foreach ($formElements as $element) {
             $slotSubForms[$element->findField('Name')->getValue()] = $element;
         }
+
         return $slotSubForms;
     }
 

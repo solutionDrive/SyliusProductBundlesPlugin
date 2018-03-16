@@ -160,6 +160,6 @@ class ManagingProductBundlesContext implements Context
      */
     public function iShouldSeeTheProductBundleHasASlotNamedWithTheProduct(string $slotName, ProductInterface $product): void
     {
-       $this->updatePage->hasSlotWithProduct($slotName, $product->getCode());
+        $this->updatePage->hasSlotWithProduct($slotName, $product->getCode());
     }
 }
