@@ -165,11 +165,11 @@ class ManagingProductBundlesContext implements Context
     }
 
     /**
-     * @When I delete the slot named :slotName
+     * @When I remove the slot named :slotName
      */
-    public function iDeleteTheSlotNamed($slotName)
+    public function iRemoveTheSlotNamed($slotName)
     {
-        throw new PendingException();
+        $this->updatePage->removeSlot($slotName);
     }
 
     /**

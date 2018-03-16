@@ -30,9 +30,7 @@ class UpdatePage extends CrudUpdatePage
     public function associateSlotWithProducts(string $slotName, array $productCodes): void
     {
         Assert::isInstanceOf($this->getDriver(), Selenium2Driver::class);
-        $slotSubForms = $this->getSlotSubForms();
-        Assert::keyExists($slotSubForms, $slotName);
-        $slotSubForm = $slotSubForms[$slotName];
+        $slotSubForm = $this->getSlotSubForm($slotName);
         $dropdown = $slotSubForm->find('css', '.sylius-autocomplete');
         Assert::notNull($dropdown);
         $dropdown->click();
@@ -62,17 +60,28 @@ class UpdatePage extends CrudUpdatePage
         return $slotSubForms;
     }
 
-    public function hasSlotWithProduct(string $slotName, string $productCode)
+    public function hasSlotWithProduct(string $slotName, string $productCode): void
     {
-        $slotSubForms = $this->getSlotSubForms();
-        Assert::keyExists($slotSubForms, $slotName);
-
-        $slotSubForm = $slotSubForms[$slotName];
-
+        $slotSubForm = $this->getSlotSubForm($slotName);
         $inputElement = $slotSubForm->find('css', 'input.autocomplete');
 
         $currentProductCodes = explode(',', $inputElement->getValue());
 
         Assert::oneOf($productCode, $currentProductCodes);
+    }
+
+    public function removeSlot(string $slotName)
+    {
+        Assert::isInstanceOf($this->getDriver(), Selenium2Driver::class);
+        $slotSubForm = $this->getSlotSubForm($slotName);
+        $slotSubForm->find('css', '[data-form-collection="delete"]')->click();
+    }
+
+    public function getSlotSubForm(string $slotName): NodeElement
+    {
+        $slotSubForms = $this->getSlotSubForms();
+        Assert::keyExists($slotSubForms, $slotName);
+
+        return $slotSubForms[$slotName];
     }
 }
