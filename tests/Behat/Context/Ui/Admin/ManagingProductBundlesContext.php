@@ -164,7 +164,7 @@ class ManagingProductBundlesContext implements Context
     }
 
     /**
-     * @When /^I add (the product "[^"]+") to the slot ("[^"]+")$/
+     * @When /^I add the (product "[^"]+") to the slot ("[^"]+")$/
      */
     public function iAddTheProductToTheSlot(ProductInterface $product, string $slotName)
     {
