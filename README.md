@@ -1,23 +1,14 @@
 <p align="center">
     <a href="http://sylius.org" target="_blank">
-        <img src="http://demo.sylius.org/assets/shop/img/logo.png" />
+        <img src="https://demo.sylius.com/assets/shop/img/logo.png" />
     </a>
 </p>
-<h1 align="center">Sylius Product Bundles Plugin</h1>
-<p align="center">
-    <a href="https://packagist.org/packages/solutiondrive/sylius-product-bundles-plugin" title="License">
-        <img src="https://img.shields.io/packagist/l/solutiondrive/sylius-product-bundles-plugin.svg" />
-    </a>
-    <a href="https://packagist.org/packages/solutiondrive/sylius-product-bundles-plugin" title="Version">
-        <img src="https://img.shields.io/packagist/v/solutiondrive/sylius-product-bundles-plugin.svg" />
-    </a>
-    <a href="https://travis-ci.org/solutionDrive/SyliusProductBundlesPlugin" title="Build status">
-        <img src="https://img.shields.io/travis/solutionDrive/SyliusProductBundlesPlugin/master.svg" />
-    </a>
-    <a href="https://scrutinizer-ci.com/g/solutionDrive/SyliusProductBundlesPlugin/" title="Scrutinizer">
-        <img src="https://img.shields.io/scrutinizer/g/solutionDrive/SyliusProductBundlesPlugin.svg" />
-    </a>
-</p>
+
+# Sylius Product Bundles Plugin
+[![License](https://img.shields.io/packagist/l/solutiondrive/sylius-product-bundles-plugin.svg)](https://packagist.org/packages/solutiondrive/sylius-product-bundles-plugin)
+[![Packagist](https://img.shields.io/packagist/v/solutiondrive/sylius-product-bundles-plugin.svg)](https://packagist.org/packages/solutiondrive/sylius-product-bundles-plugin)
+[![Build Status](https://travis-ci.org/solutionDrive/SyliusProductBundlesPlugin.svg?branch=master)](https://travis-ci.org/solutionDrive/SyliusProductBundlesPlugin)
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/solutionDrive/SyliusProductBundlesPlugin/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/solutionDrive/SyliusProductBundlesPlugin/?branch=master)
 
 ## Installation
 
