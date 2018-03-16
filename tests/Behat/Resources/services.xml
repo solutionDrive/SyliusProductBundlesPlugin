@@ -20,10 +20,6 @@
                 type="service"
                 id="solutiondrive.syliusproductbundlesplugin.behat.page.update"
             />
-            <argument
-                type="service"
-                id="__symfony__.sylius.repository.product"
-            />
         </service>
         <service
             id="solutiondrive.syliusproductbundlesplugin.behat.context.setup.product_bundles"

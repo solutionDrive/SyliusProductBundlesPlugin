@@ -15,7 +15,6 @@ use Behat\Behat\Context\Context;
 use Behat\Behat\Tester\Exception\PendingException;
 use SolutionDrive\SyliusProductBundlesPlugin\Entity\ProductBundleInterface;
 use Sylius\Component\Core\Model\ProductInterface;
-use Sylius\Component\Core\Repository\ProductRepositoryInterface;
 use Tests\solutionDrive\SyliusProductBundlesPlugin\Behat\Page\ProductBundles\CreatePage;
 use Tests\solutionDrive\SyliusProductBundlesPlugin\Behat\Page\ProductBundles\IndexPage;
 use Tests\solutionDrive\SyliusProductBundlesPlugin\Behat\Page\ProductBundles\UpdatePage;
@@ -32,25 +31,15 @@ class ManagingProductBundlesContext implements Context
     /** @var UpdatePage */
     private $updatePage;
 
-    /** @var ProductRepositoryInterface */
-    private $productRepository;
-
     /**
      * @param IndexPage $indexPage
      * @param CreatePage $createPage
      * @param UpdatePage $updatePage
-     * @param ProductRepositoryInterface $productRepository
      */
-    public function __construct(
-        IndexPage $indexPage,
-        CreatePage $createPage,
-        UpdatePage $updatePage,
-        ProductRepositoryInterface $productRepository
-    ) {
+    public function __construct(IndexPage $indexPage, CreatePage $createPage, UpdatePage $updatePage) {
         $this->indexPage = $indexPage;
         $this->createPage = $createPage;
         $this->updatePage = $updatePage;
-        $this->productRepository = $productRepository;
     }
 
     /**
@@ -91,16 +80,11 @@ class ManagingProductBundlesContext implements Context
     }
 
     /**
-     * @When I associate the product :productName with its bundle
+     * @When /^I associate the (product "[^"]+") with its bundle$/
      */
-    public function iAssociateTheProductWithItsBundle($productName): void
+    public function iAssociateTheProductWithItsBundle(ProductInterface $product): void
     {
-        $products = $this->productRepository->findByName($productName, 'en_US');
-        Assert::count($products, 1);
-        if (count($products) > 0) {
-            $product = array_pop($products);
-            $this->createPage->specifyProductName($product->getName());
-        }
+        $this->createPage->specifyProductName($product->getName());
     }
 
     /**
