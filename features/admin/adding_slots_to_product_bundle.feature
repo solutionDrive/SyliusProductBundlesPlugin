@@ -9,7 +9,7 @@ Feature: Browsing product bundle slots in product bundle
     And I am logged in as an administrator
 
   @ui @javascript
-  Scenario: Adding a slot to a product bundle
+  Scenario: Adding an empty slot to a product bundle
     When I want to modify the "smurf outfit" product bundle
     And I add the slot "headgear"
     And I save my changes
