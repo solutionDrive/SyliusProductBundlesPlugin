@@ -12,6 +12,7 @@ declare(strict_types=1);
 namespace Tests\solutionDrive\SyliusProductBundlesPlugin\Behat\Context\Ui\Admin;
 
 use Behat\Behat\Context\Context;
+use Behat\Behat\Tester\Exception\PendingException;
 use SolutionDrive\SyliusProductBundlesPlugin\Entity\ProductBundleInterface;
 use Sylius\Component\Core\Model\ProductInterface;
 use Tests\solutionDrive\SyliusProductBundlesPlugin\Behat\Page\ProductBundles\CreatePage;
@@ -161,5 +162,21 @@ class ManagingProductBundlesContext implements Context
     public function iShouldSeeTheProductBundleHasASlotNamedWithTheProduct(string $slotName, ProductInterface $product): void
     {
         $this->updatePage->hasSlotWithProduct($slotName, $product->getCode());
+    }
+
+    /**
+     * @When I delete the slot named :slotName
+     */
+    public function iDeleteTheSlotNamed($slotName)
+    {
+        throw new PendingException();
+    }
+
+    /**
+     * @Then I should see the product bundle has no slot named :slotName
+     */
+    public function iShouldSeeTheProductBundleHasNoSlotNamed($slotName)
+    {
+        throw new PendingException();
     }
 }

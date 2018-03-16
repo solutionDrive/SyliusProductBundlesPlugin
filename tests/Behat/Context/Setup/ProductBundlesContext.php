@@ -77,12 +77,13 @@ class ProductBundlesContext implements Context
 
     /**
      * @Given /^(this product bundle) has(?:| also) a slot named "([^"]*)"$/
+     * @Given /^(this product bundle) has(?:| also) a slot named "([^"]*)" with the ("[^"]+" product)$/
      */
-    public function thisProductBundleHasASlotNamed(ProductBundleInterface $productBundle, $slot): void
-    {
-        /**
-         * @todo add a slot the the injected $projectBundle with the name in $slot
-         */
+    public function thisProductBundleHasASlotNamedWithTheProduct(
+        ProductBundleInterface $productBundle,
+        string $slotName,
+        ?ProductInterface $product
+    ) {
         throw new PendingException();
     }
 
