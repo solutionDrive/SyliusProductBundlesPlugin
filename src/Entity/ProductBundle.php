@@ -54,7 +54,7 @@ class ProductBundle implements ProductBundleInterface
      */
     public function removeSlot(ProductBundleSlotInterface $slot): void
     {
-        if (!$this->slots->contains($slot)) {
+        if ($this->slots->contains($slot)) {
             $this->slots->removeElement($slot);
             $slot->setBundle(null);
         }
