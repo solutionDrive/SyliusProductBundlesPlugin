@@ -27,6 +27,7 @@ class ProductBundleType extends AbstractType
             ->add('slots', CollectionType::class, [
                 'entry_type' => ProductBundleSlotType::class,
                 'allow_add' => true,
+                'by_reference' => false,
                 'allow_delete' => true,
                 'prototype' => true,
                 'label' => false,
