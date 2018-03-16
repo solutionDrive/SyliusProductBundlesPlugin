@@ -99,6 +99,7 @@ class ProductBundleCreator implements ProductBundleCreatorInterface
         /** @var ProductBundleSlotInterface $slot */
         $slot = $this->productBundleSlotFactory->createNew();
         $slot->setName($slotName);
+
         return $slot;
     }
 }
