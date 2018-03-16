@@ -12,7 +12,6 @@ declare(strict_types=1);
 namespace Tests\solutionDrive\SyliusProductBundlesPlugin\Behat\Context\Ui\Admin;
 
 use Behat\Behat\Context\Context;
-use Behat\Behat\Tester\Exception\PendingException;
 use SolutionDrive\SyliusProductBundlesPlugin\Entity\ProductBundleInterface;
 use Sylius\Component\Core\Model\ProductInterface;
 use Tests\solutionDrive\SyliusProductBundlesPlugin\Behat\Page\ProductBundles\CreatePage;
@@ -175,8 +174,8 @@ class ManagingProductBundlesContext implements Context
     /**
      * @Then I should see the product bundle has no slot named :slotName
      */
-    public function iShouldSeeTheProductBundleHasNoSlotNamed($slotName)
+    public function iShouldSeeTheProductBundleHasNoSlotNamed(string $slotName)
     {
-        throw new PendingException();
+        Assert::keyNotExists($this->updatePage->getSlotSubForms(), $slotName);
     }
 }
