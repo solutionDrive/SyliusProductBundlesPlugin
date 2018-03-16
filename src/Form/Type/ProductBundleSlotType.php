@@ -11,7 +11,7 @@ declare(strict_types=1);
 namespace solutionDrive\SyliusProductBundlesPlugin\Form\Type;
 
 use solutionDrive\SyliusProductBundlesPlugin\Entity\ProductBundleSlot;
-use Sylius\Bundle\ProductBundle\Form\Type\ProductChoiceType;
+use Sylius\Bundle\ProductBundle\Form\Type\ProductAutocompleteChoiceType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -23,10 +23,10 @@ class ProductBundleSlotType extends AbstractType
     {
         $builder
             ->add('name', TextType::class, ['label' => 'sylius.ui.name'])
-            ->add('products', ProductChoiceType::class, [
+            ->add('products', ProductAutocompleteChoiceType::class, [
                 'label' => 'sylius.ui.products',
                 'multiple' => true,
-                'required' => false
+                'required' => false,
             ])
         ;
     }

@@ -36,7 +36,8 @@ class ManagingProductBundlesContext implements Context
      * @param CreatePage $createPage
      * @param UpdatePage $updatePage
      */
-    public function __construct(IndexPage $indexPage, CreatePage $createPage, UpdatePage $updatePage) {
+    public function __construct(IndexPage $indexPage, CreatePage $createPage, UpdatePage $updatePage)
+    {
         $this->indexPage = $indexPage;
         $this->createPage = $createPage;
         $this->updatePage = $updatePage;

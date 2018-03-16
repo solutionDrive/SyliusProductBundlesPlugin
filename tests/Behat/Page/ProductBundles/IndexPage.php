@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace Tests\solutionDrive\SyliusProductBundlesPlugin\Behat\Page\ProductBundles;
