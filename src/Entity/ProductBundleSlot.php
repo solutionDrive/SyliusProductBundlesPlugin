@@ -81,11 +81,8 @@ class ProductBundleSlot implements ProductBundleSlotInterface, ResourceInterface
         $this->products->add($product);
     }
 
-    /**
-     * {inheritdoc}
-     */
-    public function setProducts($products): void
+    public function removeProduct(ProductInterface $product): void
     {
-        $this->products = $products;
+        $this->products->remove($product);
     }
 }

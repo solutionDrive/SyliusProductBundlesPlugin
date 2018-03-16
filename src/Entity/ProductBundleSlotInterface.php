@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace solutionDrive\SyliusProductBundlesPlugin\Entity;
 
-use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Sylius\Component\Core\Model\ProductInterface;
 
@@ -33,8 +32,5 @@ interface ProductBundleSlotInterface
 
     public function addProduct(ProductInterface $product): void;
 
-    /**
-     * @param ArrayCollection|Collection|ProductInterface[] $products
-     */
-    public function setProducts($products): void;
+    public function removeProduct(ProductInterface $product): void;
 }
