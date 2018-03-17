@@ -1,4 +1,4 @@
-@managing_product_bundle_slots
+@managing_product_bundles
 Feature: Browsing product bundle slots in product bundle
   In order to see the slots of a product bundle
   As an administrator

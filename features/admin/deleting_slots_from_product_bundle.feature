@@ -1,4 +1,4 @@
-@managing_product_bundle_slots
+@managing_product_bundles
 Feature: Removing slots from a product bundle
   In order to mangage product bundle slots
   As an administrator

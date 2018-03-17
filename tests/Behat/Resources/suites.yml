@@ -1,5 +1,3 @@
-# Put your Behat suites definitions here
-
 default:
     suites:
         ui_managing_product_bundles:
@@ -13,40 +11,8 @@ default:
                 - sylius.behat.context.setup.product
 
                 - solutiondrive.syliusproductbundlesplugin.behat.context.setup.product_bundles
-
-                - solutiondrive.syliusproductbundlesplugin.behat.context.ui.admin.managing_product_bundles
-            filters:
-                tags: "@managing_product_bundles && @ui"
-
-# in the core suite 'ui_managing_products' are a lot more contexts loaded
-# see "vendor/sylius/sylius/src/Sylius/Behat/Resources/config/suites/ui/product/managing_products.yml"
-        ui_managing_product_bundle_products:
-            contexts_services:
-                - sylius.behat.context.hook.doctrine_orm
-
-                - sylius.behat.context.transform.product
-                - sylius.behat.context.transform.shared_storage
-
-                - sylius.behat.context.setup.admin_security
-                - sylius.behat.context.setup.product
-
-                - sylius.behat.context.ui.admin.managing_products
-
-                - solutiondrive.syliusproductbundlesplugin.behat.context.setup.product_bundles
-            filters:
-                tags: "@managing_product_bundle_products && @ui"
-        ui_managing_product_bundle_slots:
-            contexts_services:
-                - sylius.behat.context.hook.doctrine_orm
-
-                - sylius.behat.context.transform.product
-                - sylius.behat.context.transform.shared_storage
-
-                - sylius.behat.context.setup.admin_security
-                - sylius.behat.context.setup.product
-
                 - solutiondrive.syliusproductbundlesplugin.behat.context.transform.product_bundles
                 - solutiondrive.syliusproductbundlesplugin.behat.context.setup.product_bundles
                 - solutiondrive.syliusproductbundlesplugin.behat.context.ui.admin.managing_product_bundles
             filters:
-                tags: "@managing_product_bundle_slots && @ui"
+                tags: "@managing_product_bundles && @ui"
