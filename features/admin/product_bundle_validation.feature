@@ -16,7 +16,7 @@ Feature: Product bundle validation
     And I try to add it
     Then I should be notified that a product has to be defined
 
-  @ui @todo
+  @ui @javascript
   Scenario: Adding a new product bundle slot without specifying a slot name
     When I try to create a new product bundle
     And I associate the product "smurf hat" with its bundle

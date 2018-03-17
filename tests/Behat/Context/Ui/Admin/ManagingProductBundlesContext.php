@@ -65,6 +65,7 @@ class ManagingProductBundlesContext implements Context
 
     /**
      * @When I create a new product bundle
+     * @When I try to create a new product bundle
      */
     public function iCreateANewProductBundle(): void
     {
@@ -73,6 +74,7 @@ class ManagingProductBundlesContext implements Context
 
     /**
      * @When I add it
+     * @When I try to add it
      */
     public function iAddIt(): void
     {
@@ -125,8 +127,9 @@ class ManagingProductBundlesContext implements Context
 
     /**
      * @When I add the slot :slotName
+     * @When I add an empty slot
      */
-    public function iAddTheSlot(string $slotName): void
+    public function iAddTheSlot(string $slotName = ''): void
     {
         $this->updatePage->addSlot($slotName);
     }
@@ -166,7 +169,7 @@ class ManagingProductBundlesContext implements Context
     /**
      * @When I remove the slot named :slotName
      */
-    public function iRemoveTheSlotNamed($slotName)
+    public function iRemoveTheSlotNamed($slotName): void
     {
         $this->updatePage->removeSlot($slotName);
     }
@@ -174,8 +177,16 @@ class ManagingProductBundlesContext implements Context
     /**
      * @Then I should see the product bundle has no slot named :slotName
      */
-    public function iShouldSeeTheProductBundleHasNoSlotNamed(string $slotName)
+    public function iShouldSeeTheProductBundleHasNoSlotNamed(string $slotName): void
     {
         Assert::keyNotExists($this->updatePage->getSlotSubForms(), $slotName);
+    }
+
+    /**
+     * @Then I should be notified that :element is required
+     */
+    public function iShouldBeNotifiedThatElementIsRequired(string $element): void
+    {
+        Assert::same($this->updatePage->getValidationMessage($element), sprintf('Please enter province %s.', $element));
     }
 }
