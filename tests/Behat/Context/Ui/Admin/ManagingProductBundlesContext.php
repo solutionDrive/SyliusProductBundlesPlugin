@@ -187,6 +187,6 @@ class ManagingProductBundlesContext implements Context
      */
     public function iShouldBeNotifiedThatElementIsRequired(string $element): void
     {
-        Assert::same($this->updatePage->getValidationMessage($element), sprintf('Please enter province %s.', $element));
+        Assert::same($this->updatePage->getValidationMessage($element), 'This value should not be blank.');
     }
 }

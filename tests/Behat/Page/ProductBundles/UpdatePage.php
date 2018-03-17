@@ -84,4 +84,13 @@ class UpdatePage extends CrudUpdatePage
 
         return $slotSubForms[$slotName];
     }
+
+    protected function getDefinedElements(): array
+    {
+        return [
+            'slot_name_0' => '#product_bundle_slots_0_name'
+        ];
+    }
+
+
 }
