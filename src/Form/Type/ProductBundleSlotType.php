@@ -13,6 +13,7 @@ namespace solutionDrive\SyliusProductBundlesPlugin\Form\Type;
 use solutionDrive\SyliusProductBundlesPlugin\Entity\ProductBundleSlot;
 use Sylius\Bundle\ProductBundle\Form\Type\ProductAutocompleteChoiceType;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -32,6 +33,9 @@ class ProductBundleSlotType extends AbstractType
                 'multiple' => true,
                 'by_reference' => false,
                 'required' => false,
+            ])
+            ->add('position', IntegerType::class,[
+                'label' => 'solutiondrive.ui.position'
             ])
         ;
     }

@@ -56,9 +56,9 @@ class ProductBundleSlot implements ProductBundleSlotInterface, ResourceInterface
         return $this->position;
     }
 
-    public function setPosition(int $position): void
+    public function setPosition(?int $position): void
     {
-        $this->position = $position;
+        $this->position = (int) $position;
     }
 
     public function getBundle(): ?ProductBundleInterface

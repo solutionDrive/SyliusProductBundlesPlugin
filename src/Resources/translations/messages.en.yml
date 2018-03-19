@@ -8,3 +8,4 @@ solutiondrive:
         product_bundle: Product Bundle
         slots: Slots
         add_slot: Add slot
+        position: Position
