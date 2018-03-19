@@ -12,10 +12,8 @@ declare(strict_types=1);
 namespace Tests\solutionDrive\SyliusProductBundlesPlugin\Behat\Context\Ui\Admin;
 
 use Behat\Behat\Context\Context;
-use Behat\Behat\Tester\Exception\PendingException;
 use SolutionDrive\SyliusProductBundlesPlugin\Entity\ProductBundleInterface;
 use Sylius\Component\Core\Model\ProductInterface;
-use Sylius\Component\Core\Repository\ProductRepositoryInterface;
 use Tests\solutionDrive\SyliusProductBundlesPlugin\Behat\Page\ProductBundles\CreatePage;
 use Tests\solutionDrive\SyliusProductBundlesPlugin\Behat\Page\ProductBundles\IndexPage;
 use Tests\solutionDrive\SyliusProductBundlesPlugin\Behat\Page\ProductBundles\UpdatePage;
@@ -32,32 +30,22 @@ class ManagingProductBundlesContext implements Context
     /** @var UpdatePage */
     private $updatePage;
 
-    /** @var ProductRepositoryInterface */
-    private $productRepository;
-
     /**
-     * ManagingProductBundlesContext constructor.
      * @param IndexPage $indexPage
      * @param CreatePage $createPage
      * @param UpdatePage $updatePage
-     * @param ProductRepositoryInterface $productRepository
      */
-    public function __construct(
-        IndexPage $indexPage,
-        CreatePage $createPage,
-        UpdatePage $updatePage,
-        ProductRepositoryInterface $productRepository
-    ) {
+    public function __construct(IndexPage $indexPage, CreatePage $createPage, UpdatePage $updatePage)
+    {
         $this->indexPage = $indexPage;
         $this->createPage = $createPage;
         $this->updatePage = $updatePage;
-        $this->productRepository = $productRepository;
     }
 
     /**
-     * @When I want to see :number product bundle(s) in the store
+     * @Then I should see :number product bundle(s) in the list
      */
-    public function iWantToSeeProductBundleInTheStore(int $number)
+    public function iWantToSeeProductBundleInTheStore(int $number): void
     {
         $this->indexPage->open();
         Assert::same($this->indexPage->countItems(), $number);
@@ -66,7 +54,7 @@ class ManagingProductBundlesContext implements Context
     /**
      * @Then I should( still) see a product bundle :productBundleName
      */
-    public function iShouldSeeAProductBundle($productBundleName)
+    public function iShouldSeeAProductBundle($productBundleName): void
     {
         Assert::true(
             $this
@@ -76,101 +64,33 @@ class ManagingProductBundlesContext implements Context
     }
 
     /**
-     * @Given /^I want to modify the "([^"]*)" product bundle$/
-     */
-    public function iWantToModifyTheProductBundle($productBundle)
-    {
-        throw new PendingException();
-    }
-
-    /**
-     * @When /^I add the ("[^"]*" product) to the "([^"]*)" slot of (this product bundle)$/
-     */
-    public function iAddTheProductToTheSlotOfThisProductBundle(
-        ProductInterface $product,
-        $slot,
-        ProductBundleInterface $productBundle
-    ) {
-        throw new PendingException();
-    }
-
-    /**
-     * @Then /^I should see that the "([^"]*)" product is added to the "([^"]*)" slot$/
-     */
-    public function iShouldSeeThatTheProductIsAddedToTheSlot(string $product, string $slot)
-    {
-        throw new PendingException();
-    }
-
-    /**
-     * @When I save my changes
-     */
-    public function iSaveMyChanges()
-    {
-        throw new PendingException();
-    }
-
-    /**
-     * @Then /^I should see that the (products "[^"]*" and "[^"]*") are assigned to the "([^"]*)" slot of (this product bundle)$/
-     */
-    public function iShouldSeeThatTheProductsAndAreAssignedToTheSlot(
-        array $products,
-        $slot,
-        ProductBundleInterface $productBundle
-    ) {
-        throw new PendingException();
-    }
-
-    /**
      * @When I create a new product bundle
      */
-    public function iCreateANewProductBundle()
+    public function iCreateANewProductBundle(): void
     {
         $this->createPage->open();
     }
 
-
     /**
      * @When I add it
      */
-    public function iAddIt()
+    public function iAddIt(): void
     {
         $this->createPage->create();
     }
 
     /**
-     * @When I am browsing products
+     * @When /^I associate the (product "[^"]+") with its bundle$/
      */
-    public function iAmBrowsingProducts()
+    public function iAssociateTheProductWithItsBundle(ProductInterface $product): void
     {
-        throw new PendingException();
-    }
-
-    /**
-     * @Then I should see a product with name :arg1
-     */
-    public function iShouldSeeAProductWithName($arg1)
-    {
-        throw new PendingException();
-    }
-
-    /**
-     * @When I associate the product :productName with its bundle
-     */
-    public function iAssociateTheProductWithItsBundle($productName)
-    {
-        $products = $this->productRepository->findByName($productName, 'en_US');
-        Assert::count($products, 1);
-        if (count($products) > 0) {
-            $product = array_pop($products);
-            $this->createPage->specifyProductName($product->getName());
-        }
+        $this->createPage->specifyProductName($product->getName());
     }
 
     /**
      * @When I browse product bundles
      */
-    public function iBrowseProductBundles()
+    public function iBrowseProductBundles(): void
     {
         $this->indexPage->open();
     }
@@ -178,7 +98,7 @@ class ManagingProductBundlesContext implements Context
     /**
      * @When /^I delete (this product bundle)$/
      */
-    public function iDeleteThisProductBundle(ProductBundleInterface $productBundle)
+    public function iDeleteThisProductBundle(ProductBundleInterface $productBundle): void
     {
         $this->indexPage->deleteResourceOnPage(['product.code' => $productBundle->getProduct()->getCode()]);
     }
@@ -186,12 +106,76 @@ class ManagingProductBundlesContext implements Context
     /**
      * @Then I should not see a product bundle :productBundle
      */
-    public function iShouldNotSeeAProductBundle($productBundle)
+    public function iShouldNotSeeAProductBundle($productBundle): void
     {
         Assert::false(
             $this
                 ->indexPage
                 ->isSingleResourceOnPage(['product.name' => $productBundle])
         );
+    }
+
+    /**
+     * @When /^I want to modify the ("[^"]+" product bundle)( again)?$/
+     */
+    public function iWantToModifyTheProductBundle(ProductBundleInterface $productBundle): void
+    {
+        $this->updatePage->open(['id' => $productBundle->getId()]);
+    }
+
+    /**
+     * @When I add the slot :slotName
+     */
+    public function iAddTheSlot(string $slotName): void
+    {
+        $this->updatePage->addSlot($slotName);
+    }
+
+    /**
+     * @When I save my changes
+     */
+    public function iSaveMyChanges(): void
+    {
+        $this->updatePage->saveChanges();
+    }
+
+    /**
+     * @Then I should see the product bundle has a slot named :slotName
+     */
+    public function iShouldSeeTheProductBundleHasTheSlot(string $slotName): void
+    {
+        Assert::keyExists($this->updatePage->getSlotSubForms(), $slotName);
+    }
+
+    /**
+     * @When /^I add the (product "[^"]+") to the slot "([^"]+)"$/
+     */
+    public function iAddTheProductToTheSlot(ProductInterface $product, string $slotName): void
+    {
+        $this->updatePage->associateSlotWithProducts($slotName, [$product->getCode()]);
+    }
+
+    /**
+     * @Then /^I should see the product bundle has a slot named "([^"]+)" with the ("[^"]+" product)$/
+     */
+    public function iShouldSeeTheProductBundleHasASlotNamedWithTheProduct(string $slotName, ProductInterface $product): void
+    {
+        $this->updatePage->hasSlotWithProduct($slotName, $product->getCode());
+    }
+
+    /**
+     * @When I remove the slot named :slotName
+     */
+    public function iRemoveTheSlotNamed($slotName)
+    {
+        $this->updatePage->removeSlot($slotName);
+    }
+
+    /**
+     * @Then I should see the product bundle has no slot named :slotName
+     */
+    public function iShouldSeeTheProductBundleHasNoSlotNamed(string $slotName)
+    {
+        Assert::keyNotExists($this->updatePage->getSlotSubForms(), $slotName);
     }
 }

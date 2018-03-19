@@ -11,6 +11,7 @@ Feature: Browsing product bundles list
     And I am logged in as an administrator
 
   @ui
-  Scenario: Seeing a product bundle in the list
-    When I want to see 1 product bundle in the store
-    Then I should see a product bundle "smurf outfit"
+  Scenario: Browsing defined product bundles
+    When I browse product bundles
+    Then I should see 1 product bundle in the list
+    And I should see a product bundle "smurf outfit"

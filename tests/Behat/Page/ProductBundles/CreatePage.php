@@ -11,7 +11,6 @@ use Sylius\Behat\Page\Admin\Crud\CreatePage as CrudCreatePage;
  *
  * @copyright 2018 solutionDrive GmbH
  */
-
 final class CreatePage extends CrudCreatePage
 {
     public function specifyProductId($id)

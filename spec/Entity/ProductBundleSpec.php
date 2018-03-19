@@ -28,13 +28,6 @@ class ProductBundleSpec extends ObjectBehavior
         $this->shouldImplement(ResourceInterface::class);
     }
 
-    function it_can_contain_slots(
-        ProductBundleSlotInterface $slot
-    ) {
-        $this->addSlot($slot);
-        $this->getSlots()->shouldContain($slot);
-    }
-
     function it_has_a_product(ProductInterface $product)
     {
         $this->setProduct($product);
@@ -46,5 +39,20 @@ class ProductBundleSpec extends ObjectBehavior
     ) {
         $this->setPresentationSlot($productBundleSlot);
         $this->getPresentationSlot()->shouldReturn($productBundleSlot);
+    }
+
+    function it_can_add_a_slot(ProductBundleSlotInterface $slot)
+    {
+        $slot->setBundle($this)->shouldBeCalled();
+        $this->addSlot($slot);
+        $this->getSlots()->shouldContain($slot);
+    }
+
+    function it_can_remove_a_slot(ProductBundleSlotInterface $slot)
+    {
+        $this->addSlot($slot);
+        $slot->setBundle(null)->shouldBeCalled();
+        $this->removeSlot($slot);
+        $this->getSlots()->shouldNotContain($slot);
     }
 }

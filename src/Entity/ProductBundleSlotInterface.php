@@ -26,9 +26,11 @@ interface ProductBundleSlotInterface
 
     public function getBundle(): ?ProductBundleInterface;
 
-    public function setBundle(ProductBundleInterface $bundle): void;
+    public function setBundle(?ProductBundleInterface $bundle): void;
 
     public function getProducts(): Collection;
 
     public function addProduct(ProductInterface $product): void;
+
+    public function removeProduct(ProductInterface $product): void;
 }

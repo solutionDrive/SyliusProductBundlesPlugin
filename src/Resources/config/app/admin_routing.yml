@@ -8,17 +8,12 @@ solutiondrive_product_bundle:
     except: ['show']
     redirect: index
     grid: solutiondrive_admin_product_bundle
+    permission: true
+    vars:
+      all:
+        subheader: solutiondrive.ui.manage_product_bundles
+        templates:
+          form: "@SolutionDriveSyliusProductBundlesPlugin/Admin/ProductBundle/_form.html.twig"
+      index:
+        icon: sitemap
   type: sylius.resource
-
-solutiondrive_admin_product_bundle_create:
-    path: /product-bundles/new
-    methods: [GET, POST]
-    defaults:
-        _controller: solutiondrive.controller.product_bundle:createAction
-        _sylius:
-            section: admin
-            permission: true
-            template: SyliusAdminBundle:Crud:create.html.twig
-            redirect: solutiondrive_admin_product_bundle_update
-            vars:
-                subheader: solutiondrive.ui.manage_product_bundles

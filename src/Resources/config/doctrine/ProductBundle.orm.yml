@@ -30,3 +30,4 @@ solutionDrive\SyliusProductBundlesPlugin\Entity\ProductBundle:
             targetEntity: solutionDrive\SyliusProductBundlesPlugin\Entity\ProductBundleSlotInterface
             mappedBy: bundle
             cascade: ["persist"]
+            orphanRemoval: true

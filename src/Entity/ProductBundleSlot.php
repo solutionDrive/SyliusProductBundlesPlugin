@@ -66,7 +66,7 @@ class ProductBundleSlot implements ProductBundleSlotInterface, ResourceInterface
         return $this->bundle;
     }
 
-    public function setBundle(ProductBundleInterface $bundle): void
+    public function setBundle(?ProductBundleInterface $bundle): void
     {
         $this->bundle = $bundle;
     }
@@ -78,6 +78,15 @@ class ProductBundleSlot implements ProductBundleSlotInterface, ResourceInterface
 
     public function addProduct(ProductInterface $product): void
     {
-        $this->products->add($product);
+        if (!$this->products->contains($product)) {
+            $this->products->add($product);
+        }
+    }
+
+    public function removeProduct(ProductInterface $product): void
+    {
+        if ($this->products->contains($product)) {
+            $this->products->removeElement($product);
+        }
     }
 }

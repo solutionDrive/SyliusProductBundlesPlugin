@@ -15,6 +15,7 @@ use Behat\Behat\Context\Context;
 use Behat\Behat\Tester\Exception\PendingException;
 use Doctrine\ORM\EntityManagerInterface;
 use SolutionDrive\SyliusProductBundlesPlugin\Entity\ProductBundleInterface;
+use solutionDrive\SyliusProductBundlesPlugin\Entity\ProductBundleSlot;
 use Sylius\Behat\Service\SharedStorage;
 use Sylius\Component\Core\Model\ProductInterface;
 use Sylius\Component\Resource\Factory\FactoryInterface;
@@ -34,30 +35,32 @@ class ProductBundlesContext implements Context
     /** @var FactoryInterface */
     private $productFactory;
 
+    /** @var FactoryInterface */
+    private $productBundleSlotFactory;
+
     /** @var EntityManagerInterface */
     private $productEntityManager;
 
-    /**
-     * @param SharedStorage $sharedStorage
-     */
     public function __construct(
         SharedStorage $sharedStorage,
         FactoryInterface $productBundleFactory,
         EntityManagerInterface $productBundleManager,
         FactoryInterface $productFactory,
+        FactoryInterface $productBundleSlotFactory,
         EntityManagerInterface $productEntityManager
     ) {
         $this->sharedStorage = $sharedStorage;
         $this->productBundleFactory = $productBundleFactory;
         $this->productBundleManager = $productBundleManager;
         $this->productFactory = $productFactory;
+        $this->productBundleSlotFactory = $productBundleSlotFactory;
         $this->productEntityManager = $productEntityManager;
     }
 
     /**
      * @Given the store has( also) a product bundle :productBundle
      */
-    public function theStoreHasAProductBundle($productBundle)
+    public function theStoreHasAProductBundle($productBundle): void
     {
         /** @var ProductInterface $product */
         $product = $this->productFactory->createNew();
@@ -77,13 +80,21 @@ class ProductBundlesContext implements Context
 
     /**
      * @Given /^(this product bundle) has(?:| also) a slot named "([^"]*)"$/
+     * @Given /^(this product bundle) has(?:| also) a slot named "([^"]*)" with the ("[^"]+" product)$/
      */
-    public function thisProductBundleHasASlotNamed(ProductBundleInterface $productBundle, $slot)
-    {
-        /**
-         * @todo add a slot the the injected $projectBundle with the name in $slot
-         */
-        throw new PendingException();
+    public function thisProductBundleHasASlotNamedWithTheProduct(
+        ProductBundleInterface $productBundle,
+        string $slotName,
+        ?ProductInterface $product
+    ) {
+        /** @var ProductBundleSlot $slot */
+        $slot = $this->productBundleSlotFactory->createNew();
+        $slot->setBundle($productBundle);
+        $slot->setName($slotName);
+        $slot->addProduct($product);
+        $productBundle->getSlots()->add($slot);
+
+        $this->productBundleManager->flush();
     }
 
     /**
@@ -93,7 +104,7 @@ class ProductBundlesContext implements Context
         ProductInterface $product,
         $slot,
         ProductBundleInterface $productBundle
-    ) {
+    ): void {
         /**
          * @todo add the injected product to the slot named $slot of the injected product bundle
          */
