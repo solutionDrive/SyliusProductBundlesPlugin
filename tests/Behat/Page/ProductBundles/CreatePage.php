@@ -30,4 +30,11 @@ final class CreatePage extends CrudCreatePage
         $item = $dropdown->find('css', '.item[data-value="' . $productCode . '"]');
         $item->click();
     }
+
+    protected function getDefinedElements(): array
+    {
+        return [
+            'product' => '#product_bundle_product'
+        ];
+    }
 }

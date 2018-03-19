@@ -14,7 +14,7 @@ Feature: Product bundle validation
   Scenario: Adding a new product bundle without specifying a product
     When I try to create a new product bundle
     And I try to add it
-    Then I should be notified that "product" is required
+    Then I should be notified that a product has to be defined
 
   @ui @javascript
   Scenario: Adding a new product bundle slot without specifying a slot name

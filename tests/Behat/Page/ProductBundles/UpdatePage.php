@@ -91,6 +91,4 @@ class UpdatePage extends CrudUpdatePage
             'slot_name_0' => '#product_bundle_slots_0_name'
         ];
     }
-
-
 }

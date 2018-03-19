@@ -189,4 +189,12 @@ class ManagingProductBundlesContext implements Context
     {
         Assert::same($this->updatePage->getValidationMessage($element), 'This value should not be blank.');
     }
+
+    /**
+     * @Then I should be notified that a product has to be defined
+     */
+    public function iShouldBeNotifiedThatAProductHasToBeDefined()
+    {
+        Assert::same($this->createPage->getValidationMessage('product'), 'This value should not be blank.');
+    }
 }
