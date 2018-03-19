@@ -10,11 +10,11 @@ Feature: Product bundle validation
     And this product bundle has a slot named "headgear" with the "smurf hat" product
     And I am logged in as an administrator
 
-  @ui @todo
+  @ui @javascript
   Scenario: Adding a new product bundle without specifying a product
     When I try to create a new product bundle
     And I try to add it
-    Then I should be notified that a product has to be defined
+    Then I should be notified that "product" is required
 
   @ui @javascript
   Scenario: Adding a new product bundle slot without specifying a slot name
