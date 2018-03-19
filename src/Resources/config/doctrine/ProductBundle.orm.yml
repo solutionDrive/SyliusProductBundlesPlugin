@@ -31,3 +31,5 @@ solutionDrive\SyliusProductBundlesPlugin\Entity\ProductBundle:
             mappedBy: bundle
             cascade: ["persist"]
             orphanRemoval: true
+            orderBy:
+                position: ASC
