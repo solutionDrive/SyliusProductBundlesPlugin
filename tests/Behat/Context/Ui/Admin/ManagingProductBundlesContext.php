@@ -86,7 +86,7 @@ class ManagingProductBundlesContext implements Context
      */
     public function iAssociateTheProductWithItsBundle(ProductInterface $product): void
     {
-        $this->createPage->specifyProductName($product->getName());
+        $this->createPage->specifyProductBundleProduct($product->getCode());
     }
 
     /**

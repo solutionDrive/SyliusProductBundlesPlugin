@@ -7,7 +7,7 @@ Feature: Creating a product bundle
   Background:
     Given I am logged in as an administrator
 
-  @ui
+  @ui @javascript
   Scenario: creating a new product bundle from an existing product
     Given the store has a product "Smurf2Gold Conversion Machine Bundle"
     When I create a new product bundle
