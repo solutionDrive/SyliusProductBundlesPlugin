@@ -25,7 +25,7 @@ class ProductBundleSlotType extends AbstractType
         $builder
             ->add('name', TextType::class, [
                 'label' => 'sylius.ui.name',
-                'constraints' => [new NotBlank()]
+                'constraints' => [new NotBlank()],
             ])
             ->add('products', ProductAutocompleteChoiceType::class, [
                 'label' => 'sylius.ui.products',

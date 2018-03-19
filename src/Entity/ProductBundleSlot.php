@@ -19,7 +19,7 @@ class ProductBundleSlot implements ProductBundleSlotInterface, ResourceInterface
     /** @var int */
     private $id;
 
-    /** @var null|string */
+    /** @var string|null */
     private $name;
 
     /** @var int */
