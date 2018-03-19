@@ -19,9 +19,7 @@ final class CreatePage extends CrudCreatePage
     public function specifyProductBundleProduct(string $productCode)
     {
         Assert::isInstanceOf($this->getDriver(), Selenium2Driver::class);
-        $dropdown = $this->getDocument()->find('css', '#product_bundle_product')->getParent();
-
-        Assert::notNull($dropdown);
+        $dropdown = $this->getElement('product')->getParent();
         $dropdown->click();
         $dropdown->waitFor(5, function () use ($productCode, $dropdown) {
             return $dropdown->has('css', '.item[data-value="' . $productCode . '"]');
