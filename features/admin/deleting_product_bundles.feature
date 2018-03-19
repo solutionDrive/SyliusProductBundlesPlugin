@@ -5,7 +5,8 @@ As an administrator
 I want to delete an existing product bundle via the ui
 
   Background:
-    Given the store has a product bundle "Smurf Outfit Bundle"
+    Given the store operates on a single channel in "United States"
+    And the store has a product bundle "Smurf Outfit Bundle"
     And I am logged in as an administrator
 
   @ui

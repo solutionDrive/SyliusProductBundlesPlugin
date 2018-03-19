@@ -5,7 +5,8 @@ Feature: Browsing product bundles list
   I want to see product bundles on an overview page
 
   Background:
-    Given the store has a product "smurf hat"
+    Given the store operates on a single channel in "United States"
+    And the store has a product "smurf hat"
     And the store has a product "smurf house"
     And the store has a product bundle "smurf outfit"
     And I am logged in as an administrator
