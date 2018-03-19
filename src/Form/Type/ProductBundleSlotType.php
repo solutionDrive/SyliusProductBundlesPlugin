@@ -34,8 +34,8 @@ class ProductBundleSlotType extends AbstractType
                 'by_reference' => false,
                 'required' => false,
             ])
-            ->add('position', IntegerType::class,[
-                'label' => 'solutiondrive.ui.position'
+            ->add('position', IntegerType::class, [
+                'label' => 'solutiondrive.ui.position',
             ])
         ;
     }
