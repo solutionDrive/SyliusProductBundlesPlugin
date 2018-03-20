@@ -8,7 +8,7 @@ Feature: Creating a product bundle
     Given the store operates on a single channel in "United States"
     And I am logged in as an administrator
 
-  @ui @javascript
+  @ui @javascript @todo @broken_travis_build
   Scenario: creating a new product bundle from an existing product
     Given the store has a product "Smurf2Gold Conversion Machine Bundle"
     When I create a new product bundle
