@@ -19,8 +19,8 @@ class ProductBundleSlot implements ProductBundleSlotInterface, ResourceInterface
     /** @var int */
     private $id;
 
-    /** @var string */
-    private $name = '';
+    /** @var string|null */
+    private $name;
 
     /** @var int */
     private $position = 0;
@@ -41,7 +41,7 @@ class ProductBundleSlot implements ProductBundleSlotInterface, ResourceInterface
         return $this->id;
     }
 
-    public function getName(): string
+    public function getName(): ?string
     {
         return $this->name;
     }
@@ -56,9 +56,9 @@ class ProductBundleSlot implements ProductBundleSlotInterface, ResourceInterface
         return $this->position;
     }
 
-    public function setPosition(int $position): void
+    public function setPosition(?int $position): void
     {
-        $this->position = $position;
+        $this->position = (int) $position;
     }
 
     public function getBundle(): ?ProductBundleInterface

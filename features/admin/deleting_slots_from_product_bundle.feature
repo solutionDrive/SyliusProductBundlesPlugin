@@ -5,7 +5,8 @@ Feature: Removing slots from a product bundle
   I want to be able to remove previously assigned slots from a product bundle
 
   Background:
-    Given the store has a product "smurf hat"
+    Given the store operates on a single channel in "United States"
+    And the store has a product "smurf hat"
     And the store has a product bundle "smurf outfit"
     And this product bundle has a slot named "headgear" with the "smurf hat" product
     And I am logged in as an administrator

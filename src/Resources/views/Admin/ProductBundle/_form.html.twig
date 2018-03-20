@@ -44,9 +44,10 @@
 {% macro collection_item(form, allow_delete, button_delete_label, index) %}
     {% spaceless %}
         <div class="ui segment" data-form-collection="item" data-form-collection-index="{{ index }}" data-qa="slot-form-section">
-            <div class="two fields">
-                <div class="field">{{ form_row(form.name) }}</div>
-                <div class="field">{{ form_row(form.products) }}</div>
+            <div class="fields">
+                <div class="seven wide field">{{ form_row(form.name) }}</div>
+                <div class="seven wide field">{{ form_row(form.products) }}</div>
+                <div class="two wide field">{{ form_row(form.position) }}</div>
                 {% if allow_delete %}
                     <div class="one wide field">
                         <label>&nbsp;</label>

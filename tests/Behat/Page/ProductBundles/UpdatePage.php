@@ -31,15 +31,16 @@ class UpdatePage extends CrudUpdatePage
     {
         Assert::isInstanceOf($this->getDriver(), Selenium2Driver::class);
         $slotSubForm = $this->getSlotSubForm($slotName);
-        $dropdown = $slotSubForm->find('css', '.sylius-autocomplete');
-        Assert::notNull($dropdown);
-        $dropdown->click();
+        $dropDown = $slotSubForm->find('css', '.sylius-autocomplete');
+        Assert::notNull($dropDown);
+        $dropDown->click();
         foreach ($productCodes as $productCode) {
-            $dropdown->waitFor(5, function () use ($productCode, $dropdown) {
-                return $dropdown->has('css', '.item[data-value="' . $productCode . '"]');
+            $productCodeItemLocator = '.item[data-value="' . $productCode . '"]';
+            $dropDown->waitFor(5, function () use ($productCodeItemLocator, $dropDown) {
+                return $dropDown->has('css', $productCodeItemLocator);
             });
 
-            $item = $dropdown->find('css', '.item[data-value="' . $productCode . '"]');
+            $item = $dropDown->find('css', $productCodeItemLocator);
             $item->click();
         }
     }
@@ -83,5 +84,12 @@ class UpdatePage extends CrudUpdatePage
         Assert::keyExists($slotSubForms, $slotName);
 
         return $slotSubForms[$slotName];
+    }
+
+    protected function getDefinedElements(): array
+    {
+        return [
+            'slot_name_0' => '#product_bundle_slots_0_name'
+        ];
     }
 }

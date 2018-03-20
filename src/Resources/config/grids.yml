@@ -12,6 +12,11 @@ sylius_grid:
                 product.code:
                     type: string
                     label: sylius.ui.code
+                slots:
+                    type: twig
+                    label: solutiondrive.ui.slots
+                    options:
+                        template: "@SolutionDriveSyliusProductBundlesPlugin/Admin/ProductBundle/Grid/Field/slots.html.twig"
             actions:
                 main:
                     create:

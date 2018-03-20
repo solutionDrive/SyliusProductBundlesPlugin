@@ -5,7 +5,8 @@ Feature: Browsing product bundle slots in product bundle
   I want to see product bundle slots when looking at a product bundle
 
   Background:
-    Given the store has a product bundle "smurf outfit"
+    Given the store operates on a single channel in "United States"
+    And the store has a product bundle "smurf outfit"
     And the store has a product "smurf hat"
     And I am logged in as an administrator
 
