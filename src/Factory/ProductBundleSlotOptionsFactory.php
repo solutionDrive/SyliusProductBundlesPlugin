@@ -2,6 +2,12 @@
 
 declare(strict_types=1);
 
+/*
+ * Created by solutionDrive GmbH
+ *
+ * @copyright 2018 solutionDrive GmbH
+ */
+
 namespace solutionDrive\SyliusProductBundlesPlugin\Factory;
 
 use solutionDrive\SyliusProductBundlesPlugin\Service\Options\ProductBundleSlotOptions;
@@ -15,11 +21,9 @@ class ProductBundleSlotOptionsFactory implements ProductBundleSlotOptionsFactory
     }
 
     /**
-     * @param int $position
-     * @param bool $isPresentationSlot
-     * @param array $additionalOptions ['optionKey' => 'optionValue']
+     * @param bool  $isPresentationSlot
+     * @param array $additionalOptions  ['optionKey' => 'optionValue']
      *
-     * @return ProductBundleSlotOptionsInterface
      */
     public function createNewWithValues(
         int $position,

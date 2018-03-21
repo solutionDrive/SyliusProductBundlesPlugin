@@ -2,13 +2,14 @@
 
 declare(strict_types=1);
 
-namespace solutionDrive\SyliusProductBundlesPlugin\Service\Options;
-
-/**
+/*
  * Created by solutionDrive GmbH
  *
  * @copyright 2018 solutionDrive GmbH
  */
+
+namespace solutionDrive\SyliusProductBundlesPlugin\Service\Options;
+
 class ProductBundleSlotOptions implements ProductBundleSlotOptionsInterface
 {
     /** @var int */

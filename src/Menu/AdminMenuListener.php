@@ -2,15 +2,16 @@
 
 declare(strict_types=1);
 
-namespace solutionDrive\SyliusProductBundlesPlugin\Menu;
-
-use Sylius\Bundle\UiBundle\Menu\Event\MenuBuilderEvent;
-
-/**
+/*
  * Created by solutionDrive GmbH
  *
  * @copyright 2018 solutionDrive GmbH
  */
+
+namespace solutionDrive\SyliusProductBundlesPlugin\Menu;
+
+use Sylius\Bundle\UiBundle\Menu\Event\MenuBuilderEvent;
+
 final class AdminMenuListener
 {
     public function addProductBundlesMenu(MenuBuilderEvent $builderEvent): void

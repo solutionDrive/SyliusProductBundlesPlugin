@@ -36,8 +36,7 @@ class ProductBundleSlotType extends AbstractType
             ])
             ->add('position', IntegerType::class, [
                 'label' => 'solutiondrive.ui.position',
-            ])
-        ;
+            ]);
     }
 
     public function getBlockPrefix(): string

@@ -16,7 +16,6 @@ use Sylius\Bundle\ResourceBundle\Doctrine\ORM\EntityRepository;
 class ProductBundleRepository extends EntityRepository implements ProductBundleRepositoryInterface
 {
     /**
-     * @param string $name
      * @param string $locale
      *
      * @return array|ProductBundleInterface[]
@@ -30,7 +29,6 @@ class ProductBundleRepository extends EntityRepository implements ProductBundleR
             ->setParameter('name', $name)
             ->setParameter('locale', $locale)
             ->getQuery()
-            ->getResult()
-            ;
+            ->getResult();
     }
 }

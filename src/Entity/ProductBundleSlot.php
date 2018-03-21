@@ -2,6 +2,12 @@
 
 declare(strict_types=1);
 
+/*
+ * Created by solutionDrive GmbH
+ *
+ * @copyright 2018 solutionDrive GmbH
+ */
+
 namespace solutionDrive\SyliusProductBundlesPlugin\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
@@ -9,11 +15,6 @@ use Doctrine\Common\Collections\Collection;
 use Sylius\Component\Core\Model\ProductInterface;
 use Sylius\Component\Resource\Model\ResourceInterface;
 
-/**
- * Created by solutionDrive GmbH.
- *
- * @copyright 2018 solutionDrive GmbH
- */
 class ProductBundleSlot implements ProductBundleSlotInterface, ResourceInterface
 {
     /** @var int */

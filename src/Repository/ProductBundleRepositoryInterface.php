@@ -15,7 +15,6 @@ use solutionDrive\SyliusProductBundlesPlugin\Entity\ProductBundleInterface;
 interface ProductBundleRepositoryInterface
 {
     /**
-     * @param string $name
      * @param string $locale
      *
      * @return array|ProductBundleInterface[]

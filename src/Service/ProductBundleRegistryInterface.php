@@ -3,7 +3,7 @@
 declare(strict_types=1);
 
 /*
- * Created by solutionDrive GmbH.
+ * Created by solutionDrive GmbH
  *
  * @copyright 2018 solutionDrive GmbH
  */
@@ -17,10 +17,5 @@ interface ProductBundleRegistryInterface
 {
     public function isProductBundle(ProductInterface $product): bool;
 
-    /**
-     * @param ProductInterface $product
-     *
-     * @return ProductBundleInterface
-     */
     public function getProductBundleForProduct(ProductInterface $product): ProductBundleInterface;
 }
