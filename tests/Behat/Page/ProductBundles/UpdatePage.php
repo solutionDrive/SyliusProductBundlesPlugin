@@ -2,6 +2,12 @@
 
 declare(strict_types=1);
 
+/*
+ * Created by solutionDrive GmbH
+ *
+ * @copyright 2018 solutionDrive GmbH
+ */
+
 namespace Tests\solutionDrive\SyliusProductBundlesPlugin\Behat\Page\ProductBundles;
 
 use Behat\Mink\Driver\Selenium2Driver;
@@ -9,11 +15,6 @@ use Behat\Mink\Element\NodeElement;
 use Sylius\Behat\Page\Admin\Crud\UpdatePage as CrudUpdatePage;
 use Webmozart\Assert\Assert;
 
-/**
- * Created by solutionDrive GmbH
- *
- * @copyright 2018 solutionDrive GmbH
- */
 class UpdatePage extends CrudUpdatePage
 {
     public function addSlot(string $slotName): void
@@ -27,6 +28,9 @@ class UpdatePage extends CrudUpdatePage
         return $this->getDocument()->findField('Name')->getValue();
     }
 
+    /**
+     * @param string[] $productCodes
+     */
     public function associateSlotWithProducts(string $slotName, array $productCodes): void
     {
         Assert::isInstanceOf($this->getDriver(), Selenium2Driver::class);
@@ -71,7 +75,7 @@ class UpdatePage extends CrudUpdatePage
         Assert::oneOf($productCode, $currentProductCodes);
     }
 
-    public function removeSlot(string $slotName)
+    public function removeSlot(string $slotName): void
     {
         Assert::isInstanceOf($this->getDriver(), Selenium2Driver::class);
         $slotSubForm = $this->getSlotSubForm($slotName);
@@ -86,10 +90,13 @@ class UpdatePage extends CrudUpdatePage
         return $slotSubForms[$slotName];
     }
 
+    /**
+     * {@inheritdoc}
+     */
     protected function getDefinedElements(): array
     {
         return [
-            'slot_name_0' => '#product_bundle_slots_0_name'
+            'slot_name_0' => '#product_bundle_slots_0_name',
         ];
     }
 }

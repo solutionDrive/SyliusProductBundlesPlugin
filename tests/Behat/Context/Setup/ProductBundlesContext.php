@@ -1,13 +1,12 @@
 <?php
-/**
- * Created by solutionDrive GmbH.
- *
- * @author:    Tobias Lückel <lueckel@solutionDrive.de>
- * @date:      03.02.18
- * @time:      12:14
- * @copyright: 2018 solutionDrive GmbH
- */
+
 declare(strict_types=1);
+
+/*
+ * Created by solutionDrive GmbH
+ *
+ * @copyright 2018 solutionDrive GmbH
+ */
 
 namespace Tests\solutionDrive\SyliusProductBundlesPlugin\Behat\Context\Setup;
 
@@ -60,7 +59,7 @@ class ProductBundlesContext implements Context
     /**
      * @Given the store has( also) a product bundle :productBundle
      */
-    public function theStoreHasAProductBundle($productBundle): void
+    public function theStoreHasAProductBundle(string $productBundle): void
     {
         /** @var ProductInterface $product */
         $product = $this->productFactory->createNew();
@@ -86,7 +85,7 @@ class ProductBundlesContext implements Context
         ProductBundleInterface $productBundle,
         string $slotName,
         ?ProductInterface $product
-    ) {
+    ): void {
         /** @var ProductBundleSlot $slot */
         $slot = $this->productBundleSlotFactory->createNew();
         $slot->setBundle($productBundle);
@@ -102,10 +101,10 @@ class ProductBundlesContext implements Context
      */
     public function thisProductIsAssignedToTheSlotOfThisProductBundle(
         ProductInterface $product,
-        $slot,
+        string $slot,
         ProductBundleInterface $productBundle
     ): void {
-        /**
+        /*
          * @todo add the injected product to the slot named $slot of the injected product bundle
          */
         throw new PendingException();
