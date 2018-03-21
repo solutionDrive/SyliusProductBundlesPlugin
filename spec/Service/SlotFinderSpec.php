@@ -20,12 +20,12 @@ use solutionDrive\SyliusProductBundlesPlugin\Service\SlotFinderInterface;
 
 class SlotFinderSpec extends ObjectBehavior
 {
-    function let(
+    public function let(
         ProductBundleInterface $bundle,
         ProductBundleSlotInterface $slot1,
         ProductBundleSlotInterface $slot2,
         ProductBundleSlotInterface $slot3
-    ) {
+    ): void {
         $slot1->getName()->willReturn('slot1');
         $slot1->getBundle()->willReturn($bundle);
         $slot2->getName()->willReturn('slot2');
@@ -41,26 +41,26 @@ class SlotFinderSpec extends ObjectBehavior
         $bundle->getSlots()->willReturn($slots);
     }
 
-    function it_is_intializable()
+    public function it_is_intializable(): void
     {
         $this->shouldHaveType(SlotFinder::class);
     }
 
-    function it_implements_slot_finder_interface()
+    public function it_implements_slot_finder_interface(): void
     {
         $this->shouldImplement(SlotFinderInterface::class);
     }
 
-    function it_can_find_slot_in_bundle_by_name(
+    public function it_can_find_slot_in_bundle_by_name(
         ProductBundleInterface $bundle,
         ProductBundleSlotInterface $slot2
-    ) {
+    ): void {
         $this->findSlotInBundleByName($bundle, 'slot2')->shouldReturn($slot2);
     }
 
-    function it_can_throw_exception_if_slot_is_not_found(
+    public function it_can_throw_exception_if_slot_is_not_found(
         ProductBundleInterface $bundle
-    ) {
+    ): void {
         $this->shouldThrow(SlotNotFoundException::class)->during('findSlotInBundleByName', [$bundle, 'slot4']);
     }
 }
