@@ -75,6 +75,9 @@ class ProductBundleCreator implements ProductBundleCreatorInterface
         }
     }
 
+    /**
+     * @param ProductInterface[] $products
+     */
     private function addProductsToSlot(array $products, ProductBundleSlotInterface $slot): void
     {
         foreach ($products as $product) {
@@ -87,7 +90,7 @@ class ProductBundleCreator implements ProductBundleCreatorInterface
         $slot->addProduct($product);
     }
 
-    private function addSlotToBundle(?ProductBundleSlotOptionsInterface $options, $slot): void
+    private function addSlotToBundle(?ProductBundleSlotOptionsInterface $options, ProductBundleSlotInterface $slot): void
     {
         if (null !== $options && $options->isPresentationSlot()) {
             $this->productBundle->setPresentationSlot($slot);

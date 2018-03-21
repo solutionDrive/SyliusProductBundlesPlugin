@@ -16,8 +16,6 @@ use Sylius\Bundle\ResourceBundle\Doctrine\ORM\EntityRepository;
 class ProductBundleRepository extends EntityRepository implements ProductBundleRepositoryInterface
 {
     /**
-     * @param string $locale
-     *
      * @return array|ProductBundleInterface[]
      */
     public function findByName(string $name, string $locale): array

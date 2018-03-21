@@ -21,9 +21,7 @@ class ProductBundleSlotOptionsFactory implements ProductBundleSlotOptionsFactory
     }
 
     /**
-     * @param bool  $isPresentationSlot
-     * @param array $additionalOptions  ['optionKey' => 'optionValue']
-     *
+     * {@inheritdoc}
      */
     public function createNewWithValues(
         int $position,

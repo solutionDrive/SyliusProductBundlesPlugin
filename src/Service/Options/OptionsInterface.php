@@ -12,7 +12,13 @@ namespace solutionDrive\SyliusProductBundlesPlugin\Service\Options;
 
 interface OptionsInterface
 {
+    /**
+     * @param mixed $value
+     */
     public function addOption(string $name, $value): void;
 
-    public function getOption(string $name): void;
+    /**
+     * @return mixed
+     */
+    public function getOption(string $name);
 }
