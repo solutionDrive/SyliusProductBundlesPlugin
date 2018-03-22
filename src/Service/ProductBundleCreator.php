@@ -2,6 +2,12 @@
 
 declare(strict_types=1);
 
+/*
+ * Created by solutionDrive GmbH
+ *
+ * @copyright 2018 solutionDrive GmbH
+ */
+
 namespace solutionDrive\SyliusProductBundlesPlugin\Service;
 
 use solutionDrive\SyliusProductBundlesPlugin\Entity\ProductBundleInterface;
@@ -10,11 +16,6 @@ use solutionDrive\SyliusProductBundlesPlugin\Service\Options\ProductBundleSlotOp
 use Sylius\Component\Core\Model\ProductInterface;
 use Sylius\Component\Resource\Factory\FactoryInterface;
 
-/**
- * Created by solutionDrive GmbH
- *
- * @copyright 2018 solutionDrive GmbH
- */
 class ProductBundleCreator implements ProductBundleCreatorInterface
 {
     /** @var FactoryInterface */
@@ -74,6 +75,9 @@ class ProductBundleCreator implements ProductBundleCreatorInterface
         }
     }
 
+    /**
+     * @param ProductInterface[] $products
+     */
     private function addProductsToSlot(array $products, ProductBundleSlotInterface $slot): void
     {
         foreach ($products as $product) {
@@ -86,7 +90,7 @@ class ProductBundleCreator implements ProductBundleCreatorInterface
         $slot->addProduct($product);
     }
 
-    private function addSlotToBundle(?ProductBundleSlotOptionsInterface $options, $slot): void
+    private function addSlotToBundle(?ProductBundleSlotOptionsInterface $options, ProductBundleSlotInterface $slot): void
     {
         if (null !== $options && $options->isPresentationSlot()) {
             $this->productBundle->setPresentationSlot($slot);

@@ -2,21 +2,21 @@
 
 declare(strict_types=1);
 
+/*
+ * Created by solutionDrive GmbH
+ *
+ * @copyright 2018 solutionDrive GmbH
+ */
+
 namespace Tests\solutionDrive\SyliusProductBundlesPlugin\Behat\Page\ProductBundles;
 
 use Behat\Mink\Driver\Selenium2Driver;
 use Sylius\Behat\Page\Admin\Crud\CreatePage as CrudCreatePage;
 use Webmozart\Assert\Assert;
 
-/**
- * Created by solutionDrive GmbH
- *
- * @copyright 2018 solutionDrive GmbH
- */
 final class CreatePage extends CrudCreatePage
 {
-
-    public function specifyProductBundleProduct(string $productCode)
+    public function specifyProductBundleProduct(string $productCode): void
     {
         Assert::isInstanceOf($this->getDriver(), Selenium2Driver::class);
         $productCodeItemLocator = '.item[data-value="' . $productCode . '"]';
@@ -30,10 +30,13 @@ final class CreatePage extends CrudCreatePage
             ->click();
     }
 
+    /**
+     * {@inheritdoc}
+     */
     protected function getDefinedElements(): array
     {
         return [
-            'product' => '.field > label:contains("Product") ~ .sylius-autocomplete'
+            'product' => '.field > label:contains("Product") ~ .sylius-autocomplete',
         ];
     }
 }

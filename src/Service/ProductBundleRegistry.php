@@ -2,6 +2,12 @@
 
 declare(strict_types=1);
 
+/*
+ * Created by solutionDrive GmbH
+ *
+ * @copyright 2018 solutionDrive GmbH
+ */
+
 namespace solutionDrive\SyliusProductBundlesPlugin\Service;
 
 use solutionDrive\SyliusProductBundlesPlugin\Entity\ProductBundleInterface;
@@ -10,10 +16,6 @@ use Sylius\Component\Core\Model\ProductInterface;
 use Sylius\Component\Resource\Repository\RepositoryInterface;
 
 /**
- * Created by solutionDrive GmbH.
- *
- * @copyright 2018 solutionDrive GmbH
- *
  * @todo check if this class is still necessary / brings benefit when we extend the product Entity
  */
 class ProductBundleRegistry implements ProductBundleRegistryInterface
@@ -40,7 +42,7 @@ class ProductBundleRegistry implements ProductBundleRegistryInterface
     {
         /** @var ProductBundleInterface $productBundle */
         $productBundle = $this->productBundleRepository->findOneBy(['product' => $product]);
-        if ($productBundle instanceof ProductBundleInterface === false) {
+        if (false === $productBundle instanceof ProductBundleInterface) {
             throw new ProductIsNotAProductBundleException($product);
         }
 

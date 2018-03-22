@@ -1,13 +1,12 @@
 <?php
-/**
- * Created by solutionDrive GmbH.
- *
- * @author:    Tobias Lückel <lueckel@solutionDrive.de>
- * @date:      03.02.18
- * @time:      12:10
- * @copyright: 2018 solutionDrive GmbH
- */
+
 declare(strict_types=1);
+
+/*
+ * Created by solutionDrive GmbH
+ *
+ * @copyright 2018 solutionDrive GmbH
+ */
 
 namespace Tests\solutionDrive\SyliusProductBundlesPlugin\Behat\Context\Ui\Admin;
 
@@ -31,7 +30,7 @@ class ManagingProductBundlesContext implements Context
     private $updatePage;
 
     /**
-     * @param IndexPage $indexPage
+     * @param IndexPage  $indexPage
      * @param CreatePage $createPage
      * @param UpdatePage $updatePage
      */
@@ -54,7 +53,7 @@ class ManagingProductBundlesContext implements Context
     /**
      * @Then I should( still) see a product bundle :productBundleName
      */
-    public function iShouldSeeAProductBundle($productBundleName): void
+    public function iShouldSeeAProductBundle(string $productBundleName): void
     {
         Assert::true(
             $this
@@ -108,7 +107,7 @@ class ManagingProductBundlesContext implements Context
     /**
      * @Then I should not see a product bundle :productBundle
      */
-    public function iShouldNotSeeAProductBundle($productBundle): void
+    public function iShouldNotSeeAProductBundle(string $productBundle): void
     {
         Assert::false(
             $this
@@ -169,7 +168,7 @@ class ManagingProductBundlesContext implements Context
     /**
      * @When I remove the slot named :slotName
      */
-    public function iRemoveTheSlotNamed($slotName): void
+    public function iRemoveTheSlotNamed(string $slotName): void
     {
         $this->updatePage->removeSlot($slotName);
     }
@@ -193,7 +192,7 @@ class ManagingProductBundlesContext implements Context
     /**
      * @Then I should be notified that a product has to be defined
      */
-    public function iShouldBeNotifiedThatAProductHasToBeDefined()
+    public function iShouldBeNotifiedThatAProductHasToBeDefined(): void
     {
         Assert::same($this->createPage->getValidationMessage('product'), 'This value should not be blank.');
     }

@@ -2,6 +2,12 @@
 
 declare(strict_types=1);
 
+/*
+ * Created by solutionDrive GmbH
+ *
+ * @copyright 2018 solutionDrive GmbH
+ */
+
 namespace Tests\solutionDrive\SyliusProductBundlesPlugin\Behat\Context\Transform;
 
 use Behat\Behat\Context\Context;
@@ -9,11 +15,6 @@ use solutionDrive\SyliusProductBundlesPlugin\Entity\ProductBundleInterface;
 use solutionDrive\SyliusProductBundlesPlugin\Repository\ProductBundleRepositoryInterface;
 use Webmozart\Assert\Assert;
 
-/**
- * Created by solutionDrive GmbH
- *
- * @copyright 2018 solutionDrive GmbH
- */
 class ProductBundlesContext implements Context
 {
     /** @var ProductBundleRepositoryInterface */
@@ -32,7 +33,7 @@ class ProductBundlesContext implements Context
      * @Transform /^"([^"]+)" product bundle(?:|s)$/
      * @Transform :product bundle
      */
-    public function getProductBundleByName(string $productBundleName)
+    public function getProductBundleByName(string $productBundleName): ProductBundleInterface
     {
         /** @var ProductBundleInterface[] $productsBundles */
         $productsBundles = $this->productBundleRepository->findByName($productBundleName, 'en_US');

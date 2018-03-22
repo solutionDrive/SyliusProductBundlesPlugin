@@ -21,6 +21,9 @@ use Symfony\Component\Validator\Constraints\NotBlank;
 
 class ProductBundleSlotType extends AbstractType
 {
+    /**
+     * {@inheritdoc}
+     */
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
@@ -36,8 +39,7 @@ class ProductBundleSlotType extends AbstractType
             ])
             ->add('position', IntegerType::class, [
                 'label' => 'solutiondrive.ui.position',
-            ])
-        ;
+            ]);
     }
 
     public function getBlockPrefix(): string

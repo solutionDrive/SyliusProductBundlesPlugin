@@ -2,13 +2,14 @@
 
 declare(strict_types=1);
 
-namespace solutionDrive\SyliusProductBundlesPlugin\Service\Options;
-
-/**
+/*
  * Created by solutionDrive GmbH
  *
  * @copyright 2018 solutionDrive GmbH
  */
+
+namespace solutionDrive\SyliusProductBundlesPlugin\Service\Options;
+
 class ProductBundleSlotOptions implements ProductBundleSlotOptionsInterface
 {
     /** @var int */
@@ -17,14 +18,20 @@ class ProductBundleSlotOptions implements ProductBundleSlotOptionsInterface
     /** @var bool */
     private $isPresentationSlot = false;
 
-    /** @var array */
+    /** @var mixed[] */
     private $additionalOptions = [];
 
+    /**
+     * {@inheritdoc}
+     */
     public function addOption(string $name, $value): void
     {
         $this->additionalOptions[$name] = $value;
     }
 
+    /**
+     * {@inheritdoc}
+     */
     public function getOption(string $name)
     {
         return $this->additionalOptions[$name];

@@ -2,6 +2,12 @@
 
 declare(strict_types=1);
 
+/*
+ * Created by solutionDrive GmbH
+ *
+ * @copyright 2018 solutionDrive GmbH
+ */
+
 namespace solutionDrive\SyliusProductBundlesPlugin\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
@@ -30,17 +36,11 @@ class ProductBundle implements ProductBundleInterface
         $this->slots = new ArrayCollection();
     }
 
-    /**
-     * @return int
-     */
     public function getId(): ?int
     {
         return $this->id;
     }
 
-    /**
-     * @param ProductBundleSlotInterface $slot
-     */
     public function addSlot(ProductBundleSlotInterface $slot): void
     {
         if (!$this->slots->contains($slot)) {
@@ -49,9 +49,6 @@ class ProductBundle implements ProductBundleInterface
         }
     }
 
-    /**
-     * @param ProductBundleSlotInterface $slot
-     */
     public function removeSlot(ProductBundleSlotInterface $slot): void
     {
         if ($this->slots->contains($slot)) {
@@ -68,17 +65,11 @@ class ProductBundle implements ProductBundleInterface
         return $this->slots;
     }
 
-    /**
-     * @return ProductInterface
-     */
     public function getProduct(): ?ProductInterface
     {
         return $this->product;
     }
 
-    /**
-     * @param ProductInterface $product
-     */
     public function setProduct(ProductInterface $product): void
     {
         $this->product = $product;
