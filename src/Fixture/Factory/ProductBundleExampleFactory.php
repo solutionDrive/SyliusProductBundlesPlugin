@@ -22,19 +22,13 @@ use Webmozart\Assert\Assert;
 
 class ProductBundleExampleFactory extends AbstractExampleFactory
 {
-    /**
-     * @var ProductBundleCreatorInterface
-     */
+    /** @var ProductBundleCreatorInterface */
     private $productBundleCreator;
 
-    /**
-     * @var ProductRepositoryInterface
-     */
+    /** @var ProductRepositoryInterface */
     private $productRepository;
 
-    /**
-     * @var OptionsResolver
-     */
+    /** @var OptionsResolver */
     private $optionsResolver;
 
     public function __construct(

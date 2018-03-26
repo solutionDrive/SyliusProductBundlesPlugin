@@ -29,4 +29,14 @@ class ProductBundleRepository extends EntityRepository implements ProductBundleR
             ->getQuery()
             ->getResult();
     }
+
+    public function findOneByCode(string $code): ?ProductBundleInterface
+    {
+        return $this->createQueryBuilder('b')
+            ->innerJoin('b.product', 'o')
+            ->where('o.code = :code')
+            ->setParameter('code', $code)
+            ->getQuery()
+            ->getOneOrNullResult();
+    }
 }
