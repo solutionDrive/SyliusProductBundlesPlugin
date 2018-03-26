@@ -15,14 +15,10 @@ use Throwable;
 
 class SlotNotFoundException extends \RuntimeException
 {
-    /**
-     * @var string
-     */
+    /** @var string */
     private $name;
 
-    /**
-     * @var ProductBundleInterface
-     */
+    /** @var ProductBundleInterface */
     private $bundle;
 
     public function __construct(
