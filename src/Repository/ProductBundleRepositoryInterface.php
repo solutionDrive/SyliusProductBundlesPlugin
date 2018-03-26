@@ -18,4 +18,6 @@ interface ProductBundleRepositoryInterface
      * @return array|ProductBundleInterface[]
      */
     public function findByName(string $name, string $locale): array;
+
+    public function findOneByCode(string $code): ?ProductBundleInterface;
 }
