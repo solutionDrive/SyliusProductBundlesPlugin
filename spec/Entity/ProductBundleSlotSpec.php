@@ -61,7 +61,7 @@ class ProductBundleSlotSpec extends ObjectBehavior
     public function it_can_tell_if_it_has_product(
         ProductInterface $assignedProduct,
         ProductInterface $notAssignedProduct
-    ) {
+    ): void {
         $this->addProduct($assignedProduct);
         $this->hasProduct($assignedProduct)->shouldReturn(true);
         $this->hasProduct($notAssignedProduct)->shouldReturn(false);
