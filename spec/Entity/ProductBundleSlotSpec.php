@@ -58,6 +58,15 @@ class ProductBundleSlotSpec extends ObjectBehavior
         $this->getProducts()->shouldContain($product);
     }
 
+    public function it_can_tell_if_it_has_product(
+        ProductInterface $assignedProduct,
+        ProductInterface $notAssignedProduct
+    ) {
+        $this->addProduct($assignedProduct);
+        $this->hasProduct($assignedProduct)->shouldReturn(true);
+        $this->hasProduct($notAssignedProduct)->shouldReturn(false);
+    }
+
     public function it_can_remove_a_product(ProductInterface $product): void
     {
         $this->addProduct($product);
