@@ -79,15 +79,20 @@ class ProductBundleSlot implements ProductBundleSlotInterface, ResourceInterface
 
     public function addProduct(ProductInterface $product): void
     {
-        if (!$this->products->contains($product)) {
+        if (false === $this->hasProduct($product)) {
             $this->products->add($product);
         }
     }
 
     public function removeProduct(ProductInterface $product): void
     {
-        if ($this->products->contains($product)) {
+        if ($this->hasProduct($product)) {
             $this->products->removeElement($product);
         }
+    }
+
+    public function hasProduct(ProductInterface $product): bool
+    {
+        return $this->products->contains($product);
     }
 }
