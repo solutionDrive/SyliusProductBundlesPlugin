@@ -74,7 +74,7 @@ class ProductBundleSlotSpec extends ObjectBehavior
         $this->getProducts()->shouldNotContain($product);
     }
 
-    public function it_can_remove_all_products(ProductInterface $firstProduct, ProductInterface $secondProduct)
+    public function it_can_remove_all_products(ProductInterface $firstProduct, ProductInterface $secondProduct): void
     {
         $this->addProduct($firstProduct);
         $this->addProduct($secondProduct);
