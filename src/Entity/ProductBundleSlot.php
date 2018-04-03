@@ -95,4 +95,9 @@ class ProductBundleSlot implements ProductBundleSlotInterface, ResourceInterface
     {
         return $this->products->contains($product);
     }
+
+    public function resetSlot(): void
+    {
+        $this->products->clear();
+    }
 }
