@@ -50,7 +50,7 @@ class ProductBundleSlotType extends AbstractType
                 'mapped' => false,
                 'attr'   => ['data-qa' => 'presentation-slot'],
             ])
-            ->addEventListener(FormEvents::POST_SET_DATA, function (FormEvent $event) {
+            ->addEventListener(FormEvents::POST_SET_DATA, function (FormEvent $event): void {
                 /** @var ProductBundleSlotInterface $slot */
                 $slot = $event->getData();
                 if (null === $slot || null === $slot->getBundle()) {
@@ -58,7 +58,7 @@ class ProductBundleSlotType extends AbstractType
                 }
                 $event->getForm()->get('isPresentationSlot')->setData($slot->getIsPresentationSlot());
             })
-            ->addEventListener(FormEvents::POST_SUBMIT, function(FormEvent $event) {
+            ->addEventListener(FormEvents::POST_SUBMIT, function (FormEvent $event): void {
                 $isPresentationSlot = $event->getForm()->get('isPresentationSlot')->getData();
                 /** @var ProductBundleSlotInterface $slot */
                 $slot = $event->getData();
@@ -69,7 +69,7 @@ class ProductBundleSlotType extends AbstractType
                 }
                 if (true === $isPresentationSlot) {
                     $bundle->setPresentationSlot($slot);
-                } elseif($bundle->getPresentationSlot() === $slot) {
+                } elseif ($bundle->getPresentationSlot() === $slot) {
                     $bundle->setPresentationSlot(null);
                 }
             });
