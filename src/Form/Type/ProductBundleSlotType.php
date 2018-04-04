@@ -56,7 +56,7 @@ class ProductBundleSlotType extends AbstractType
                 if (null === $slot || null === $slot->getBundle()) {
                     return;
                 }
-                $event->getForm()->get('isPresentationSlot')->setData($slot->getIsPresentationSlot());
+                $event->getForm()->get('isPresentationSlot')->setData($slot->isPresentationSlot());
             })
             ->addEventListener(FormEvents::POST_SUBMIT, function (FormEvent $event): void {
                 $isPresentationSlot = $event->getForm()->get('isPresentationSlot')->getData();

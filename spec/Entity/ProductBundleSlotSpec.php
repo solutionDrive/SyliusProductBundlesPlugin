@@ -93,56 +93,11 @@ class ProductBundleSlotSpec extends ObjectBehavior
             ->willReturn($this);
 
         $this->setBundle($productBundle);
-        $this->getIsPresentationSlot()->shouldReturn(true);
+        $this->isPresentationSlot()->shouldReturn(true);
     }
 
-    public function it_can_tell_if_slot_is_no_presentation_slot(ProductBundleInterface $productBundle)
+    public function it_can_tell_if_slot_is_no_presentation_slot()
     {
-        $this->setBundle($productBundle);
-        $this->getIsPresentationSlot()->shouldReturn(false);
-    }
-
-
-    public function it_can_set_presentation_slot(ProductBundleInterface $productBundle)
-    {
-        $this->setBundle($productBundle);
-
-        $productBundle
-            ->setPresentationSlot($this)
-            ->shouldBeCalled();
-
-        $this->setIsPresentationSlot(true);
-    }
-
-    public function it_can_remove_used_presentation_slot(ProductBundleInterface $productBundle)
-    {
-        $this->setBundle($productBundle);
-
-        $productBundle
-            ->getPresentationSlot()
-            ->willReturn($this);
-
-        $productBundle
-            ->setPresentationSlot(null)
-            ->shouldBeCalled();
-
-        $this->setIsPresentationSlot(false);
-    }
-
-    public function it_wont_remove_presentation_slot_if_passed_one_is_not_current_presentation_slot(
-        ProductBundleInterface $productBundle,
-        ProductBundleSlotInterface $differentSlot
-    ) {
-        $this->setBundle($productBundle);
-
-        $productBundle
-            ->getPresentationSlot()
-            ->willReturn($differentSlot);
-
-        $productBundle
-            ->setPresentationSlot(null)
-            ->shouldNotBeCalled();
-
-        $this->setIsPresentationSlot(false);
+        $this->isPresentationSlot()->shouldReturn(false);
     }
 }
