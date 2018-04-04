@@ -33,3 +33,17 @@ services:
             - "@solutiondrive.product_bundles.fixture.example_factory.product_bundle"
         tags:
             - {name: sylius_fixtures.fixture}
+
+    solutiondrive.product_bundles.block_event_listener.product_bundle.update.javascripts:
+        class: Sylius\Bundle\UiBundle\Block\BlockEventListener
+        arguments:
+            - '@@SolutionDriveSyliusProductBundlesPlugin/Admin/ProductBundle/_javascripts.html.twig'
+        tags:
+            - { name: kernel.event_listener, event: sonata.block.event.solutiondrive.admin.product_bundle.update.javascripts, method: onBlockEvent }
+
+    solutiondrive.product_bundles.block_event_listener.product_bundle.create.javascripts:
+        class: Sylius\Bundle\UiBundle\Block\BlockEventListener
+        arguments:
+            - '@@SolutionDriveSyliusProductBundlesPlugin/Admin/ProductBundle/_javascripts.html.twig'
+        tags:
+            - { name: kernel.event_listener, event: sonata.block.event.solutiondrive.admin.product_bundle.create.javascripts, method: onBlockEvent }

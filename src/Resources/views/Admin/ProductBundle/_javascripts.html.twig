@@ -1,0 +1,9 @@
+<script type="text/javascript">
+    (function($) {
+        $(document).ready(function() {
+            $(document).on('change', 'input[data-qa="presentation-slot"]', function () {
+                $('input[data-qa="presentation-slot"]').not(this).prop('checked', false);
+            });
+        });
+    })(jQuery);
+</script>
