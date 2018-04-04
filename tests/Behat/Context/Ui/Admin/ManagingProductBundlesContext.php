@@ -158,7 +158,7 @@ class ManagingProductBundlesContext implements Context
     }
 
     /**
-     * @Then /^I should see the product bundle has a slot named "([^"]+)" with the ("[^"]+" product)^
+     * @Then /^I should see the product bundle has a slot named "([^"]+)" with the ("[^"]+" product)$/
      */
     public function iShouldSeeTheProductBundleHasASlotNamedWithTheProduct(string $slotName, ProductInterface $product): void
     {
