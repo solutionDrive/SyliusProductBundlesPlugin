@@ -44,6 +44,7 @@ class ProductBundleSlotType extends AbstractType
             ])
             ->add('position', IntegerType::class, [
                 'label' => 'solutiondrive.ui.position',
+                'required' => false,
             ])
             ->add('isPresentationSlot', CheckboxType::class, [
                 'label'  => 'solutiondrive.ui.presentation_slot',
