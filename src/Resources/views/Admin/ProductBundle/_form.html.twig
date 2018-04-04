@@ -45,9 +45,18 @@
     {% spaceless %}
         <div class="ui segment" data-form-collection="item" data-form-collection-index="{{ index }}" data-qa="slot-form-section">
             <div class="fields">
-                <div class="seven wide field">{{ form_row(form.name) }}</div>
-                <div class="seven wide field">{{ form_row(form.products) }}</div>
+                <div class="six wide field">{{ form_row(form.name) }}</div>
+                <div class="six wide field">{{ form_row(form.products) }}</div>
                 <div class="two wide field">{{ form_row(form.position) }}</div>
+                <div class="two wide field">
+                    <div class="field">
+                        {{ form_label(form.isPresentationSlot) }}
+                        <div class="ui toggle checkbox">
+                            {{ form_widget(form.isPresentationSlot) }}
+                            <label></label>
+                        </div>
+                    </div>
+                </div>
                 {% if allow_delete %}
                     <div class="one wide field">
                         <label>&nbsp;</label>
@@ -60,4 +69,3 @@
         </div>
     {% endspaceless %}
 {% endmacro %}
-

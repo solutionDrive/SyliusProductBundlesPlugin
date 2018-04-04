@@ -196,4 +196,20 @@ class ManagingProductBundlesContext implements Context
     {
         Assert::same($this->createPage->getValidationMessage('product'), 'This value should not be blank.');
     }
+
+    /**
+     * @When I specify the slot :slot as presentation slot
+     */
+    public function iSpecifyTheSlotAsPresentationSlot(string $slot): void
+    {
+        $this->updatePage->specifyPresentationSlot($slot);
+    }
+
+    /**
+     * @Then /^I should see that the ("[^"]+" product bundle) has the presentation slot "([^"]+)"$/
+     */
+    public function iShouldSeeThatTheProductBundleHasThePresentationSlot(ProductBundleInterface $productBundle, string $slot): void
+    {
+        Assert::same($this->indexPage->getPresentationSlot($productBundle), $slot);
+    }
 }

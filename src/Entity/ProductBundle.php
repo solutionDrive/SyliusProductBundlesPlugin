@@ -84,7 +84,7 @@ class ProductBundle implements ProductBundleInterface
         return $this->product->getId();
     }
 
-    public function setPresentationSlot(ProductBundleSlotInterface $slot): void
+    public function setPresentationSlot(?ProductBundleSlotInterface $slot): void
     {
         $this->presentationSlot = $slot;
     }

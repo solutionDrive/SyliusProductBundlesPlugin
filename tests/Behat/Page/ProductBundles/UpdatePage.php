@@ -20,7 +20,9 @@ class UpdatePage extends CrudUpdatePage
     public function addSlot(string $slotName): void
     {
         $this->getDocument()->clickLink('Add slot');
-        $this->getDocument()->fillField('Name', $slotName);
+        $slotSubForms = $this->getSlotSubForms();
+        $lastForm = end($slotSubForms);
+        $lastForm->fillField('Name', $slotName);
     }
 
     public function getFirstSlotName(): string
@@ -88,6 +90,13 @@ class UpdatePage extends CrudUpdatePage
         Assert::keyExists($slotSubForms, $slotName);
 
         return $slotSubForms[$slotName];
+    }
+
+    public function specifyPresentationSlot(string $slotName): void
+    {
+        Assert::isInstanceOf($this->getDriver(), Selenium2Driver::class);
+        $slotSubForm = $this->getSlotSubForm($slotName);
+        $slotSubForm->find('css', 'input[data-qa="presentation-slot"]')->getParent()->click();
     }
 
     /**
