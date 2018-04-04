@@ -43,4 +43,6 @@ interface ProductBundleSlotInterface
     public function removeProduct(ProductInterface $product): void;
 
     public function resetSlot(): void;
+
+    public function isPresentationSlot(): bool;
 }

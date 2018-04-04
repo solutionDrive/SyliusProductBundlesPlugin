@@ -100,4 +100,9 @@ class ProductBundleSlot implements ProductBundleSlotInterface, ResourceInterface
     {
         $this->products->clear();
     }
+
+    public function isPresentationSlot(): bool
+    {
+        return $this->bundle->getPresentationSlot() === $this;
+    }
 }

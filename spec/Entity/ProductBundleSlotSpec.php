@@ -84,4 +84,21 @@ class ProductBundleSlotSpec extends ObjectBehavior
         $this->getProducts()->shouldNotContain($firstProduct);
         $this->getProducts()->shouldNotContain($secondProduct);
     }
+
+    public function it_can_tell_if_slot_is_presentation_slot(ProductBundleInterface $productBundle)
+    {
+        $productBundle
+            ->getPresentationSlot()
+            ->shouldBeCalled()
+            ->willReturn($this);
+
+        $this->setBundle($productBundle);
+        $this->isPresentationSlot()->shouldReturn(true);
+    }
+
+    public function it_can_tell_if_slot_is_no_presentation_slot(ProductBundleInterface $productBundle)
+    {
+        $this->setBundle($productBundle);
+        $this->isPresentationSlot()->shouldReturn(false);
+    }
 }
