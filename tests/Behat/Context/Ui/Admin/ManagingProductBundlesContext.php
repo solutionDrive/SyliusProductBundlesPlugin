@@ -11,7 +11,6 @@ declare(strict_types=1);
 namespace Tests\solutionDrive\SyliusProductBundlesPlugin\Behat\Context\Ui\Admin;
 
 use Behat\Behat\Context\Context;
-use Behat\Behat\Tester\Exception\PendingException;
 use SolutionDrive\SyliusProductBundlesPlugin\Entity\ProductBundleInterface;
 use Sylius\Component\Core\Model\ProductInterface;
 use Tests\solutionDrive\SyliusProductBundlesPlugin\Behat\Page\ProductBundles\CreatePage;
@@ -201,7 +200,7 @@ class ManagingProductBundlesContext implements Context
     /**
      * @When I specify the slot :slot as presentation slot
      */
-    public function iSpecifyTheSlotAsPresentationSlot(string $slot)
+    public function iSpecifyTheSlotAsPresentationSlot(string $slot): void
     {
         $this->updatePage->specifyPresentationSlot($slot);
     }
@@ -209,8 +208,8 @@ class ManagingProductBundlesContext implements Context
     /**
      * @Then /^I should see that the ("[^"]+" product bundle) has the presentation slot "([^"]+)"$/
      */
-    public function iShouldSeeThatTheProductBundleHasThePresentationSlot(ProductBundleInterface $productBundle, string $slot)
+    public function iShouldSeeThatTheProductBundleHasThePresentationSlot(ProductBundleInterface $productBundle, string $slot): void
     {
-        throw new PendingException();
+        Assert::same($this->indexPage->getPresentationSlot($productBundle), $slot);
     }
 }
