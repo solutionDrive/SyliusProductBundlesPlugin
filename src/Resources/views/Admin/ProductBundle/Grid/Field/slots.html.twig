@@ -1,6 +1,6 @@
 <div class="ui list">
     {% for slot in data %}
-        {% set class = slot.bundle.presentationslot == slot ? 'presentation' : '' %}
+        {% set class = slot.isPresentationSlot ? 'presentation' : '' %}
         <div class="item {{ class }}" data-qa="slot-{{ slot.name }}">{{ slot.name }}</div>
     {% endfor %}
 </div>
