@@ -15,10 +15,17 @@ services:
         class: solutionDrive\SyliusProductBundlesPlugin\Service\ProductBundleCreator
         arguments:
             - "@solutiondrive.factory.product_bundle"
-            - "@solutiondrive.factory.product_bundle_slot"
+            - "@solutiondrive.product_bundles.product_bundle_manipulator"
+
 
     solutiondrive.product_bundles.slot_finder:
         class: solutionDrive\SyliusProductBundlesPlugin\Service\SlotFinder
+
+    solutiondrive.product_bundles.product_bundle_manipulator:
+        class: solutionDrive\SyliusProductBundlesPlugin\Service\ProductBundleManipulator
+        arguments:
+            - "@solutiondrive.factory.product_bundle_slot"
+
 
     solutiondrive.product_bundles.fixture.example_factory.product_bundle:
         class: solutionDrive\SyliusProductBundlesPlugin\Fixture\Factory\ProductBundleExampleFactory

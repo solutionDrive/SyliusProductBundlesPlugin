@@ -16,7 +16,7 @@ use Sylius\Component\Core\Model\ProductInterface;
 
 interface ProductBundleCreatorInterface
 {
-    public function createProductBundle(ProductInterface $productBundleProduct): ProductBundleCreator;
+    public function createProductBundle(ProductInterface $productBundleProduct): void;
 
     public function getProductBundle(): ProductBundleInterface;
 
@@ -27,5 +27,5 @@ interface ProductBundleCreatorInterface
         string $slotName,
         ProductBundleSlotOptionsInterface $options = null,
         array $products = []
-    ): ProductBundleCreator;
+    ): void;
 }
