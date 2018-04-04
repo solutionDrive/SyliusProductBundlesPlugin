@@ -11,6 +11,7 @@ declare(strict_types=1);
 namespace Tests\solutionDrive\SyliusProductBundlesPlugin\Behat\Context\Ui\Admin;
 
 use Behat\Behat\Context\Context;
+use Behat\Behat\Tester\Exception\PendingException;
 use SolutionDrive\SyliusProductBundlesPlugin\Entity\ProductBundleInterface;
 use Sylius\Component\Core\Model\ProductInterface;
 use Tests\solutionDrive\SyliusProductBundlesPlugin\Behat\Page\ProductBundles\CreatePage;
@@ -158,7 +159,7 @@ class ManagingProductBundlesContext implements Context
     }
 
     /**
-     * @Then /^I should see the product bundle has a slot named "([^"]+)" with the ("[^"]+" product)$/
+     * @Then /^I should see the product bundle has a slot named "([^"]+)" with the ("[^"]+" product)^
      */
     public function iShouldSeeTheProductBundleHasASlotNamedWithTheProduct(string $slotName, ProductInterface $product): void
     {
@@ -195,5 +196,21 @@ class ManagingProductBundlesContext implements Context
     public function iShouldBeNotifiedThatAProductHasToBeDefined(): void
     {
         Assert::same($this->createPage->getValidationMessage('product'), 'This value should not be blank.');
+    }
+
+    /**
+     * @When I specify the slot :slot as presentation slot
+     */
+    public function iSpecifyTheSlotAsPresentationSlot(string $slot)
+    {
+        throw new PendingException();
+    }
+
+    /**
+     * @Then /^I should see that the ("[^"]+" product bundle) has the presentation slot "([^"]+)"$/
+     */
+    public function iShouldSeeThatTheProductBundleHasThePresentationSlot(ProductBundleInterface $productBundle, string $slot)
+    {
+        throw new PendingException();
     }
 }
