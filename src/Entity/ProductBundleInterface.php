@@ -20,6 +20,8 @@ interface ProductBundleInterface extends ResourceInterface
 
     public function addSlot(ProductBundleSlotInterface $slot): void;
 
+    public function removeSlot(ProductBundleSlotInterface $slot): void;
+
     /**
      * @return ProductBundleSlotInterface[]|Collection
      */

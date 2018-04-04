@@ -27,6 +27,9 @@
         "symplify/easy-coding-standard": "^2.4",
         "solutiondrive/coding-standard": "^1.0"
     },
+    "conflict": {
+        "symfony/symfony": "^3.4.7"
+    },
     "prefer-stable": true,
     "autoload": {
         "psr-4": {
