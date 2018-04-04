@@ -20,7 +20,9 @@ class UpdatePage extends CrudUpdatePage
     public function addSlot(string $slotName): void
     {
         $this->getDocument()->clickLink('Add slot');
-        $this->getDocument()->fillField('Name', $slotName);
+        $slotSubForms = $this->getSlotSubForms();
+        $lastForm = end($slotSubForms);
+        $lastForm->fillField('Name', $slotName);
     }
 
     public function getFirstSlotName(): string

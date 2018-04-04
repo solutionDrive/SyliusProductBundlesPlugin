@@ -97,6 +97,20 @@ class ProductBundlesContext implements Context
     }
 
     /**
+     * @Given /^(this product bundle) default slot is "([^"]*)"$/
+     */
+    public function thisProductBundleDefaultSlotIs(ProductBundleInterface $productBundle, string $slotName)
+    {
+        foreach ($productBundle->getSlots() as $slot) {
+            if ($slot->getName() === $slotName) {
+                $productBundle->setPresentationSlot($slot);
+                return;
+            }
+        }
+        throw new \LogicException(sprintf('Slot "%s" was not found', $slotName));
+    }
+
+    /**
      * @Given /^(this product) is assigned to the slot "([^"]*)" of (this product bundle)$/
      */
     public function thisProductIsAssignedToTheSlotOfThisProductBundle(
