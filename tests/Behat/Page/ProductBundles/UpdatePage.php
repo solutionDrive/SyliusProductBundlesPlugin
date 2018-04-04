@@ -90,6 +90,13 @@ class UpdatePage extends CrudUpdatePage
         return $slotSubForms[$slotName];
     }
 
+    public function specifyPresentationSlot(string $slotName): void
+    {
+        Assert::isInstanceOf($this->getDriver(), Selenium2Driver::class);
+        $slotSubForm = $this->getSlotSubForm($slotName);
+        $slotSubForm->find('css', 'input[data-qa="presentation-slot"]')->getParent()->click();
+    }
+
     /**
      * {@inheritdoc}
      */

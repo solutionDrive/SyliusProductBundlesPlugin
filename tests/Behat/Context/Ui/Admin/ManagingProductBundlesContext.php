@@ -203,7 +203,7 @@ class ManagingProductBundlesContext implements Context
      */
     public function iSpecifyTheSlotAsPresentationSlot(string $slot)
     {
-        throw new PendingException();
+        $this->updatePage->specifyPresentationSlot($slot);
     }
 
     /**

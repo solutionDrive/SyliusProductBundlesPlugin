@@ -72,8 +72,8 @@
 {#todo outsource js#}
 <script type="text/javascript">
     document.addEventListener("DOMContentLoaded", function(event) {
-        $('input.presentationSlot').on('change', function () {
-            $('input.presentationSlot').not(this).prop('checked', false);
+        $('input[data-qa="presentation-slot"]').on('change', function () {
+            $('input[data-qa="presentation-slot"]').not(this).prop('checked', false);
         });
     });
 </script>
