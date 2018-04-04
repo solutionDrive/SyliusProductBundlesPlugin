@@ -17,6 +17,11 @@ services:
             - "@solutiondrive.factory.product_bundle"
             - "@solutiondrive.product_bundles.product_bundle_manipulator"
 
+    solutiondrive.product_bundles.product_bundle_updater:
+        class: solutionDrive\SyliusProductBundlesPlugin\Service\ProductBundleUpdater
+        arguments:
+            - "@solutiondrive.product_bundles.factory.product_bundle_slot_options"
+            - "@solutiondrive.product_bundles.product_bundle_manipulator"
 
     solutiondrive.product_bundles.slot_finder:
         class: solutionDrive\SyliusProductBundlesPlugin\Service\SlotFinder
@@ -40,6 +45,9 @@ services:
             - "@solutiondrive.product_bundles.fixture.example_factory.product_bundle"
         tags:
             - {name: sylius_fixtures.fixture}
+
+    solutiondrive.product_bundles.factory.product_bundle_slot_options:
+        class: solutionDrive\SyliusProductBundlesPlugin\Factory\ProductBundleSlotOptionsFactory
 
     solutiondrive.product_bundles.block_event_listener.product_bundle.update.javascripts:
         class: Sylius\Bundle\UiBundle\Block\BlockEventListener
