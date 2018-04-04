@@ -44,5 +44,7 @@ interface ProductBundleSlotInterface
 
     public function resetSlot(): void;
 
-    public function isPresentationSlot(): bool;
+    public function getIsPresentationSlot(): bool;
+
+    public function setIsPresentationSlot(bool $isPresentationSlot): void;
 }
