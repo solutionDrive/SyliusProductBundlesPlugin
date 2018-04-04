@@ -14,6 +14,10 @@ use Sylius\Component\Core\Model\ProductInterface;
 
 interface ProductBundleUpdaterInterface
 {
+    public function setProductBundle(ProductBundleInterface $productBundle): void;
+
+    public function getProductBundle(): ?ProductBundleInterface;
+
     /**
      * @param ProductInterface[][] $allProductsPerSlot
      */
