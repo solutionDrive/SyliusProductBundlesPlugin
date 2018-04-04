@@ -5,7 +5,7 @@
     "license": "MIT",
     "require": {
         "php": "^7.1",
-        
+
         "sylius/sylius": "^1.0.4"
     },
     "require-dev": {
@@ -28,7 +28,8 @@
         "solutiondrive/coding-standard": "^1.0"
     },
     "conflict": {
-        "symfony/symfony": "^3.4.7"
+        "symfony/symfony": "^3.4.7",
+        "sylius/sylius": "1.1.3"
     },
     "prefer-stable": true,
     "autoload": {
