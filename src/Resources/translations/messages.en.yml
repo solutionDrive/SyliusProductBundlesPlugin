@@ -9,3 +9,4 @@ solutiondrive:
         slots: Slots
         add_slot: Add slot
         position: Position
+        presentation_slot: Presentation Slot

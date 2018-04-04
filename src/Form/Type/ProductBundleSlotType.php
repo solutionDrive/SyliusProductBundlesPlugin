@@ -43,9 +43,9 @@ class ProductBundleSlotType extends AbstractType
                 'label' => 'solutiondrive.ui.position',
             ])
             ->add('presentationSlot', CheckboxType::class, [
-                'label'         => 'solutiondrive.ui.presentationSlot',
+                'label'         => 'solutiondrive.ui.presentation_slot',
                 'mapped'        => false,
-                'attr'          => ['class' =>'presentationSlot']
+                'attr'          => ['data-qa' => 'presentation-slot']
             ]);
     }
 
