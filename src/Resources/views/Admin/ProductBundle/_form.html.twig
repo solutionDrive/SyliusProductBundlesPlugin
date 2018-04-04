@@ -48,6 +48,14 @@
                 <div class="seven wide field">{{ form_row(form.name) }}</div>
                 <div class="seven wide field">{{ form_row(form.products) }}</div>
                 <div class="two wide field">{{ form_row(form.position) }}</div>
+                <div class="two wide field">
+                    <div class="field">
+                        {{ form_label(form.presentationSlot) }}
+                        <div class="ui toggle checkbox">
+                            {{ form_widget(form.presentationSlot) }}
+                        </div>
+                    </div>
+                </div>
                 {% if allow_delete %}
                     <div class="one wide field">
                         <label>&nbsp;</label>
@@ -61,3 +69,11 @@
     {% endspaceless %}
 {% endmacro %}
 
+{#todo outsource js#}
+<script type="text/javascript">
+    document.addEventListener("DOMContentLoaded", function(event) {
+        $('input.presentationSlot').on('change', function () {
+            $('input.presentationSlot').not(this).prop('checked', false);
+        });
+    });
+</script>
