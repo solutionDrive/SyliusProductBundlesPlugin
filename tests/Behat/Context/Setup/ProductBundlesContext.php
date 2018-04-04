@@ -97,7 +97,7 @@ class ProductBundlesContext implements Context
     }
 
     /**
-     * @Given /^(this product bundle)s default slot is "([^"]*)"$/
+     * @Given /^(this product bundle)s presentation slot is "([^"]*)"$/
      */
     public function thisProductBundleDefaultSlotIs(ProductBundleInterface $productBundle, string $slotName)
     {

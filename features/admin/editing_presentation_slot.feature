@@ -13,7 +13,7 @@ Feature: Editing the presentation slot for a product bundle
     And this product bundle has a slot named "shorts" with the "smurf shorts" product
     And the store has also a product bundle "papa smurf outfit"
     And this product bundle has a slot named "shorts" with the "smurf shorts" product
-    And this product bundles default slot is "shorts"
+    And this product bundles presentation slot is "shorts"
     And I am logged in as an administrator
 
   @ui @javascript
