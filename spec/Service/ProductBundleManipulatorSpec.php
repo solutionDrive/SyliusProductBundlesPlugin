@@ -1,12 +1,20 @@
 <?php
 
+declare(strict_types=1);
+
+/*
+ * Created by solutionDrive GmbH
+ *
+ * @copyright 2018 solutionDrive GmbH
+ */
+
 namespace spec\solutionDrive\SyliusProductBundlesPlugin\Service;
 
+use PhpSpec\ObjectBehavior;
 use solutionDrive\SyliusProductBundlesPlugin\Entity\ProductBundleInterface;
 use solutionDrive\SyliusProductBundlesPlugin\Entity\ProductBundleSlotInterface;
 use solutionDrive\SyliusProductBundlesPlugin\Service\Options\ProductBundleSlotOptionsInterface;
 use solutionDrive\SyliusProductBundlesPlugin\Service\ProductBundleManipulator;
-use PhpSpec\ObjectBehavior;
 use solutionDrive\SyliusProductBundlesPlugin\Service\ProductBundleManipulatorInterface;
 use Sylius\Component\Core\Model\ProductInterface;
 use Sylius\Component\Resource\Factory\FactoryInterface;
@@ -15,21 +23,21 @@ class ProductBundleManipulatorSpec extends ObjectBehavior
 {
     public function let(
         FactoryInterface $productBundleSlotFactory
-    ) {
+    ): void {
         $this->beConstructedWith($productBundleSlotFactory);
     }
 
-    public function it_is_initializable()
+    public function it_is_initializable(): void
     {
         $this->shouldHaveType(ProductBundleManipulator::class);
     }
 
-    public function it_implements_the_product_bundle_manipulator_interface()
+    public function it_implements_the_product_bundle_manipulator_interface(): void
     {
         $this->shouldImplement(ProductBundleManipulatorInterface::class);
     }
 
-    public function it_sets_a_given_product_bundle(ProductBundleInterface $productBundle)
+    public function it_sets_a_given_product_bundle(ProductBundleInterface $productBundle): void
     {
         $this->setProductBundle($productBundle);
         $this->getProductBundle()->shouldReturn($productBundle);
@@ -39,8 +47,7 @@ class ProductBundleManipulatorSpec extends ObjectBehavior
         ProductBundleInterface $productBundle,
         FactoryInterface $productBundleSlotFactory,
         ProductBundleSlotInterface $productBundleSlot
-    )
-    {
+    ): void {
         $slotName = 'Footwear';
         $productBundleSlotFactory->createNew()->willReturn($productBundleSlot);
         $productBundleSlot->setName($slotName)->shouldBeCalled();
@@ -58,26 +65,22 @@ class ProductBundleManipulatorSpec extends ObjectBehavior
         ProductBundleSlotInterface $productBundleSlot,
         ProductInterface $smurfOutfit,
         ProductBundleSlotOptionsInterface $bundleSlotOptions
-    )
-    {
+    ): void {
         $slotName = 'Top Hats';
 
         $bundleSlotOptions
             ->isPresentationSlot()
             ->willReturn(false)
-            ->shouldBeCalled()
-        ;
+            ->shouldBeCalled();
         $bundleSlotOptions
             ->getPosition()
             ->willReturn(1)
-            ->shouldBeCalled()
-        ;
+            ->shouldBeCalled();
 
         $productBundleSlotFactory
             ->createNew()
             ->willReturn($productBundleSlot)
-            ->shouldBeCalled()
-        ;
+            ->shouldBeCalled();
 
         $productBundleSlot
             ->setName($slotName)
@@ -104,7 +107,7 @@ class ProductBundleManipulatorSpec extends ObjectBehavior
         ProductInterface $melonHat,
         ProductInterface $smurfHat,
         ProductBundleSlotOptionsInterface $bundleSlotOptions
-    ) {
+    ): void {
         $slotName = 'Top Hats';
 
         $bundleSlotOptions->isPresentationSlot()->willReturn(false);
@@ -114,7 +117,6 @@ class ProductBundleManipulatorSpec extends ObjectBehavior
             $melonHat,
             $smurfHat,
         ];
-
 
         $productBundleSlotFactory->createNew()->shouldBeCalled()->willReturn($productBundleSlot);
 

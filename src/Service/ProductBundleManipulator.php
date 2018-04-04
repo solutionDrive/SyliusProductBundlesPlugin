@@ -1,5 +1,13 @@
 <?php
 
+declare(strict_types=1);
+
+/*
+ * Created by solutionDrive GmbH
+ *
+ * @copyright 2018 solutionDrive GmbH
+ */
+
 namespace solutionDrive\SyliusProductBundlesPlugin\Service;
 
 use solutionDrive\SyliusProductBundlesPlugin\Entity\ProductBundleInterface;
@@ -38,8 +46,7 @@ class ProductBundleManipulator implements ProductBundleManipulatorInterface
         string $slotName,
         ProductBundleSlotOptionsInterface $options = null,
         array $products = []
-    ): void
-    {
+    ): void {
         $slot = $this->createSlot($slotName);
         $this->applyOptionsToSlot($options, $slot);
         $this->addProductsToSlot($products, $slot);
@@ -72,9 +79,6 @@ class ProductBundleManipulator implements ProductBundleManipulatorInterface
         $this->productBundle->addSlot($slot);
     }
 
-    /**
-     * @param ProductBundleSlotInterface $slot
-     */
     private function setPresentationSlotOnBundle(ProductBundleSlotInterface $slot): void
     {
         $this->productBundle->setPresentationSlot($slot);

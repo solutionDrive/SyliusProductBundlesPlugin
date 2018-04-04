@@ -11,7 +11,6 @@ declare(strict_types=1);
 namespace solutionDrive\SyliusProductBundlesPlugin\Service;
 
 use solutionDrive\SyliusProductBundlesPlugin\Entity\ProductBundleInterface;
-use solutionDrive\SyliusProductBundlesPlugin\Entity\ProductBundleSlotInterface;
 use solutionDrive\SyliusProductBundlesPlugin\Service\Options\ProductBundleSlotOptionsInterface;
 use Sylius\Component\Core\Model\ProductInterface;
 use Sylius\Component\Resource\Factory\FactoryInterface;
@@ -20,9 +19,6 @@ class ProductBundleCreator implements ProductBundleCreatorInterface
 {
     /** @var FactoryInterface */
     private $productBundleFactory;
-
-    /** @var FactoryInterface */
-    private $productBundleSlotFactory;
 
     /** @var ProductBundleManipulatorInterface */
     private $productBundleManipulator;
