@@ -14,7 +14,7 @@ Feature: Editing the presentation slot for a product bundle
     And I am logged in as an administrator
 
   @ui @javascript
-  Scenario: Define the presentation slot for a product bundle without presentation slot
+  Scenario: Define an existing slot as presentation slot for a product bundle without presentation slot
     When I want to modify the "smurf outfit" product bundle
     And I specify the slot "headgear" as presentation slot
     And I save my changes
