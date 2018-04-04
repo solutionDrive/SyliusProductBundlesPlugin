@@ -27,7 +27,7 @@ interface ProductBundleInterface extends ResourceInterface
      */
     public function getSlots(): Collection;
 
-    public function setPresentationSlot(ProductBundleSlotInterface $slot): void;
+    public function setPresentationSlot(?ProductBundleSlotInterface $slot): void;
 
     public function getPresentationSlot(): ?ProductBundleSlotInterface;
 
