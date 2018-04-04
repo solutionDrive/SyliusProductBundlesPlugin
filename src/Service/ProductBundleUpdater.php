@@ -52,7 +52,7 @@ class ProductBundleUpdater implements ProductBundleUpdaterInterface
             if ($this->slotAlreadyExists($slotName, $existingSlots)) {
                 continue;
             }
-            //@todo find a way to set a configured sort-value
+            //@todo find a way to set a configured sort-value, maybe it is better to inject bundleSlotOptions from the outside
             $slotOptions = $this->bundleSlotOptionsFactory->createNewWithValues(99, false);
             $this->productBundleManipulator->addSlot($slotName, $slotOptions, $slotContent);
         }
