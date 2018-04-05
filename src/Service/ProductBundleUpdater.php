@@ -29,24 +29,12 @@ class ProductBundleUpdater implements ProductBundleUpdaterInterface
         $this->productBundleManipulator = $productBundleManipulator;
     }
 
-    public function setProductBundle(ProductBundleInterface $productBundle): void
-    {
-        $this->productBundleManipulator->setProductBundle($productBundle);
-    }
-
-    public function getProductBundle(): ?ProductBundleInterface
-    {
-        return $this->productBundleManipulator->getProductBundle();
-    }
-
     /**
      * {@inheritdoc}
      */
     public function addMissingSlotsToBundle(ProductBundleInterface $productBundle, array $allProductsPerSlot): void
     {
-
-        // @todo maybe we should call the setter here and make the setter private?
-        // @todo is there a use case for the getter since the bundle comes from the outside and could only be returned to the caller anyway and he should have the bundle already
+        $this->productBundleManipulator->setProductBundle($productBundle);
         $existingSlots = $this->getExistingSlotNames($productBundle);
         foreach ($allProductsPerSlot as $slotName => $slotContent) {
             if ($this->slotAlreadyExists($slotName, $existingSlots)) {

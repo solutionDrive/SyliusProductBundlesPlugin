@@ -40,16 +40,6 @@ class ProductBundleUpdaterSpec extends ObjectBehavior
         $this->shouldImplement(ProductBundleUpdaterInterface::class);
     }
 
-    public function it_sets_a_given_product_bundle(
-        ProductBundleInterface $productBundle,
-        ProductBundleManipulatorInterface $productBundleManipulator
-    ): void {
-        $productBundleManipulator->setProductBundle($productBundle)->shouldBeCalled();
-        $productBundleManipulator->getProductBundle()->willReturn($productBundle)->shouldBeCalled();
-        $this->setProductBundle($productBundle);
-        $this->getProductBundle()->shouldReturn($productBundle);
-    }
-
     public function it_adds_missing_slots_to_the_bundle(
         ProductBundleInterface $productBundle,
         ProductBundleSlotInterface $shirtSlot,
@@ -88,6 +78,8 @@ class ProductBundleUpdaterSpec extends ObjectBehavior
                 ]
             );
         $productBundle->getSlots()->willReturn($collectionOfInitialAssignedSlots)->shouldBeCalled();
+
+        $productBundleManipulator->setProductBundle($productBundle)->shouldBeCalled();
         $productBundleManipulator->addSlot('Socks', $slotOptions, [$blueSocks])->shouldBeCalled();
 
         $this->addMissingSlotsToBundle($productBundle, $allProductsPerSlot);
