@@ -45,7 +45,7 @@ class ProductBundleUpdaterSpec extends ObjectBehavior
         ProductBundleSlotInterface $shirtSlot,
         ProductBundleSlotInterface $shortSlot,
         ProductBundleSlotOptionsFactoryInterface $bundleSlotOptionsFactory,
-        ProductBundleSlotOptionsInterface $slotOptions,
+        ProductBundleSlotOptionsInterface $slotOptionsSocks,
         ProductInterface $redShort,
         ProductInterface $blueShort,
         ProductInterface $redShirt,
@@ -68,7 +68,11 @@ class ProductBundleUpdaterSpec extends ObjectBehavior
             ],
         ];
 
-        $bundleSlotOptionsFactory->createNewWithValues(99, false)->willReturn($slotOptions);
+        $productBundleSlotsConfiguration = [
+            'Socks' => $slotOptionsSocks->getWrappedObject(),
+        ];
+
+        $bundleSlotOptionsFactory->createNewWithValues(3, false)->willReturn($slotOptionsSocks);
 
         $collectionOfInitialAssignedSlots
             = new ArrayCollection(
@@ -80,8 +84,8 @@ class ProductBundleUpdaterSpec extends ObjectBehavior
         $productBundle->getSlots()->willReturn($collectionOfInitialAssignedSlots)->shouldBeCalled();
 
         $productBundleManipulator->setProductBundle($productBundle)->shouldBeCalled();
-        $productBundleManipulator->addSlot('Socks', $slotOptions, [$blueSocks])->shouldBeCalled();
+        $productBundleManipulator->addSlot('Socks', $slotOptionsSocks, [$blueSocks])->shouldBeCalled();
 
-        $this->addMissingSlotsToBundle($productBundle, $allProductsPerSlot);
+        $this->addMissingSlotsToBundle($productBundle, $allProductsPerSlot, $productBundleSlotsConfiguration);
     }
 }

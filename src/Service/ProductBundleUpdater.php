@@ -32,8 +32,12 @@ class ProductBundleUpdater implements ProductBundleUpdaterInterface
     /**
      * {@inheritdoc}
      */
-    public function addMissingSlotsToBundle(ProductBundleInterface $productBundle, array $allProductsPerSlot): void
-    {
+    public function addMissingSlotsToBundle(
+        ProductBundleInterface $productBundle,
+        array $allProductsPerSlot,
+        array $slotOptions
+    ): void {
+        /** @todo look into moving some services from morpheus to here. e.g. ProductBundleSlotOptionsCreator */
         $this->productBundleManipulator->setProductBundle($productBundle);
         $existingSlots = $this->getExistingSlotNames($productBundle);
         foreach ($allProductsPerSlot as $slotName => $slotContent) {
@@ -41,8 +45,12 @@ class ProductBundleUpdater implements ProductBundleUpdaterInterface
                 continue;
             }
             //@todo find a way to set a configured sort-value, maybe it is better to inject bundleSlotOptions from the outside
-            $slotOptions = $this->bundleSlotOptionsFactory->createNewWithValues(99, false);
-            $this->productBundleManipulator->addSlot($slotName, $slotOptions, $slotContent);
+            if (false === isset($slotOptions[$slotName])) {
+                $optionsForSlot = $this->bundleSlotOptionsFactory->createNewWithValues(99, false);
+            } else {
+                $optionsForSlot = $slotOptions[$slotName];
+            }
+            $this->productBundleManipulator->addSlot($slotName, $optionsForSlot, $slotContent);
         }
     }
 

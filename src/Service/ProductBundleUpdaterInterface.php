@@ -10,12 +10,18 @@ declare(strict_types=1);
 namespace solutionDrive\SyliusProductBundlesPlugin\Service;
 
 use solutionDrive\SyliusProductBundlesPlugin\Entity\ProductBundleInterface;
+use solutionDrive\SyliusProductBundlesPlugin\Service\Options\ProductBundleSlotOptionsInterface;
 use Sylius\Component\Core\Model\ProductInterface;
 
 interface ProductBundleUpdaterInterface
 {
     /**
      * @param ProductInterface[][] $allProductsPerSlot
+     * @param ProductBundleSlotOptionsInterface[] $slotOptions
      */
-    public function addMissingSlotsToBundle(ProductBundleInterface $productBundle, array $allProductsPerSlot): void;
+    public function addMissingSlotsToBundle(
+        ProductBundleInterface $productBundle,
+        array $allProductsPerSlot,
+        array $slotOptions
+    ): void;
 }
