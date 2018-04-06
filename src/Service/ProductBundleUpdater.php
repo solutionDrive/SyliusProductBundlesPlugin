@@ -12,6 +12,7 @@ namespace solutionDrive\SyliusProductBundlesPlugin\Service;
 
 use solutionDrive\SyliusProductBundlesPlugin\Entity\ProductBundleInterface;
 use solutionDrive\SyliusProductBundlesPlugin\Factory\ProductBundleSlotOptionsFactoryInterface;
+use solutionDrive\SyliusProductBundlesPlugin\Service\Options\ProductBundleSlotOptionsInterface;
 
 class ProductBundleUpdater implements ProductBundleUpdaterInterface
 {
@@ -40,17 +41,13 @@ class ProductBundleUpdater implements ProductBundleUpdaterInterface
         /** @todo look into moving some services from morpheus to here. e.g. ProductBundleSlotOptionsCreator */
         $this->productBundleManipulator->setProductBundle($productBundle);
         $existingSlots = $this->getExistingSlotNames($productBundle);
+
         foreach ($allProductsPerSlot as $slotName => $slotContent) {
-            if ($this->slotAlreadyExists($slotName, $existingSlots)) {
-                continue;
+            if (false === $this->slotAlreadyExists($slotName, $existingSlots)) {
+                $optionsForSlot = $this->getOptionsForSlot($slotOptions, $slotName);
+
+                $this->productBundleManipulator->addSlot($slotName, $optionsForSlot, $slotContent);
             }
-            //@todo find a way to set a configured sort-value, maybe it is better to inject bundleSlotOptions from the outside
-            if (false === isset($slotOptions[$slotName])) {
-                $optionsForSlot = $this->bundleSlotOptionsFactory->createNewWithValues(99, false);
-            } else {
-                $optionsForSlot = $slotOptions[$slotName];
-            }
-            $this->productBundleManipulator->addSlot($slotName, $optionsForSlot, $slotContent);
         }
     }
 
@@ -72,5 +69,18 @@ class ProductBundleUpdater implements ProductBundleUpdaterInterface
     private function slotAlreadyExists(string $slotName, array $existingSlots): bool
     {
         return in_array($slotName, $existingSlots);
+    }
+
+    /**
+     * @param ProductBundleSlotOptionsFactoryInterface[] $slotOptions
+     */
+    private function getOptionsForSlot(array $slotOptions, $slotName): ProductBundleSlotOptionsInterface
+    {
+        if (false === isset($slotOptions[$slotName])) {
+            $optionsForSlot = $this->bundleSlotOptionsFactory->createNewWithValues(99, false);
+        } else {
+            $optionsForSlot = $slotOptions[$slotName];
+        }
+        return $optionsForSlot;
     }
 }
