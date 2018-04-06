@@ -29,7 +29,7 @@
     },
     "conflict": {
         "symfony/symfony": "^3.4.7",
-        "sylius/sylius": "^1.1.3"
+        "sylius/sylius": "1.1.3 || 1.1.4"
     },
     "prefer-stable": true,
     "autoload": {
