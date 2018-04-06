@@ -76,7 +76,7 @@ class ProductBundleManipulator implements ProductBundleManipulatorInterface
 
     private function addSlotToBundle(ProductBundleSlotInterface $slot): void
     {
-        $this->productBundle->addSlot($ slot);
+        $this->productBundle->addSlot($slot);
     }
 
     private function setPresentationSlotOnBundle(ProductBundleSlotInterface $slot): void
