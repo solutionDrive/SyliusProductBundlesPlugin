@@ -16,7 +16,7 @@ use Sylius\Component\Core\Model\ProductInterface;
 interface ProductBundleUpdaterInterface
 {
     /**
-     * @param ProductInterface[][] $allProductsPerSlot
+     * @param ProductInterface[][]                $allProductsPerSlot
      * @param ProductBundleSlotOptionsInterface[] $slotOptions
      */
     public function addMissingSlotsToBundle(

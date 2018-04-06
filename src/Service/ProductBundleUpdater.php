@@ -38,7 +38,7 @@ class ProductBundleUpdater implements ProductBundleUpdaterInterface
         array $allProductsPerSlot,
         array $slotOptions
     ): void {
-        /** @todo look into moving some services from morpheus to here. e.g. ProductBundleSlotOptionsCreator */
+        // @todo look into moving some services from morpheus to here. e.g. ProductBundleSlotOptionsCreator
         $this->productBundleManipulator->setProductBundle($productBundle);
         $existingSlots = $this->getExistingSlotNames($productBundle);
 
@@ -74,7 +74,7 @@ class ProductBundleUpdater implements ProductBundleUpdaterInterface
     /**
      * @param ProductBundleSlotOptionsFactoryInterface[] $slotOptions
      */
-    private function getOptionsForSlot(array $slotOptions, $slotName): ProductBundleSlotOptionsInterface
+    private function getOptionsForSlot(array $slotOptions, string $slotName): ProductBundleSlotOptionsInterface
     {
         if (false === isset($slotOptions[$slotName])) {
             $optionsForSlot = $this->bundleSlotOptionsFactory->createNewWithValues(99, false);
