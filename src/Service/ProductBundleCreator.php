@@ -11,7 +11,6 @@ declare(strict_types=1);
 namespace solutionDrive\SyliusProductBundlesPlugin\Service;
 
 use solutionDrive\SyliusProductBundlesPlugin\Entity\ProductBundleInterface;
-use solutionDrive\SyliusProductBundlesPlugin\Entity\ProductBundleSlotInterface;
 use solutionDrive\SyliusProductBundlesPlugin\Service\Options\ProductBundleSlotOptionsInterface;
 use Sylius\Component\Core\Model\ProductInterface;
 use Sylius\Component\Resource\Factory\FactoryInterface;
@@ -21,31 +20,28 @@ class ProductBundleCreator implements ProductBundleCreatorInterface
     /** @var FactoryInterface */
     private $productBundleFactory;
 
-    /** @var FactoryInterface */
-    private $productBundleSlotFactory;
-
-    /** @var ProductBundleInterface */
-    private $productBundle;
+    /** @var ProductBundleManipulatorInterface */
+    private $productBundleManipulator;
 
     public function __construct(
         FactoryInterface $productBundleFactory,
-        FactoryInterface $productBundleSlotFactory
+        ProductBundleManipulatorInterface $productBundleManipulator
     ) {
         $this->productBundleFactory = $productBundleFactory;
-        $this->productBundleSlotFactory = $productBundleSlotFactory;
+        $this->productBundleManipulator = $productBundleManipulator;
     }
 
-    public function createProductBundle(ProductInterface $productBundleProduct): self
+    public function createProductBundle(ProductInterface $productBundleProduct): void
     {
-        $this->productBundle = $this->productBundleFactory->createNew();
-        $this->productBundle->setProduct($productBundleProduct);
-
-        return $this;
+        /** @var ProductBundleInterface $productBundle */
+        $productBundle = $this->productBundleFactory->createNew();
+        $productBundle->setProduct($productBundleProduct);
+        $this->productBundleManipulator->setProductBundle($productBundle);
     }
 
     public function getProductBundle(): ProductBundleInterface
     {
-        return $this->productBundle;
+        return $this->productBundleManipulator->getProductBundle();
     }
 
     /**
@@ -55,55 +51,7 @@ class ProductBundleCreator implements ProductBundleCreatorInterface
         string $slotName,
         ?ProductBundleSlotOptionsInterface $options = null,
         array $products = []
-    ): self {
-        /** @var ProductBundleSlotInterface $slot */
-        $slot = $this->createSlot($slotName);
-
-        $this->applyOptionsToSlot($options, $slot);
-        $this->addProductsToSlot($products, $slot);
-        $this->addSlotToBundle($options, $slot);
-
-        return $this;
-    }
-
-    private function applyOptionsToSlot(
-        ?ProductBundleSlotOptionsInterface $options,
-        ProductBundleSlotInterface $slot
     ): void {
-        if (null !== $options && null !== $options->getPosition()) {
-            $slot->setPosition($options->getPosition());
-        }
-    }
-
-    /**
-     * @param ProductInterface[] $products
-     */
-    private function addProductsToSlot(array $products, ProductBundleSlotInterface $slot): void
-    {
-        foreach ($products as $product) {
-            $this->addProductToSlot($product, $slot);
-        }
-    }
-
-    private function addProductToSlot(ProductInterface $product, ProductBundleSlotInterface $slot): void
-    {
-        $slot->addProduct($product);
-    }
-
-    private function addSlotToBundle(?ProductBundleSlotOptionsInterface $options, ProductBundleSlotInterface $slot): void
-    {
-        if (null !== $options && $options->isPresentationSlot()) {
-            $this->productBundle->setPresentationSlot($slot);
-        }
-        $this->productBundle->addSlot($slot);
-    }
-
-    private function createSlot(string $slotName): ProductBundleSlotInterface
-    {
-        /** @var ProductBundleSlotInterface $slot */
-        $slot = $this->productBundleSlotFactory->createNew();
-        $slot->setName($slotName);
-
-        return $slot;
+        $this->productBundleManipulator->addSlot($slotName, $options, $products);
     }
 }

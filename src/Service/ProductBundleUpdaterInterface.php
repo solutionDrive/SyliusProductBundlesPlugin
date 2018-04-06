@@ -1,5 +1,4 @@
 <?php
-
 declare(strict_types=1);
 
 /*
@@ -14,18 +13,15 @@ use solutionDrive\SyliusProductBundlesPlugin\Entity\ProductBundleInterface;
 use solutionDrive\SyliusProductBundlesPlugin\Service\Options\ProductBundleSlotOptionsInterface;
 use Sylius\Component\Core\Model\ProductInterface;
 
-interface ProductBundleCreatorInterface
+interface ProductBundleUpdaterInterface
 {
-    public function createProductBundle(ProductInterface $productBundleProduct): void;
-
-    public function getProductBundle(): ProductBundleInterface;
-
     /**
-     * @param ProductInterface[] $products
+     * @param ProductInterface[][]                $allProductsPerSlot
+     * @param ProductBundleSlotOptionsInterface[] $slotOptions
      */
-    public function addSlot(
-        string $slotName,
-        ProductBundleSlotOptionsInterface $options = null,
-        array $products = []
+    public function addMissingSlotsToBundle(
+        ProductBundleInterface $productBundle,
+        array $allProductsPerSlot,
+        array $slotOptions
     ): void;
 }
