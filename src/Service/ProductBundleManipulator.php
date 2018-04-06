@@ -66,10 +66,10 @@ class ProductBundleManipulator implements ProductBundleManipulatorInterface
         ?ProductBundleSlotOptionsInterface $options,
         ProductBundleSlotInterface $slot
     ): void {
-        if (null !== $options && null !== $options->getPosition()) {
+        if ($this->hasPositionOption($options)) {
             $slot->setPosition($options->getPosition());
         }
-        if (null !== $options && $options->isPresentationSlot()) {
+        if ($this->shouldSetAsPresentationSlot($options)) {
             $this->setPresentationSlotOnBundle($slot);
         }
     }
@@ -97,5 +97,15 @@ class ProductBundleManipulator implements ProductBundleManipulatorInterface
     private function addProductToSlot(ProductInterface $product, ProductBundleSlotInterface $slot): void
     {
         $slot->addProduct($product);
+    }
+
+    private function hasPositionOption(?ProductBundleSlotOptionsInterface $options): bool
+    {
+        return null !== $options && null !== $options->getPosition();
+    }
+
+    private function shouldSetAsPresentationSlot(?ProductBundleSlotOptionsInterface $options): bool
+    {
+        return null !== $options && $options->isPresentationSlot();
     }
 }
