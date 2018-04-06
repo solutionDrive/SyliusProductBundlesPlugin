@@ -25,7 +25,7 @@ interface ProductBundleManipulatorInterface
      */
     public function addSlot(
         string $slotName,
-        ProductBundleSlotOptionsInterface $options = null,
+        ?ProductBundleSlotOptionsInterface $options = null,
         array $products = []
     ): void;
 }
