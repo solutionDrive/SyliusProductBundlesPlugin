@@ -38,7 +38,7 @@ each *ProductBundleSlot* is part of the finally bought bundle.
 
 ## Usage
 ### ProductBundleCreator
-This is a service to create ProductBundles programmatically. It is designed with a fluent interface. It will only create
+This is a service to create ProductBundles programmatically. It will only create
 Objects necessary for the ProductBundle. It won't create products for you. But if you have the products that should be 
 part of the bundle you want to create, they can be associated with the created bundle and the slots inside the bundle.
 
@@ -56,11 +56,10 @@ $hatSlotOptions = $slotOptionsFactory->createNewWithValues(1, 'TopHats');
 
 $shirtSlotOptions = $slotOptionsFactory->createNewWithValues(2, 'Shirts', ['someAdditionalOption' => 'AndItsValue']);
 
-$bundleCreator
-    ->createProductBundle('YourAwesomeBundle', $prductRepresentationOfTheBundle)
-    ->addSlot('YourAwsomeHats', $hatSlotOptions, $hatsToAssignToSlot)
-    ->addSlot('YourAwsomeShirts', $shirtSlotOptions, $shirtsToAssignToSlot)
-;
+$bundleCreator->createProductBundle('YourAwesomeBundle', $prductRepresentationOfTheBundle);
+$bundleCreator->addSlot('YourAwsomeHats', $hatSlotOptions, $hatsToAssignToSlot);
+$bundleCreator->addSlot('YourAwsomeShirts', $shirtSlotOptions, $shirtsToAssignToSlot);
+
 $productBundle = $bundleCreator->getProductBundle();
 ```
 
