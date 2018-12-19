@@ -1,8 +1,0 @@
-sylius:
-    resource: "../../../../vendor/sylius/sylius/app/config/routing.yml"
-
-# Put your own routes here
-
-solutiondrive_admin_product_bundle_index:
-    resource: "@SolutionDriveSyliusProductBundlesPlugin/Resources/config/app/admin_routing.yml"
-    prefix: /admin

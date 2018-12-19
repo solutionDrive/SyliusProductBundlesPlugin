@@ -1,0 +1,48 @@
+imports:
+    - vendor/sylius/sylius/behat.yml.dist
+    - tests/Behat/Resources/suites.yml
+
+default:
+    extensions:
+        FriendsOfBehat\ContextServiceExtension:
+            imports:
+                - vendor/sylius/sylius/src/Sylius/Behat/Resources/config/services.xml
+                - tests/Behat/Resources/services.xml
+
+        Behat\MinkExtension:
+            files_path: "%paths.base%/vendor/sylius/sylius/src/Sylius/Behat/Resources/fixtures/"
+            base_url: "http://nginx/"
+            default_session: symfony
+            javascript_session: chrome
+            sessions:
+                symfony:
+                    symfony: ~
+                chrome:
+                    selenium2:
+                        browser: chrome
+                        wd_host: "http://selenium-hub:4444/wd/hub"
+                        capabilities:
+                            browserName: chrome
+                            browser: chrome
+                            version: ""
+                            marionette: null # https://github.com/Behat/MinkExtension/pull/311
+                            chrome:
+                                switches:
+                                    - "start-fullscreen"
+                                    - "start-maximized"
+                                    - "no-sandbox"
+            show_auto: false
+
+        FriendsOfBehat\SymfonyExtension:
+            env_file: tests/Application/.env.test
+            kernel:
+                env: test
+                debug: true
+                class: Tests\solutionDrive\SyliusProductBundlesPlugin\Application\Kernel
+                path: tests/Application/Kernel.php
+                bootstrap: ~
+
+        Lakion\Behat\MinkDebugExtension:
+            directory: etc/build
+            clean_start: false
+            screenshot: true

@@ -25,7 +25,7 @@ Feature: Product bundle validation
     And I try to add it
     Then I should be notified that "slot name 0" is required
 
-  @ui @todo
+  @ui @javascript @todo
   Scenario: Adding a new product bundle slot for an existing product bundle
     When I try to create a new product bundle
     And I associate the product "smurf outfit" with its bundle

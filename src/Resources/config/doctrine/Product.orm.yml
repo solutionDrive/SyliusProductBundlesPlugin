@@ -1,5 +1,5 @@
 solutionDrive\SyliusProductBundlesPlugin\Entity\Product:
-    type: entity
+    type: mappedSuperclass
     table: sylius_product
 
     oneToOne:
