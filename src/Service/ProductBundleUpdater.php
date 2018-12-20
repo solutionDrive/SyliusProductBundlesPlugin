@@ -60,6 +60,7 @@ class ProductBundleUpdater implements ProductBundleUpdaterInterface
         foreach ($productBundle->getSlots() as $bundleSlot) {
             $existingSlots[] = $bundleSlot->getName();
         }
+
         return $existingSlots;
     }
 

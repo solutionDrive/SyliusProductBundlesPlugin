@@ -47,9 +47,9 @@ class ProductBundleSlotType extends AbstractType
                 'required' => false,
             ])
             ->add('isPresentationSlot', CheckboxType::class, [
-                'label'  => 'solutiondrive.ui.presentation_slot',
+                'label' => 'solutiondrive.ui.presentation_slot',
                 'mapped' => false,
-                'attr'   => ['data-qa' => 'presentation-slot'],
+                'attr' => ['data-qa' => 'presentation-slot'],
             ])
             ->addEventListener(FormEvents::POST_SET_DATA, function (FormEvent $event): void {
                 /** @var ProductBundleSlotInterface $slot */

@@ -106,6 +106,7 @@ class ProductBundleSlot implements ProductBundleSlotInterface, ResourceInterface
         if (null === $this->bundle) {
             return false;
         }
+
         return $this->bundle->getPresentationSlot() === $this;
     }
 }
