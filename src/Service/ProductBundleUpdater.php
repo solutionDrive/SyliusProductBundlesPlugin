@@ -52,7 +52,7 @@ class ProductBundleUpdater implements ProductBundleUpdaterInterface
     }
 
     /**
-     * @return string[]
+     * @return mixed[]
      */
     private function getExistingSlotNames(ProductBundleInterface $productBundle): array
     {
@@ -72,15 +72,14 @@ class ProductBundleUpdater implements ProductBundleUpdaterInterface
     }
 
     /**
-     * @param ProductBundleSlotOptionsFactoryInterface[] $slotOptions
+     * @param ProductBundleSlotOptionsInterface[] $slotOptions
      */
     private function getOptionsForSlot(array $slotOptions, string $slotName): ProductBundleSlotOptionsInterface
     {
         if (false === isset($slotOptions[$slotName])) {
-            $optionsForSlot = $this->bundleSlotOptionsFactory->createNewWithValues(99, false);
-        } else {
-            $optionsForSlot = $slotOptions[$slotName];
+            return $this->bundleSlotOptionsFactory->createNewWithValues(99, false);
         }
-        return $optionsForSlot;
+
+        return $slotOptions[$slotName];
     }
 }

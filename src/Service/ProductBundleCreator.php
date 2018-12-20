@@ -39,7 +39,7 @@ class ProductBundleCreator implements ProductBundleCreatorInterface
         $this->productBundleManipulator->setProductBundle($productBundle);
     }
 
-    public function getProductBundle(): ProductBundleInterface
+    public function getProductBundle(): ?ProductBundleInterface
     {
         return $this->productBundleManipulator->getProductBundle();
     }

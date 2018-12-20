@@ -42,7 +42,7 @@ class ProductBundleRegistry implements ProductBundleRegistryInterface
     {
         /** @var ProductBundleInterface $productBundle */
         $productBundle = $this->productBundleRepository->findOneBy(['product' => $product]);
-        if (false === $productBundle instanceof ProductBundleInterface) {
+        if (!$productBundle instanceof ProductBundleInterface) {
             throw new ProductIsNotAProductBundleException($product);
         }
 

@@ -56,7 +56,7 @@ class ProductBundleExampleFactory extends AbstractExampleFactory
     /**
      * {@inheritdoc}
      */
-    public function create(array $options = []): ProductBundleInterface
+    public function create(array $options = []): ?ProductBundleInterface
     {
         $options = $this->optionsResolver->resolve($options);
 
