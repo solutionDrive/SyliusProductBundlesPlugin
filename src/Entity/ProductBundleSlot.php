@@ -26,7 +26,7 @@ class ProductBundleSlot implements ProductBundleSlotInterface, ResourceInterface
     /** @var int */
     private $position = 0;
 
-    /** @var ProductBundleInterface */
+    /** @var ProductBundleInterface|null */
     private $bundle;
 
     /** @var ProductInterface[]|Collection|ArrayCollection */
@@ -106,6 +106,7 @@ class ProductBundleSlot implements ProductBundleSlotInterface, ResourceInterface
         if (null === $this->bundle) {
             return false;
         }
+
         return $this->bundle->getPresentationSlot() === $this;
     }
 }

@@ -1,5 +1,5 @@
 solutionDrive\SyliusProductBundlesPlugin\Entity\ProductBundleSlot:
-    type: entity
+    type: mappedSuperclass
     table: solutiondrive_product_bundle_slot
     id:
         id:

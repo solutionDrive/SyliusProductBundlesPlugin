@@ -18,14 +18,14 @@ interface ProductBundleCreatorInterface
 {
     public function createProductBundle(ProductInterface $productBundleProduct): void;
 
-    public function getProductBundle(): ProductBundleInterface;
+    public function getProductBundle(): ?ProductBundleInterface;
 
     /**
-     * @param ProductInterface[] $products
+     * @param mixed[] $products
      */
     public function addSlot(
         string $slotName,
-        ProductBundleSlotOptionsInterface $options = null,
+        ?ProductBundleSlotOptionsInterface $options = null,
         array $products = []
     ): void;
 }

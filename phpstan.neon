@@ -1,4 +1,14 @@
+includes:
+    - vendor/phpstan/phpstan-doctrine/extension.neon
+    - vendor/phpstan/phpstan-symfony/extension.neon
+    - vendor/phpstan/phpstan-webmozart-assert/extension.neon
+
 parameters:
+    reportUnmatchedIgnoredErrors: false
+
+    symfony:
+        container_xml_path: tests/Application/var/cache/test/ApplicationTests_solutionDrive_SyliusProductBundlesPlugin_Application_KernelTestDebugContainer.xml
+
     excludes_analyse:
         # Makes PHPStan crash
         - 'src/DependencyInjection/Configuration.php'
@@ -9,3 +19,26 @@ parameters:
 
     ignoreErrors:
         - '/Parameter #1 $configuration of method Symfony\Component\DependencyInjection\Extension\Extension::processConfiguration() expects Symfony\Component\Config\Definition\ConfigurationInterface, Symfony\Component\Config\Definition\ConfigurationInterface|null given./'
+
+        # Magic calls
+        - '/Call to an undefined static method Webmozart\\Assert\\Assert::all/'
+        - '/Call to an undefined static method Webmozart\\Assert\\Assert::nullOr/'
+        - '/Call to an undefined method Faker\\Generator::/'
+        - '/Access to an undefined property Faker\\Generator::/'
+        - '/Method Mockery\\MockInterface::shouldReceive\(\) invoked with 1 parameter, 0 required/'
+        - '/Call to an undefined method Symfony\\Component\\Config\\Definition\\Builder\\NodeParentInterface/'
+        - '/Call to an undefined method Mockery\\ExpectationInterface|Mockery\\HigherOrderMessage::/'
+
+        # These packages aren't in require-dev of the global package
+        - '/Class Doctrine\\Bundle\\MongoDBBundle/'
+        - '/Class Doctrine\\Bundle\\PHPCRBundle/'
+
+        # Symfony 4.0 BC layer
+        - '/Symfony\\Component\\ExpressionLanguage\\ParserCache\\ParserCacheInterface/'
+        - '/Symfony\\Component\\ExpressionLanguage\\ParserCache\\ParserCacheAdapter/'
+        - '/Class Symfony\\Component\\Config\\Definition\\Builder\\TreeBuilder does not have a constructor and must be instantiated without any parameters/'
+
+        # Symfony null typehints
+        - '/Cannot call method arrayNode\(\) on Symfony\\Component\\Config\\Definition\\Builder\\NodeParentInterface\|null/'
+        - '/Cannot call method getData\(\) on Symfony\\Component\\Form\\FormInterface\|null/'
+        - '/Cannot call method getParent\(\) on Symfony\\Component\\Form\\FormInterface\|null/'

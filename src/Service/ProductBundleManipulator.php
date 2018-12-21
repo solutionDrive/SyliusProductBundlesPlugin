@@ -44,11 +44,13 @@ class ProductBundleManipulator implements ProductBundleManipulatorInterface
      */
     public function addSlot(
         string $slotName,
-        ProductBundleSlotOptionsInterface $options = null,
+        ?ProductBundleSlotOptionsInterface $options = null,
         array $products = []
     ): void {
         $slot = $this->createSlot($slotName);
-        $this->applyOptionsToSlot($options, $slot);
+        if ($options instanceof ProductBundleSlotOptionsInterface) {
+            $this->applyOptionsToSlot($options, $slot);
+        }
         $this->addProductsToSlot($products, $slot);
         $this->addSlotToBundle($slot);
     }
@@ -63,7 +65,7 @@ class ProductBundleManipulator implements ProductBundleManipulatorInterface
     }
 
     private function applyOptionsToSlot(
-        ?ProductBundleSlotOptionsInterface $options,
+        ProductBundleSlotOptionsInterface $options,
         ProductBundleSlotInterface $slot
     ): void {
         if ($this->hasPositionOption($options)) {
